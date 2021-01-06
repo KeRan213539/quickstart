@@ -12,10 +12,12 @@
 @media (min-width: 992px) {
   .blogDocSidebar {
     position: fixed;
+    z-index: 99;
   }
   .blogDocToc {
     margin-left: 83.33334%;
     position: fixed;
+    z-index: 99;
   }
   #sidebarConsoleBtn {
     display: none;
@@ -158,4 +160,9 @@
 }
 .section-index h1, .section-index h2, .section-index h3, .section-index h4, .section-index h5, .section-index h6 {
   margin: 0 0 0 0;
+}
+
+.lastmodDiv {
+  font-size: 16px;
+  font-weight: 400;
 }

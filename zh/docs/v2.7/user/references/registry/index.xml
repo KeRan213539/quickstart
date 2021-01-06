@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>注册中心参考手册 on Nacos</title>
+    <link>/zh/docs/v2.7/user/references/registry/</link>
+    <description>Recent content in 注册中心参考手册 on Nacos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/zh/docs/v2.7/user/references/registry/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nacos 注册中心</title>
+      <link>/zh/docs/v2.7/user/references/registry/nacos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/references/registry/nacos/</guid>
+      <description>Nacos 是 Dubbo 生态系统中重要的注册中心实现，其中 dubbo-registry-nacos 则是 Dubbo 融合 Nacos 注册中心的实现。
+预备工作 当您将 dubbo-registry-nacos 整合到您的 Dubbo 工程之前，请确保后台已经启动 Nacos 服务。如果您尚且不熟悉 Nacos 的基本使用的话，可先行参考 Nacos 快速入门。建议使用 Nacos 1.0.0 及以上的版本。
+快速上手 Dubbo 融合 Nacos 成为注册中心的操作步骤非常简单，大致步骤可分为“增加 Maven 依赖”以及“配置注册中心“。
+增加 Maven 依赖 首先，您需要将 dubbo-registry-nacos 的 Maven 依赖添加到您的项目 pom.xml 文件中，并且强烈地推荐您使用 Dubbo 2.6.5：
+&amp;lt;dependencies&amp;gt; ... &amp;lt;!-- Dubbo Nacos registry dependency --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.alibaba&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;dubbo-registry-nacos&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;0.0.2&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- Keep latest Nacos client version --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.alibaba.nacos&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;nacos-client&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;[0.6.1,)&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;!-- Dubbo dependency --&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;com.</description>
+    </item>
+    
+    <item>
+      <title>Zookeeper 注册中心</title>
+      <link>/zh/docs/v2.7/user/references/registry/zookeeper/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/references/registry/zookeeper/</guid>
+      <description>Zookeeper 是 Apache Hadoop 的子项目，是一个树型的目录服务，支持变更推送，适合作为 Dubbo 服务的注册中心，工业强度较高，可用于生产环境，并推荐使用 1。
+流程说明：
+ 服务提供者启动时: 向 /dubbo/com.foo.BarService/providers 目录下写入自己的 URL 地址 服务消费者启动时: 订阅 /dubbo/com.foo.BarService/providers 目录下的提供者 URL 地址。并向 /dubbo/com.foo.BarService/consumers 目录下写入自己的 URL 地址 监控中心启动时: 订阅 /dubbo/com.foo.BarService 目录下的所有提供者和消费者 URL 地址。  支持以下功能：
+ 当提供者出现断电等异常停机时，注册中心能自动删除提供者信息 当注册中心重启时，能自动恢复注册数据，以及订阅请求 当会话过期时，能自动恢复注册数据，以及订阅请求 当设置 &amp;lt;dubbo:registry check=&amp;quot;false&amp;quot; /&amp;gt; 时，记录失败注册和订阅请求，后台定时重试 可通过 &amp;lt;dubbo:registry username=&amp;quot;admin&amp;quot; password=&amp;quot;1234&amp;quot; /&amp;gt; 设置 zookeeper 登录信息 可通过 &amp;lt;dubbo:registry group=&amp;quot;dubbo&amp;quot; /&amp;gt; 设置 zookeeper 的根节点，不配置将使用默认的根节点。 支持 * 号通配符 &amp;lt;dubbo:reference group=&amp;quot;*&amp;quot; version=&amp;quot;*&amp;quot; /&amp;gt;，可订阅服务的所有分组和所有版本的提供者  使用 在 provider 和 consumer 中增加 zookeeper 客户端 jar 包依赖：</description>
+    </item>
+    
+    <item>
+      <title>Multicast 注册中心</title>
+      <link>/zh/docs/v2.7/user/references/registry/multicast/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/references/registry/multicast/</guid>
+      <description>Multicast 注册中心不需要启动任何中心节点，只要广播地址一样，就可以互相发现。
+提供方启动时广播自己的地址 消费方启动时广播订阅请求 提供方收到订阅请求时，单播自己的地址给订阅者，如果设置了 unicast=false，则广播给订阅者 消费方收到提供方地址时，连接该地址进行 RPC 调用。  组播受网络结构限制，只适合小规模应用或开发阶段使用。组播地址段: 224.0.0.0 - 239.255.255.255
+配置 &amp;lt;dubbo:registry address=&amp;#34;multicast://224.5.6.7:1234&amp;#34; /&amp;gt; 或
+&amp;lt;dubbo:registry protocol=&amp;#34;multicast&amp;#34; address=&amp;#34;224.5.6.7:1234&amp;#34; /&amp;gt; 为了减少广播量，Dubbo 缺省使用单播发送提供者地址信息给消费者，如果一个机器上同时启了多个消费者进程，消费者需声明 unicast=false，否则只会有一个消费者能收到消息; 当服务者和消费者运行在同一台机器上，消费者同样需要声明unicast=false，否则消费者无法收到消息，导致No provider available for the service异常：
+&amp;lt;dubbo:application name=&amp;#34;demo-consumer&amp;#34;&amp;gt; &amp;lt;dubbo:parameter key=&amp;#34;unicast&amp;#34; value=&amp;#34;false&amp;#34; /&amp;gt; &amp;lt;/dubbo:application&amp;gt; 或
+&amp;lt;dubbo:consumer&amp;gt; &amp;lt;dubbo:parameter key=&amp;#34;unicast&amp;#34; value=&amp;#34;false&amp;#34; /&amp;gt; &amp;lt;/dubbo:consumer&amp;gt; </description>
+    </item>
+    
+    <item>
+      <title>Redis 注册中心</title>
+      <link>/zh/docs/v2.7/user/references/registry/redis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/references/registry/redis/</guid>
+      <description>基于 Redis 1 实现的注册中心。
+提示从 2.1.0 版本开始支持。
+Redis 过期数据通过心跳的方式检测脏数据，服务器时间必须同步，并且对服务器有一定压力，否则过期检测会不准确
+使用 Redis 的 Key/Map 结构存储数据结构：
+ 主 Key 为服务名和类型 Map 中的 Key 为 URL 地址 Map 中的 Value 为过期时间，用于判断脏数据，脏数据由监控中心删除 [^3]  使用 Redis 的 Publish/Subscribe 事件通知数据变更：
+ 通过事件的值区分事件类型：register, unregister, subscribe, unsubscribe 普通消费者直接订阅指定服务提供者的 Key，只会收到指定服务的 register, unregister 事件 监控中心通过 psubscribe 功能订阅 /dubbo/*，会收到所有服务的所有变更事件  调用过程：
+服务提供方启动时，向 Key:/dubbo/com.foo.BarService/providers 下，添加当前提供者的地址 并向 Channel:/dubbo/com.foo.BarService/providers 发送 register 事件 服务消费方启动时，从 Channel:/dubbo/com.foo.BarService/providers 订阅 register 和 unregister 事件 并向 Key:/dubbo/com.foo.BarService/consumers 下，添加当前消费者的地址 服务消费方收到 register 和 unregister 事件后，从 Key:/dubbo/com.</description>
+    </item>
+    
+    <item>
+      <title>Simple 注册中心</title>
+      <link>/zh/docs/v2.7/user/references/registry/simple/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/references/registry/simple/</guid>
+      <description>Simple 注册中心本身就是一个普通的 Dubbo 服务，可以减少第三方依赖，使整体通讯方式一致。
+配置 将 Simple 注册中心暴露成 Dubbo 服务：
+&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;beans xmlns=&amp;#34;http://www.springframework.org/schema/beans&amp;#34; xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34; xmlns:dubbo=&amp;#34;http://dubbo.apache.org/schema/dubbo&amp;#34; xsi:schemaLocation=&amp;#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd&amp;#34;&amp;gt; &amp;lt;!-- 当前应用信息配置 --&amp;gt; &amp;lt;dubbo:application name=&amp;#34;simple-registry&amp;#34; /&amp;gt; &amp;lt;!-- 暴露服务协议配置 --&amp;gt; &amp;lt;dubbo:protocol port=&amp;#34;9090&amp;#34; /&amp;gt; &amp;lt;!-- 暴露服务配置 --&amp;gt; &amp;lt;dubbo:service interface=&amp;#34;org.apache.dubbo.registry.RegistryService&amp;#34; ref=&amp;#34;registryService&amp;#34; registry=&amp;#34;N/A&amp;#34; ondisconnect=&amp;#34;disconnect&amp;#34; callbacks=&amp;#34;1000&amp;#34;&amp;gt; &amp;lt;dubbo:method name=&amp;#34;subscribe&amp;#34;&amp;gt;&amp;lt;dubbo:argument index=&amp;#34;1&amp;#34; callback=&amp;#34;true&amp;#34; /&amp;gt;&amp;lt;/dubbo:method&amp;gt; &amp;lt;dubbo:method name=&amp;#34;unsubscribe&amp;#34;&amp;gt;&amp;lt;dubbo:argument index=&amp;#34;1&amp;#34; callback=&amp;#34;false&amp;#34; /&amp;gt;&amp;lt;/dubbo:method&amp;gt; &amp;lt;/dubbo:service&amp;gt; &amp;lt;!-- 简单注册中心实现，可自行扩展实现集群和状态同步 --&amp;gt; &amp;lt;bean id=&amp;#34;registryService&amp;#34; class=&amp;#34;org.apache.dubbo.registry.simple.SimpleRegistryService&amp;#34; /&amp;gt; &amp;lt;/beans&amp;gt; 引用 Simple Registry 服务：
+&amp;lt;dubbo:registry address=&amp;#34;127.0.0.1:9090&amp;#34; /&amp;gt; 或者：
+&amp;lt;dubbo:service interface=&amp;#34;org.</description>
+    </item>
+    
+  </channel>
+</rss>

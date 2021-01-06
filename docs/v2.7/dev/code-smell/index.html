@@ -1,0 +1,2372 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+<html lang="en">
+<head>
+  
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Bad Smell</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    <meta http-equiv="content-language" content="en-us" />
+
+  
+
+    
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nacos">
+    <meta property="og:title" content="Bad Smell">
+    <meta property="og:url" content="/docs/v2.7/dev/code-smell/">
+    <meta property="og:image" content="/images/">
+    <meta name="twitter:title" content="Nacos" />
+    <meta name="twitter:url" content="/docs/v2.7/dev/code-smell/" />
+    <meta name="twitter:image" content="/images/" />
+    <meta name="twitter:card" content="" />
+    
+    
+    
+    <link rel="canonical" href="/docs/v2.7/dev/code-smell/"/>
+
+    
+
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="/css/leaflet.css" />
+
+    
+    <link rel="stylesheet" href="/css/animate.css">
+    
+    <link rel="stylesheet" href="/css/icomoon.css">
+    
+    <link rel="stylesheet" href="/css/simple-line-icons.css">
+    
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+    
+    <link rel="stylesheet" href="/css/style.css">
+
+    
+    
+    <link rel="stylesheet" href="/css/custom1.css">
+    
+    <link rel="stylesheet" href="/css/custom2.css">
+    
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    
+
+    
+    <script src="/js/modernizr-2.6.2.min.js"></script>
+    
+    
+
+  <meta name="referrer" content="no-referrer"/>
+  <link rel="shortcut icon" href="https://img.alicdn.com/tfs/TB1hgJpHAPoK1RjSZKbXXX1IXXa-64-64.png"/>
+  	
+	<script src="/js/jquery.min.js"></script>
+	
+	<script src="/js/jquery.easing.1.3.js"></script>
+	
+	<script src="/js/bootstrap.min.js"></script>
+	
+	<script src="/js/jquery.waypoints.min.js"></script>
+	
+	<script src="/js/jquery.stellar.min.js"></script>
+	
+	<script src="/js/jquery.countTo.js"></script>
+	
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/magnific-popup-options.js"></script>
+	
+
+
+	
+	<script src="/js/main.js"></script>
+
+</head>
+<body>
+
+
+    <header role="banner" id="fh5co-header">
+        <div class="container">
+            
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    
+                    <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+                    <a class="navbar-brand" href="index.html"><img id="nacosLogo" src="/images/nacos.png"></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    
+                    
+                    
+                    <li><a class="external" href="/"><span>Home</span></a></li>
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                        <li class="active"><a class="external" href="/docs"><span>Documentation</span></a></li>
+                    
+                        <li><a class="external" href="/blog"><span>Blog</span></a></li>
+                    
+                    <li>
+                      
+
+<div class="dropdown">
+	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false" >
+		English
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu">
+		
+		<li><a class="external" href="/zh/docs/v2.7/dev/code-smell/">中文</a></li>
+		
+	</ul>
+</div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+    </div>
+</header>
+
+<section class="animated">
+  <div class="col-md-2 blogDocSidebar">
+    
+
+
+
+
+<a href="#" id="sidebarConsoleBtn"><i class="fa fa-bars fa-fw"></i></a>
+<div id="sidebarContent">
+  
+  
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/" >Documentation</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docs">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/" >Dubbo 2.7</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docsv27">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/user/" >User</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27user">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/user/preface/" >Preface</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27userpreface">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userprefacebackground" href="/docs/v2.7/user/preface/background/">Background</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userprefacerequirements" href="/docs/v2.7/user/preface/requirements/">Requirements</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userprefacearchitecture" href="/docs/v2.7/user/preface/architecture/">Architecture</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userprefaceusage" href="/docs/v2.7/user/preface/usage/">Usage</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userquick-start" href="/docs/v2.7/user/quick-start/">Quick start</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userdependencies" href="/docs/v2.7/user/dependencies/">Dependencies</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27usermaturity" href="/docs/v2.7/user/maturity/">Maturity</a>
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/user/configuration/" >Configuration</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27userconfiguration">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userconfigurationxml" href="/docs/v2.7/user/configuration/xml/">XML</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userconfigurationproperties" href="/docs/v2.7/user/configuration/properties/">Properties</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userconfigurationapi" href="/docs/v2.7/user/configuration/api/">API</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userconfigurationannotation" href="/docs/v2.7/user/configuration/annotation/">Annotation</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userconfigurationconfiguration-load-process" href="/docs/v2.7/user/configuration/configuration-load-process/">Loading Process</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/user/examples/" >Examples</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27userexamples">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplespreflight-check" href="/docs/v2.7/user/examples/preflight-check/">Preflight Check</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesfault-tolerent-strategy" href="/docs/v2.7/user/examples/fault-tolerent-strategy/">Fault Tolerance</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesloadbalance" href="/docs/v2.7/user/examples/loadbalance/">Load Balance</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesthread-model" href="/docs/v2.7/user/examples/thread-model/">Thread Model</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesexplicit-target" href="/docs/v2.7/user/examples/explicit-target/">Explicit Target</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplessubscribe-only" href="/docs/v2.7/user/examples/subscribe-only/">Subscribe Only</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesmulti-protocols" href="/docs/v2.7/user/examples/multi-protocols/">Multiple Protocols</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesmulti-registry" href="/docs/v2.7/user/examples/multi-registry/">Multiple Registries</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesservice-group" href="/docs/v2.7/user/examples/service-group/">Service Group</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesstatic-service" href="/docs/v2.7/user/examples/static-service/">Static Service</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesmulti-versions" href="/docs/v2.7/user/examples/multi-versions/">Multiple Versions</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesgroup-merger" href="/docs/v2.7/user/examples/group-merger/">Group Merger</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesparameter-validation" href="/docs/v2.7/user/examples/parameter-validation/">Parameter Validation</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesresult-cache" href="/docs/v2.7/user/examples/result-cache/">Cache Result</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesgeneric-reference" href="/docs/v2.7/user/examples/generic-reference/">Generic Reference</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesgeneric-service" href="/docs/v2.7/user/examples/generic-service/">Generic Service</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesecho-service" href="/docs/v2.7/user/examples/echo-service/">Echo Service</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplescontext" href="/docs/v2.7/user/examples/context/">Context</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesattachment" href="/docs/v2.7/user/examples/attachment/">Attachment</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesasync-call" href="/docs/v2.7/user/examples/async-call/">Async Call</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesasync-execute-on-provider" href="/docs/v2.7/user/examples/async-execute-on-provider/">Async Execution</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexampleslocal-call" href="/docs/v2.7/user/examples/local-call/">Local Call</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplescallback-parameter" href="/docs/v2.7/user/examples/callback-parameter/">Callback</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesevents-notify" href="/docs/v2.7/user/examples/events-notify/">Event Notification</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexampleslocal-stub" href="/docs/v2.7/user/examples/local-stub/">Local Stub</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexampleslocal-mock" href="/docs/v2.7/user/examples/local-mock/">Local Mock</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesdelay-publish" href="/docs/v2.7/user/examples/delay-publish/">Delay Publish</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesconcurrency-control" href="/docs/v2.7/user/examples/concurrency-control/">Concurrency</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesconfig-connections" href="/docs/v2.7/user/examples/config-connections/">Connection</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexampleslazy-connect" href="/docs/v2.7/user/examples/lazy-connect/">Lazy Connect</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesstickiness" href="/docs/v2.7/user/examples/stickiness/">Stickiness</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplestoken-authorization" href="/docs/v2.7/user/examples/token-authorization/">Token Authorization</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesrouting-rule" href="/docs/v2.7/user/examples/routing-rule/">Routing Rule</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesconfig-rule" href="/docs/v2.7/user/examples/config-rule/">Configure rule</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesservice-downgrade" href="/docs/v2.7/user/examples/service-downgrade/">Service Downgrade</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesgraceful-shutdown" href="/docs/v2.7/user/examples/graceful-shutdown/">Graceful Shutdown</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexampleshostname-binding" href="/docs/v2.7/user/examples/hostname-binding/">Hostname Binding</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexampleslogger-strategy" href="/docs/v2.7/user/examples/logger-strategy/">Logger Strategy</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesaccesslog" href="/docs/v2.7/user/examples/accesslog/">Access Log</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesservice-container" href="/docs/v2.7/user/examples/service-container/">Service Container</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesreference-config-cache" href="/docs/v2.7/user/examples/reference-config-cache/">ReferenceConfig Cache</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesregistry-only" href="/docs/v2.7/user/examples/registry-only/">Register Only</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesdistributed-transaction" href="/docs/v2.7/user/examples/distributed-transaction/">Transaction</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesdump" href="/docs/v2.7/user/examples/dump/">Thread Dump</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesnetty4" href="/docs/v2.7/user/examples/netty4/">Netty4</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userexamplesserialization" href="/docs/v2.7/user/examples/serialization/">Serialization</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/user/references/" >References</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27userreferences">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/user/references/xml/" >XML</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27userreferencesxml">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-application" href="/docs/v2.7/user/references/xml/dubbo-application/">dubbo:application</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-argument" href="/docs/v2.7/user/references/xml/dubbo-argument/">dubbo:argument</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-config-center" href="/docs/v2.7/user/references/xml/dubbo-config-center/">dubbo:config-center</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-consumer" href="/docs/v2.7/user/references/xml/dubbo-consumer/">dubbo:consumer</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-method" href="/docs/v2.7/user/references/xml/dubbo-method/">dubbo:method</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-module" href="/docs/v2.7/user/references/xml/dubbo-module/">dubbo:module</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-monitor" href="/docs/v2.7/user/references/xml/dubbo-monitor/">dubbo:monitor</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-parameter" href="/docs/v2.7/user/references/xml/dubbo-parameter/">dubbo:parameter</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-protocol" href="/docs/v2.7/user/references/xml/dubbo-protocol/">dubbo:protocol</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-provider" href="/docs/v2.7/user/references/xml/dubbo-provider/">dubbo:provider</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-reference" href="/docs/v2.7/user/references/xml/dubbo-reference/">dubbo:reference</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-registry" href="/docs/v2.7/user/references/xml/dubbo-registry/">dubbo:registry</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesxmldubbo-service" href="/docs/v2.7/user/references/xml/dubbo-service/">dubbo:service</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/user/references/protocol/" >Protocol</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27userreferencesprotocol">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesprotocoldubbo" href="/docs/v2.7/user/references/protocol/dubbo/">dubbo://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesprotocolrest" href="/docs/v2.7/user/references/protocol/rest/">rest://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesprotocolhttp" href="/docs/v2.7/user/references/protocol/http/">http://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesprotocolhessian" href="/docs/v2.7/user/references/protocol/hessian/">hessian://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesprotocolredis" href="/docs/v2.7/user/references/protocol/redis/">redis://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesprotocolthrift" href="/docs/v2.7/user/references/protocol/thrift/">thrift://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesprotocolmemcached" href="/docs/v2.7/user/references/protocol/memcached/">memcached://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesprotocolrmi" href="/docs/v2.7/user/references/protocol/rmi/">rmi://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesprotocolwebservice" href="/docs/v2.7/user/references/protocol/webservice/">webservice://</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/user/references/registry/" >Registry Server</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27userreferencesregistry">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesregistrynacos" href="/docs/v2.7/user/references/registry/nacos/">Nacos</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesregistryzookeeper" href="/docs/v2.7/user/references/registry/zookeeper/">Zookeeper</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesregistrymulticast" href="/docs/v2.7/user/references/registry/multicast/">Multicast</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesregistryredis" href="/docs/v2.7/user/references/registry/redis/">Redis</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesregistrysimple" href="/docs/v2.7/user/references/registry/simple/">Simple</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesmetadata" href="/docs/v2.7/user/references/metadata/">Metadata</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesapi" href="/docs/v2.7/user/references/api/">API</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesqos" href="/docs/v2.7/user/references/qos/">Qos</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencestelnet" href="/docs/v2.7/user/references/telnet/">Telnet</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userreferencesmaven" href="/docs/v2.7/user/references/maven/">Maven</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userbest-practice" href="/docs/v2.7/user/best-practice/">Best practice</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userrecommend" href="/docs/v2.7/user/recommend/">Recommended usage</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27usercapacity-plan" href="/docs/v2.7/user/capacity-plan/">Capacity plan</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userperf-test" href="/docs/v2.7/user/perf-test/">Performance</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27usercoveragence" href="/docs/v2.7/user/coveragence/">Test coverage</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userbenchmark-tool" href="/docs/v2.7/user/benchmark-tool/">Benchmark Suite</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userrest" href="/docs/v2.7/user/rest/">REST support</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27usersimple-monitor" href="/docs/v2.7/user/simple-monitor/">Simple monitor</a>
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/user/languages/" >Other Languages</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27userlanguages">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/user/languages/erlang/" >Erlang</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27userlanguageserlang">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userlanguageserlangquick-start" href="/docs/v2.7/user/languages/erlang/quick-start/">Quick Start</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userlanguageserlangreference" href="/docs/v2.7/user/languages/erlang/reference/">Consumer</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userlanguageserlangservice" href="/docs/v2.7/user/languages/erlang/service/">Provider</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27userlanguageserlangserialization" href="/docs/v2.7/user/languages/erlang/serialization/">Protocol</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a class="active" href="/docs/v2.7/dev/" >Developer</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docsv27dev">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devbuild" href="/docs/v2.7/dev/build/">Build</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devdesign" href="/docs/v2.7/dev/design/">Design</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devspi" href="/docs/v2.7/dev/spi/">SPI</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplementation" href="/docs/v2.7/dev/implementation/">Implementation</a>
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/dev/principals/" >Design Principals</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27devprincipals">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devprincipalscode-detail" href="/docs/v2.7/dev/principals/code-detail/">Details</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devprincipalsconfiguration" href="/docs/v2.7/dev/principals/configuration/">Configuration</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devprincipalsdummy" href="/docs/v2.7/dev/principals/dummy/">Fool-proof</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devprincipalsexpansibility" href="/docs/v2.7/dev/principals/expansibility/">Extensibility</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devprincipalsextension" href="/docs/v2.7/dev/principals/extension/">Extension</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devprincipalsgeneral-knowledge" href="/docs/v2.7/dev/principals/general-knowledge/">General Rule</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devprincipalsrobustness" href="/docs/v2.7/dev/principals/robustness/">Robustness</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/dev/impls/" >SPI Impls</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27devimpls">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsprotocol" href="/docs/v2.7/dev/impls/protocol/">Protocol</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsfilter" href="/docs/v2.7/dev/impls/filter/">Filter</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsinvoker-listener" href="/docs/v2.7/dev/impls/invoker-listener/">InvokerListener</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsexporter-listener" href="/docs/v2.7/dev/impls/exporter-listener/">ExporterListener</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplscluster" href="/docs/v2.7/dev/impls/cluster/">Cluster</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsrouter" href="/docs/v2.7/dev/impls/router/">Router</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsload-balance" href="/docs/v2.7/dev/impls/load-balance/">LoadBalance</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsmerger" href="/docs/v2.7/dev/impls/merger/">Merger</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsregistry" href="/docs/v2.7/dev/impls/registry/">Registry</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsmonitor" href="/docs/v2.7/dev/impls/monitor/">Monitor</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsextension-factory" href="/docs/v2.7/dev/impls/extension-factory/">ExtensionFactory</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsproxy-factory" href="/docs/v2.7/dev/impls/proxy-factory/">ProxyFactory</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplscompiler" href="/docs/v2.7/dev/impls/compiler/">Compiler</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsconfig-center" href="/docs/v2.7/dev/impls/config-center/">Config Center</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsdispatcher" href="/docs/v2.7/dev/impls/dispatcher/">Dispatcher</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsthreadpool" href="/docs/v2.7/dev/impls/threadpool/">ThreadPool</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsserialize" href="/docs/v2.7/dev/impls/serialize/">Serialization</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsremoting" href="/docs/v2.7/dev/impls/remoting/">Transporter</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsexchanger" href="/docs/v2.7/dev/impls/exchanger/">Exchanger</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsnetworker" href="/docs/v2.7/dev/impls/networker/">Networker</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplstelnet-handler" href="/docs/v2.7/dev/impls/telnet-handler/">TelnetHandler</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsstatus-checker" href="/docs/v2.7/dev/impls/status-checker/">StatusChecker</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplscontainer" href="/docs/v2.7/dev/impls/container/">Container</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplspage" href="/docs/v2.7/dev/impls/page/">PageHandler</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplscache" href="/docs/v2.7/dev/impls/cache/">Cache</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplsvalidation" href="/docs/v2.7/dev/impls/validation/">Validation</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devimplslogger-adapter" href="/docs/v2.7/dev/impls/logger-adapter/">LoggerAdapter</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devcontract" href="/docs/v2.7/dev/contract/">Public Agreement</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devrelease" href="/docs/v2.7/dev/release/">Versions</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devchecklist" href="/docs/v2.7/dev/checklist/">Checklist</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devcode-smell" class="active2" href="/docs/v2.7/dev/code-smell/">Bad Smell</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devcoding" href="/docs/v2.7/dev/coding/">Coding Convention</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27devtck" href="/docs/v2.7/dev/tck/">TCK</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/admin/" >Admin</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27admin">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/admin/ops/" >Dubbo Admin</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27adminops">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27adminopsfunctions" href="/docs/v2.7/admin/ops/functions/">Functions</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27adminopsintroduction" href="/docs/v2.7/admin/ops/introduction/">Introductions</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27adminopssearch" href="/docs/v2.7/admin/ops/search/">Search</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27adminopstest" href="/docs/v2.7/admin/ops/test/">Test</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27adminopsapidocs" href="/docs/v2.7/admin/ops/apidocs/">API Docs&amp;Test</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27adminopsgovernance" href="/docs/v2.7/admin/ops/governance/">Governance</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27adminopspinpoint" href="/docs/v2.7/admin/ops/pinpoint/">Pinpoint</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27adminopsskywalking" href="/docs/v2.7/admin/ops/skywalking/">Skywalking</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v2.7/admin/install/" >Installation</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv27admininstall">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27admininstalladmin-console" href="/docs/v2.7/admin/install/admin-console/">Admin Console</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27admininstallprovider-demo" href="/docs/v2.7/admin/install/provider-demo/">Demo Provider</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27admininstallconsumer-demo" href="/docs/v2.7/admin/install/consumer-demo/">Demo Consumer</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27admininstallzookeeper" href="/docs/v2.7/admin/install/zookeeper/">Config Center</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27admininstallredis" href="/docs/v2.7/admin/install/redis/">Register Center</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docsv27admininstallmonitor-center" href="/docs/v2.7/admin/install/monitor-center/">Monitor Center</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/v3.0/" >Dubbo 3.0</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsv30">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/contribution-guidelines/" >Contribution Guideline</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docscontribution-guidelines">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/contribution-guidelines/contributor/" >Contributor</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docscontribution-guidelinescontributor">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescontributorbecome-a-committer_dev" href="/docs/contribution-guidelines/contributor/become-a-committer_dev/">How To</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescontributorcla-signing-guide_dev" href="/docs/contribution-guidelines/contributor/cla-signing-guide_dev/">CLA</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescontributornew-contributor-guide_dev" href="/docs/contribution-guidelines/contributor/new-contributor-guide_dev/">New Contributor</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescontributormailing-list-subscription-guide_dev" href="/docs/contribution-guidelines/contributor/mailing-list-subscription-guide_dev/">Mailing List</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescontributorsoftware-donation-guide_dev" href="/docs/contribution-guidelines/contributor/software-donation-guide_dev/">Donation</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescontributorreporting-security-issues_dev" href="/docs/contribution-guidelines/contributor/reporting-security-issues_dev/">Security Issue</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescontributordubbo-extension-guide_dev" href="/docs/contribution-guidelines/contributor/dubbo-extension-guide_dev/">Developing Extension</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescontributortest-coverage-guide_dev" href="/docs/contribution-guidelines/contributor/test-coverage-guide_dev/">Test Coverage</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/docs/contribution-guidelines/committer/" >Committer</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docscontribution-guidelinescommitter">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescommitternew-committer-guide_dev" href="/docs/contribution-guidelines/committer/new-committer-guide_dev/">Committer Guide</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescommitterrelease-guide_dev" href="/docs/contribution-guidelines/committer/release-guide_dev/">Release Guide</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescommitterlabel-an-issue-guide_dev" href="/docs/contribution-guidelines/committer/label-an-issue-guide_dev/">Issue Guide</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescommitterwebsite-guide_dev" href="/docs/contribution-guidelines/committer/website-guide_dev/">Website Guide</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-docscontribution-guidelinescommitterapache-dubbo-page_dev" href="/docs/contribution-guidelines/committer/apache-dubbo-page_dev/">Official Page</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+</div>
+
+<script>
+  $(function() {
+    $("#sidebarConsoleBtn").click(function () {
+      $("#sidebarContent").toggle();
+    });
+  });
+</script>
+
+
+
+  </div>
+  <div class="col-md-2 blogDocToc">
+    
+
+
+
+
+
+
+<div class="td-page-meta">
+
+
+
+
+
+
+<a href="https://github.com/nacos-group/nacos-group.github.io/issues/new?title=Bad%20Smell" target="_blank"><i class="fa fa-github fa-fw"></i> Create documentation issue</a>
+
+
+<a href="https://github.com/alibaba/nacos/issues/new" target="_blank"><i class="fa fa-tasks fa-fw"></i> Create project issue</a>
+
+</div>
+
+
+
+
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#url-convertion">URL Convertion</a>
+      <ul>
+        <li><a href="#1-point-to-point-service-export-and-refer">1. Point to Point Service export and refer</a></li>
+        <li><a href="#2-export-servie-by-registry">2. Export servie by registry</a></li>
+        <li><a href="#3-refer-service-from-registry">3. Refer service from registry</a></li>
+        <li><a href="#4-registry-push-route-rule">4. Registry push route rule</a></li>
+        <li><a href="#5-load-route-rule-from-file">5. Load route rule from file</a></li>
+      </ul>
+    </li>
+    <li><a href="#invoke-parameters">Invoke parameters</a></li>
+    <li><a href="#spi-loading">SPI Loading</a>
+      <ul>
+        <li><a href="#1-spi-auto-adaptive">1. SPI Auto Adaptive</a></li>
+      </ul>
+    </li>
+    <li><a href="#callback-function">Callback Function</a>
+      <ul>
+        <li><a href="#1-parameter-callback">1. Parameter Callback</a></li>
+        <li><a href="#2-event-notification">2. Event Notification</a></li>
+      </ul>
+    </li>
+    <li><a href="#lazy-connection">Lazy Connection</a></li>
+    <li><a href="#share-connection">Share Connection</a></li>
+    <li><a href="#sticky-policy">sticky policy</a></li>
+    <li><a href="#provider-selecting-logic">provider selecting logic</a></li>
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8 blogDocContent">
+      
+
+
+<div class="row">
+  <div class="col-md-2">
+    <ul>
+      
+    </ul>
+  </div>
+  <div class="col-md-10">
+    
+  </div>
+</div>
+<div class="td-content">
+  <h1>Bad Smell</h1>
+  
+  <div class="lead">Bade code small which should be avoided</div>
+  
+  <div class="td-byline mb-4">
+    <time datetime="0001-01-01" class="text-muted">Monday, January 01, 0001</time>
+  </div>
+  
+  <p>Ugly Dubbo design or implementation will be record here.</p>
+<h2 id="url-convertion">URL Convertion</h2>
+<h3 id="1-point-to-point-service-export-and-refer">1. Point to Point Service export and refer</h3>
+<p>service directly export：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">EXPORT(dubbo://provider-address/com.xxx.XxxService?version=1.0.0&#34;)
+</code></pre></div><p>service directly refer：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">REFER(dubbo://provider-address/com.xxx.XxxService?version=1.0.0)
+</code></pre></div><h3 id="2-export-servie-by-registry">2. Export servie by registry</h3>
+<p>export service to registry：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">EXPORT(registry://registry-address/org.apache.dubbo.registry.RegistrySerevice?registry=dubbo&amp;export=ENCODE(dubbo://provider-address/com.xxx.XxxService?version=1.0.0))
+</code></pre></div><p>accquire registry：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">url.setProtocol(url.getParameter(&#34;registry&#34;, &#34;dubbo&#34;))
+GETREGISTRY(dubbo://registry-address/org.apache.dubbo.registry.RegistrySerevice)
+</code></pre></div><p>registry service address：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">url.getParameterAndDecoded(&#34;export&#34;))
+REGISTER(dubbo://provider-address/com.xxx.XxxService?version=1.0.0)
+</code></pre></div><h3 id="3-refer-service-from-registry">3. Refer service from registry</h3>
+<p>refer service from registry：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">REFER(registry://registry-address/org.apache.dubbo.registry.RegistrySerevice?registry=dubbo&amp;refer=ENCODE(version=1.0.0))
+</code></pre></div><p>accquire registry：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">url.setProtocol(url.getParameter(&#34;registry&#34;, &#34;dubbo&#34;))
+GETREGISTRY(dubbo://registry-address/org.apache.dubbo.registry.RegistrySerevice)
+</code></pre></div><p>subscribe service address：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">url.addParameters(url.getParameterAndDecoded(&#34;refer&#34;))
+SUBSCRIBE(dubbo://registry-address/com.xxx.XxxService?version=1.0.0)
+</code></pre></div><p>notify service address：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">url.addParameters(url.getParameterAndDecoded(&#34;refer&#34;))
+NOTIFY(dubbo://provider-address/com.xxx.XxxService?version=1.0.0)
+</code></pre></div><h3 id="4-registry-push-route-rule">4. Registry push route rule</h3>
+<p>registry push route rule：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">NOTIFY(route://registry-address/com.xxx.XxxService?router=script&amp;type=js&amp;rule=ENCODE(function{...}))
+</code></pre></div><p>accquire routers：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">url.setProtocol(url.getParameter(&#34;router&#34;, &#34;script&#34;))
+GETROUTE(script://registry-address/com.xxx.XxxService?type=js&amp;rule=ENCODE(function{...}))
+</code></pre></div><h3 id="5-load-route-rule-from-file">5. Load route rule from file</h3>
+<p>load route rule from file：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">GETROUTE(file://path/file.js?router=script)
+</code></pre></div><p>accquire routers：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">url.setProtocol(url.getParameter(&#34;router&#34;, &#34;script&#34;)).addParameter(&#34;type&#34;, SUFFIX(file)).addParameter(&#34;rule&#34;, READ(file))
+GETROUTE(script://path/file.js?type=js&amp;rule=ENCODE(function{...}))
+</code></pre></div><h2 id="invoke-parameters">Invoke parameters</h2>
+<ul>
+<li>path      service path</li>
+<li>group    service group</li>
+<li>version  service version</li>
+<li>dubbo   current dubbo release version</li>
+<li>token    verify token</li>
+<li>timeout   invocation timeout</li>
+</ul>
+<h2 id="spi-loading">SPI Loading</h2>
+<h3 id="1-spi-auto-adaptive">1. SPI Auto Adaptive</h3>
+<p>When ExtensionLoader loads SPI, It will check spi attributes(using set method) . If one attribute is SPI, ExtensionLoader  will load the SPI implementation. Auto injected object is an adaptive instance（proxy） ,because the real implementation is confirmed only in execution stage.。when adaptive spi is invoked, Dubbo will choose the real implementation and executes it. Dubbo choose the right implementation according to the parameters that the mehod defines.</p>
+<p>All the inner SPIs that  Dubbo defines have the URL  parameter defined for the method invocation. Adaptive SPI uses URL to determine which implementation is needed. One specific Key and Value in the URL confirms the usage of the specific implementation, All these is done by adding <code>@Adaptive</code>  annotation.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#268bd2">@Extension</span>
+<span style="color:#268bd2">public</span> <span style="color:#268bd2">interface</span> <span style="color:#268bd2">Car</span> <span style="color:#719e07">{</span>
+    <span style="color:#268bd2">@Adaptive</span><span style="color:#719e07">({</span><span style="color:#2aa198">&#34;http://10.20.160.198/wiki/display/dubbo/car.type&#34;</span><span style="color:#719e07">,</span> <span style="color:#2aa198">&#34;http://10.20.160.198/wiki/display/dubbo/transport.type&#34;</span><span style="color:#719e07">})</span>
+    <span style="color:#268bd2">public</span> <span style="color:#268bd2">run</span><span style="color:#719e07">(</span>URL url<span style="color:#719e07">,</span> Type1 arg1<span style="color:#719e07">,</span> Type2 arg2<span style="color:#719e07">);</span>
+<span style="color:#719e07">}</span>
+</code></pre></div><p>For the rules above，ExtensionLoader  will create a adaptive instance for each SPI injected.</p>
+<p>ExtensionLoader generated adaptive classes  look like ：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#719e07">package</span> &lt;package name <span style="color:#719e07">for</span> SPI interface<span style="color:#719e07">&gt;;</span>
+ 
+<span style="color:#268bd2">public</span> <span style="color:#268bd2">class</span> &lt;<span style="color:#268bd2">SPI</span> <span style="color:#268bd2">interface</span> <span style="color:#268bd2">name</span><span style="color:#719e07">&gt;</span>$Adpative <span style="color:#268bd2">implements</span> <span style="color:#719e07">&lt;</span>SPI interface<span style="color:#719e07">&gt;</span> <span style="color:#719e07">{</span>
+    <span style="color:#268bd2">public</span> <span style="color:#719e07">&lt;</span>contains <span style="color:#268bd2">@Adaptive</span> annotation method<span style="color:#719e07">&gt;(&lt;</span>parameters<span style="color:#719e07">&gt;)</span> <span style="color:#719e07">{</span>
+        <span style="color:#719e07">if</span><span style="color:#719e07">(</span>parameters containing URL Type<span style="color:#719e07">?)</span> using URL parameter
+        <span style="color:#719e07">else</span> <span style="color:#268bd2">if</span><span style="color:#719e07">(</span>method returns URL<span style="color:#719e07">)</span> using the <span style="color:#719e07">return</span> URL
+        # <span style="color:#719e07">&lt;</span><span style="color:#719e07">else</span> <span style="color:#719e07">throw</span> exception<span style="color:#719e07">,</span>inject SPI fail！<span style="color:#719e07">&gt;</span>
+         
+        <span style="color:#719e07">if</span><span style="color:#719e07">(</span>URL accquired <span style="color:#719e07">==</span> <span style="color:#cb4b16">null</span><span style="color:#719e07">)</span> <span style="color:#719e07">{</span>
+            <span style="color:#719e07">throw</span> <span style="color:#719e07">new</span> IllegalArgumentException<span style="color:#719e07">(</span><span style="color:#2aa198">&#34;url == null&#34;</span><span style="color:#719e07">);</span>
+        <span style="color:#719e07">}</span>
+ 
+        According to the Key order from <span style="color:#268bd2">@Adaptive</span> annotation，get the Value from the URL as the real SPI name
+        <span style="color:#719e07">if</span> no value is found then use the <span style="color:#719e07">default</span> SPI implementation。If no SPI point， <span style="color:#719e07">throw</span> <span style="color:#719e07">new</span> IllegalStateException<span style="color:#719e07">(</span><span style="color:#2aa198">&#34;Fail to get extension&#34;</span><span style="color:#719e07">);</span>
+ 
+        Invoke the method using the spi and <span style="color:#719e07">return</span> the result<span style="color:#719e07">.</span>
+    <span style="color:#719e07">}</span>
+ 
+    <span style="color:#268bd2">public</span> <span style="color:#719e07">&lt;</span>method having annotation <span style="color:#268bd2">@Adaptive</span><span style="color:#719e07">&gt;(&lt;</span>parameters<span style="color:#719e07">&gt;)</span> <span style="color:#719e07">{</span>
+        <span style="color:#719e07">throw</span> <span style="color:#719e07">new</span> UnsupportedOperationException<span style="color:#719e07">(</span><span style="color:#2aa198">&#34;is not adaptive method!&#34;</span><span style="color:#719e07">);</span>
+    <span style="color:#719e07">}</span>
+<span style="color:#719e07">}</span>
+</code></pre></div><p><code>@Adaptive</code>  annotation usage：</p>
+<p>If no value is configed for those Keys in URL，default SPI implementation is used。For example ，String[] {&ldquo;key1&rdquo;, &ldquo;key2&rdquo;}，firstly Dubbo will look up value for key1 and use it as SPI name;if key1 value is not founded then look up for key2，if value of key2 is also not found ,then use default spi implementation. If no default implementation is configed, then the method will throw IllegalStateException。if not configed , then default implement is lower case of the interface class full package name. For Extension interface <code>org.apache.dubbo.xxx.YyyInvokerWrapper</code> , default value is <code>new String[] {&quot;yyy.invoker.wrapper&quot;}</code></p>
+<h2 id="callback-function">Callback Function</h2>
+<h3 id="1-parameter-callback">1. Parameter Callback</h3>
+<p>main theory ： in the persistent connection for one consumer-&gt;provider，export a service in  Consumer side，provider  side can reversely call the instance in consumer side.</p>
+<p>Implement details：</p>
+<ul>
+<li>For exchanging interface instance in transmition, auto export and auto refer is implemented in DubboCodec . Need to seperate business logic and codec logic.</li>
+<li>you will need to judge whether needing callback when getting exporter from invocation，if needed, get the callback instance id from the attachments. By using this method, consumer side can implement the callback interface with different implementations.</li>
+</ul>
+<h3 id="2-event-notification">2. Event Notification</h3>
+<p>main theory ： when Consumer  executing invoke method，judging if any configuration for  onreturn/onerror&hellip; put  the method for onreturn to the callback list of the async invocatioin.</p>
+<p>Implement details：parameters is passed using URL，but string-object is not supported for URL, so the method is stored in  staticMap，it needs to be optimized.</p>
+<h2 id="lazy-connection">Lazy Connection</h2>
+<p>DubboProtocol  specific features, default disabled</p>
+<p>When client creating proxy for server, do not establish TCP persistent connection at first, only init the connecton when data is needing transmision.</p>
+<p>This feather will disable the connection retry policy , resend the data again(if connection is lost when sending data ,try to establish a new connection to send data)</p>
+<h2 id="share-connection">Share Connection</h2>
+<p>DubboProtocol specific features, default enabled。</p>
+<p>JVM A export many services，JVM B  refer more than one services of A，Share Connection means those different services invocations between A and B uses the same TCP connection  to transmit data, reducing server connections.</p>
+<p>Implement details：when using share connection for the same address，you need pay more attention to the invoker&rsquo;s destroy action.on one hand, you should close the connection when all the invokers refering the same address is destroyed, on another hand ,you should not close the connection when not all of the invokers are destroyed. In design implementation, we uses a strategy called reference count , we create a connection called Lazy connection for exceptions not affacting business when closing the connection just in case.</p>
+<h2 id="sticky-policy">sticky policy</h2>
+<p>when existing many providers and configing the sticky policy，invocation will be sent to the same provider as last invocation. Sticky Policy opens the lazy attribute of connection, for avoiding open useless connectons.</p>
+<h2 id="provider-selecting-logic">provider selecting logic</h2>
+<ol start="0">
+<li>existing multi providers，firstly select by Loadbalance 。If the selected  provider is available ,then just doing the invocation</li>
+<li>If the selected provider is not available in stage 1, then choose from the remaining ,if available then doing the inovation</li>
+<li>If all providers are not available , rescan the list(not choosen invoker first),juding if any provider is available, if existing,doing the invocatiion.</li>
+<li>If no available provider in stage 3, then the next invoker of the invoker of stage 1 will be choosen(if not the last one),avoiding collision.</li>
+</ol>
+
+  
+  
+</div>
+
+
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  
+</section>
+
+  
+
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <img src="/images/nacos_gray.png"/>
+    <div class="row">
+      <div class="col-md-6"><h3>Vision</h3>
+        <p>By providing an easy-to-use service infrastructure such as dynamic service
+            discovery, service configuration, service sharing and management and etc., Nacos help users better
+            construct, deliver and manage their own service platform, reuse and composite business service
+            faster and deliver value of business innovation more quickly so as to win market for users in the
+            era of cloud native and in all cloud environments, such as private, mixed, or public clouds.</p></div>
+      <div class="col-md-3">
+        <dl>
+          <dt>Documentation</dt>
+          
+          <dd><a href="/en-us/docs/what-is-nacos.html" target="_self">Overview</a></dd>
+          
+          <dd><a href="/en-us/docs/quick-start.html" target="_self">Quick start</a></dd>
+          
+          <dd><a href="/en-us/docs/contributing.html" target="_self">Developer guide</a></dd>
+          
+        </dl>
+      </div>
+      <div class="col-md-3">
+        <dl>
+          <dt>Resources</dt>
+          
+          <dd><a href="/en-us/community/index.html" target="_self">Community</a></dd>
+          
+          <dd><a href="https://cn.aliyun.com/product/aliware/mse?spm=nacos-website.topbar.0.0.0" target="_self">Cloud Service MSE</a></dd>
+          
+          <dd><a href="https://www.aliyun.com/product/edas?source_type=nacos_pc_20181219" target="_self">Cloud Service EDAS</a></dd>
+          
+          <dd><a href="https://www.aliyun.com/product/ahas?source_type=nacos_pc_20190225" target="_self">Cloud Service AHAS</a></dd>
+          
+        </dl>
+      </div>
+    </div>
+    <div class="col-md-12 text-center copyright">
+      <span>© 2018 The Nacos Authors | An Alibaba Middleware (Aliware) Project</span>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+<script type="text/javascript">
+  ;(function () {
+    $('#fh5co-header').addClass('navbar-fixed-top fh5co-animated slideInDown');
+    $('#nacosLogo').attr("src", "/images/nacos_colorful.png")
+  }());
+</script>
+</html>

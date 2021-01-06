@@ -1,0 +1,339 @@
+#nacosLogo {
+  margin-left: 40px;
+  width: 96px;
+  vertical-align: sub;
+}
+
+.section-heading h2 {
+  text-transform: none !important;
+}
+
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.users .user-item {
+  display: flex;
+  width: 140px;
+  height: 80px;
+  margin: 10px;
+  padding: 4px;
+  border: 1px solid #eee;
+  justify-content: center;
+  align-items: center;
+}
+
+.users .user-item img {
+  width: 100%;
+}
+
+#fh5co-home {
+  background-color: unset !important;
+  background: url(/images/black_dot.png) 0% 0% / 14px 14px repeat !important;
+}
+
+#fh5co-home .gradient {
+  background-color: unset !important;
+  background-image: unset !important;
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0, #3f95ea), color-stop(1, #52d3aa));
+  background-image: -webkit-repeating-linear-gradient(top left, #3f95ea 0%, #52d3aa 100%);
+  background-image: repeating-linear-gradient(to bottom right, #3f95ea 0%, #52d3aa 100%);
+}
+
+#fh5co-home .animation {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #1BE1F6;
+}
+
+@keyframes slashStar {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#fh5co-home .animation1 {
+  left: 15%;
+  top: 70%;
+  animation: slashStar 2s ease-in-out 0.3s infinite;
+}
+
+#fh5co-home .animation2 {
+  left: 34%;
+  top: 35%;
+  animation: slashStar 2s ease-in-out 1.2s infinite;
+}
+
+#fh5co-home .animation3 {
+  left: 53%;
+  top: 20%;
+  animation: slashStar 2s ease-in-out 0.5s infinite;
+}
+
+#fh5co-home .animation4 {
+  left: 72%;
+  top: 64%;
+  animation: slashStar 2s ease-in-out 0.8s infinite;
+}
+
+#fh5co-home .animation5 {
+  left: 87%;
+  top: 30%;
+  animation: slashStar 2s ease-in-out 1.5s infinite;
+}
+
+.nacos-info-img img {
+  display: block;
+  width: 257px;
+  height: 50px;
+  margin: 0 auto;
+}
+
+.features-img {
+  width: 300px;
+}
+
+#fh5co-services {
+  background-color: #2E3034;
+  background-image: unset !important;
+}
+
+.why-naocs-title-img {
+  width: 34px;
+  margin-right: 20px;
+}
+
+.why-naocs-info-item ul{
+  list-style: disc;
+  padding-left: 14px;
+}
+
+.why-naocs-info-item li{
+  font-family: Avenir-Medium;
+  font-size: 14px;
+  color: #999;
+}
+
+.why-naocs-div {
+  margin-bottom: 50px;
+}
+
+.section-heading h2:after {
+  background: #1161F6 !important;
+}
+
+.whoisusing-description-span {
+  color: #666;
+}
+
+.whoisusing-description-span a {
+  color: #1e6bb8 !important;
+}
+
+.whoisusing-description-span a:hover {
+  text-decoration:none !important;
+}
+
+#fh5co-header.navbar-fixed-top #navbar li.active a {
+  color: #333 !important;
+}
+
+#fh5co-header.navbar-fixed-top #navbar a:hover {
+  color: #3f95ea !important;
+}
+
+#fh5co-header.navbar-fixed-top #navbar a span:before {
+  background-color: #3f95ea !important;
+}
+
+#fh5co-header.navbar-fixed-top #navbar li.active a span:before {
+  background-color: #3f95ea !important;
+}
+
+#footer {
+  padding-top: 118px;
+  background-color: #2E3034;
+  overflow: hidden;
+  color: #cacaca;
+}
+
+#footer h1, #footer h2, #footer h3, #footer h4, #footer h5, #footer h6{
+  color: #cacaca;
+}
+
+#footer:before {
+  top: 0;
+  margin-top: -35px;
+}
+#footer:before {
+  position: absolute;
+  transform: rotate(-1.7deg);
+  -ms-transform: rotate(-1.7deg);
+  -webkit-transform: rotate(-1.7deg);
+  -o-transform: rotate(-1.7deg);
+  -moz-transform: rotate(-1.7deg);
+  background-color: #fff;
+  content: "";
+  z-index: 3;
+  display: inline-block;
+  height: 70px;
+  padding: 0;
+  width: 101%;
+}
+
+#footer a {
+  color: #cacaca !important;
+}
+
+#footer a:hover {
+  color: #fff !important;
+  text-decoration:none !important;
+}
+
+#footer img {
+  display: block;
+  width: 125px;
+  height: 26px;
+  margin-bottom: 40px;
+}
+
+#footer .copyright {
+  margin-top: 44px;
+  border-top: 1px solid #ccc;
+  min-height: 60px;
+  line-height: 20px;
+  text-align: center;
+  font-family: Avenir-Medium;
+  color: #999;
+  padding-top: 20px;
+  align-items: center;
+}
+
+#fh5co-home .github-buttons {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.github-buttons a div {
+  border-radius: 2px;
+  display: inline-block;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  padding: 0 8px;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.github-buttons a {
+  margin-right: 12px;
+  border-bottom: unset !important;
+}
+
+.github-buttons a div img {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin-top: -6px;
+}
+
+.github-buttons a div .count {
+  font-family: TXD_D_Medium;
+  font-size: 16px;
+  padding-left: 4px;
+  display: inline-block;
+  height: 100%;
+}
+
+.version-note {
+  text-align: center;
+  margin: 22px 0 10px;
+}
+
+.version-note a {
+  text-decoration: none;
+  display: inline-block;
+  font-family: Avenir-Heavy;
+  font-size: 14px;
+  color: #FFF;
+  text-align: center;
+  background: #46484B;
+  border-radius: 2px;
+  line-height: 24px;
+  padding: 0 6px;
+  margin-right: 10px;
+}
+
+.release-date {
+  font-family: Avenir-Medium;
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+}
+
+.btn {
+  text-transform: unset !important;
+}
+
+.btn-info {
+  background-color: #267DF7 !important;
+  text-transform: unset !important;
+  border: 1px solid transparent !important;
+  height: 48px !important;
+  line-height: 48px !important;
+  min-width: 140px !important;
+  font-family: Avenir-Heavy !important;
+  font-size: 16px !important;
+  padding: 10px 10px !important;
+  display: unset !important;
+}
+
+.btn-light {
+  border-color: #fff !important;
+  text-transform: unset !important;
+  border: 1px solid !important;
+  height: 48px !important;
+  line-height: 48px !important;
+  min-width: 140px !important;
+  font-family: Avenir-Heavy !important;
+  font-size: 16px !important;
+  padding: 10px 10px !important;
+  display: unset !important;
+}
+
+.margin-right-15 {
+  margin-right: 15px;
+}
+
+.margin-top-15 {
+  margin-top: 15px;
+}
+
+#navbar .dropdown-menu li a{
+  color: #0b0b0b !important;
+}
+
+#navbar .open > .btn-default.dropdown-toggle:focus{
+  color: #fff !important;
+}
+
+#navbar .dropdown {
+  padding-top: 10px;
+}
+
+#navbar .dropdown button {
+  padding-top: 5px;
+  height: 30px;
+}
+
+.row {
+  margin-right: 0px !important;
+}
+

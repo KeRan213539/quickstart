@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Committer 指南 on Nacos</title>
+    <link>/zh/docs/contribution-guidelines/committer/</link>
+    <description>Recent content in Committer 指南 on Nacos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/zh/docs/contribution-guidelines/committer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apache 提交者注册流程</title>
+      <link>/zh/docs/contribution-guidelines/committer/new-committer-guide_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/contribution-guidelines/committer/new-committer-guide_dev/</guid>
+      <description>一、Apache 提交者的产生 项目孵化初始化提交者 项目孵化阶段，在孵化项目提案中，会有初始化提交者列表这一选项。确认你是初始化提交者的一员。项目在 apache 孵化器社区投票通过后，提交者可以开始准备注册账户了。可以参看孵化器 wiki
+活跃的贡献者被选举为提交者 在后期的开发过程中，活跃的贡献者可以被选举为提交者。见如何成为 committer
+二、个人开发者提交 ICLA 1、选择 apache id 在apache 提交者列表页查看已经注册过的 apache id，
+2、个人提交者授权协议（ICLA）： 下载ICLA 模板，查找可用的 id。将 icla.pdf 个人信息填写正确后打印,签名、扫描、并当做附件发送邮件给秘书 secretary@apache.org，秘书会帮忙创建 apache 用户 id。同时会创建一个 your_id@apache.org 的邮箱，可以在apache 提交者列表页查看查找用户是否已经创建。
+3、导师帮助提交用户id创建请求 导师将帮助提交 apache 账户创建请求给 root 邮件组，会有人帮助建立 id。一般需要2天时间账户会建立，请等待并在apache 提交者列表页查看查找用户是否已经创建。
+三、加入apache开发者组  登陆 Apache 账户工具，在登陆页面点击&amp;quot;忘记密码&amp;quot;设置始化密码，会有一封密码重置邮件发送到 forward 邮箱(在孵化项目提案中提交的开发者邮件) 关于 apache 邮箱：apache.org 邮箱并没有自己的邮件内容存储服务器。它需要借用其他邮件提供商的邮件内容存储、分发功能。在很多投票环节是建议使用 apache 邮箱的。 这里就有一个问题，怎么在其它邮箱里面配置 apache.org 邮箱转发功能：  收件箱：收取发送到 apache.org 的邮件。这个在第一步配置好 Apache 账户工具的 forward 邮箱就可以用 forward 邮箱收取邮件了 发件箱：将发出的邮件显示发件邮箱为 apache.org 邮箱。请参考：设置 apache 邮箱指南和gmail 邮箱设置方式。 其他邮箱服务的设置方式不方便找到，gmail 的最方便，建议换成 gmail 邮箱(不是广告)。   修改编辑页面的 homepage url，apache 提交者列表页中你的账户能加主页链接。 修改编辑页面的 github 账户(username)，提交确认后两个小时内会有邮件邀请你加入 github.</description>
+    </item>
+    
+    <item>
+      <title>如何准备 Apache Release</title>
+      <link>/zh/docs/contribution-guidelines/committer/release-guide_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/contribution-guidelines/committer/release-guide_dev/</guid>
+      <description>理解 Apache 发布的内容和流程 总的来说，Source Release 是 Apache 关注的重点，也是发布的必须内容；而 Binary Release 是可选项，Dubbo 可以选择是否发布二进制包到 Apache 仓库或者发布到 Maven 中央仓库。
+请参考以下链接，找到更多关于 ASF 的发布指南:
+ Apache Release Guide Apache Release Policy Maven Release Info  本地构建环境准备 主要包括签名工具、Maven 仓库认证相关准备
+安装GPG 详细文档请参见这里, Mac OS 下配置如下
+$ brew install gpg $ gpg --version #检查版本，应该为2.x 用gpg生成key 根据提示，生成 key
+$ gpg --full-gen-key gpg (GnuPG) 2.0.12; Copyright (C) 2009 Free Software Foundation, Inc. This is free software: you are free to change and redistribute it.</description>
+    </item>
+    
+    <item>
+      <title>网站向导</title>
+      <link>/zh/docs/contribution-guidelines/committer/website-guide_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/contribution-guidelines/committer/website-guide_dev/</guid>
+      <description> Apache Dubbo 的网站仓库是 https://github.com/apache/dubbo-website 网站构建完毕后，它会被自动发布到 dubbo.apache.org，您也可以通过 https://selfserve.apache.org 手动触发（需要使用 Apache 账号登陆）  </description>
+    </item>
+    
+    <item>
+      <title>给问题打标签</title>
+      <link>/zh/docs/contribution-guidelines/committer/label-an-issue-guide_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/contribution-guidelines/committer/label-an-issue-guide_dev/</guid>
+      <description>如果您正在处理一个问题，请记得给这个问题标记一个或者多个您认为有意义的标签。有了标签，其他开发人员就会很轻松地识别出问题，以便对其进行分类并跟踪进度。
+对于需要编码和发版修复的 issues 和 pull requests，需要您将其标记为 milestone。
+一些常用的标签：
+ 请求帮助  help wanted good first issue   优先级  priority/blocker priority/high priority/low priority/normal   状态  status/need-triage status/DO-NOT-MERGE status/READY-TO-MERGE status/invalid status/wontfix   类型  type/bug type/documentation type/enhancement type/feature    </description>
+    </item>
+    
+    <item>
+      <title>官方 Dubbo 主页的维护</title>
+      <link>/zh/docs/contribution-guidelines/committer/apache-dubbo-page_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/contribution-guidelines/committer/apache-dubbo-page_dev/</guid>
+      <description>Apache 有一个官方的网站，用来维护所有的孵化项目的信息。每一个孵化项目在这个网站下都有一个信息页。 Dubbo 的信息页地址是 https://incubator.apache.org/projects/dubbo.html。
+当项目发生比较大的变化，比如新的 committer 的加入，新的 PMC 的当选，或是新版本的 Release 等，都需要将这些更新信息维护到这个页面。
+这个官方网站的项目地址是https://svn.apache.org/repos/asf/incubator/public/trunk。
+维护这个页面的方法如下：
+1.安装 SVN。若是 Mac OS X 系统或是 Linux 系统，则自带了 SVN。若是 Windows 系统，则请首先自行安装 SVN。
+2.用 SVN 将这个项目 checkout 下来 。
+3.修改 content/projects/dubbo.xml 文件，并保存。
+4.安装 ANT。执行 trunk 目录下的 build.sh 或者 build.bat 脚本构建项目。
+5.构建完成后，可以用浏览器打开 target/site/projects/dubbo.html 文件，预览修改是否生效。
+6.用 SVN 的 commit 命令将 dubbo.xml 文件提交到服务器，并且不要提交 dubbo.html 文件（因为服务器端会定时自动构建）。 此过程会要求输入Apache id和密码。
+参考:
+ http://incubator.apache.org/guides/website.html https://svn.apache.org/repos/asf/incubator/public/trunk/README.txt  </description>
+    </item>
+    
+  </channel>
+</rss>

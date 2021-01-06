@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dubbo Admin 运维指南 on Nacos</title>
+    <link>/zh/docs/v2.7/admin/ops/</link>
+    <description>Recent content in Dubbo Admin 运维指南 on Nacos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/zh/docs/v2.7/admin/ops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>管理控制台运维</title>
+      <link>/zh/docs/v2.7/admin/ops/functions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/admin/ops/functions/</guid>
+      <description>搜索页面 当你需要管理 Dubbo 的服务时，首先要搜索到这个服务，然后打开它的管理页面
+服务提供者页面 服务消费者页面 添加路由规则页面 添加动态配置页面 </description>
+    </item>
+    
+    <item>
+      <title>Dubbo 管理控制台介绍</title>
+      <link>/zh/docs/v2.7/admin/ops/introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/admin/ops/introduction/</guid>
+      <description>目前的管理控制台已经发布 0.1 版本，结构上采取了前后端分离的方式，前端使用 Vue 和 Vuetify 分别作为 Javascript 框架和UI框架，后端采用 Spring Boot 框架。既可以按照标准的 Maven 方式进行打包，部署，也可以采用前后端分离的部署方式，方便开发，功能上，目前具备了服务查询，服务治理(包括 Dubbo 2.7 中新增的治理规则)以及服务测试三部分内容。
+Maven方式部署  安装  git clone https://github.com/apache/dubbo-admin.git cd dubbo-admin mvn clean package cd dubbo-admin-distribution/target java -jar dubbo-admin-0.1.jar  访问  http://localhost:8080
+前后端分离部署  前端  cd dubbo-admin-ui npm install npm run dev  后端  cd dubbo-admin-server mvn clean package cd target java -jar dubbo-admin-server-0.1.jar  访问  http://localhost:8081
+ 前后端分离模式下，前端的修改可以实时生效  配置: 1 配置文件为：</description>
+    </item>
+    
+    <item>
+      <title>服务查询和详情展示</title>
+      <link>/zh/docs/v2.7/admin/ops/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/admin/ops/search/</guid>
+      <description>服务查询是 Dubbo OPS 最基本的功能，目前支持服务，应用和 IP 三个维度的查询，并且服务和应用支持模糊查询和自动提示:
+其中详情页展示了服务提供者，消费者等信息，元数据信息需要在 Dubbo 2.7 及之后的版本才会展示:</description>
+    </item>
+    
+    <item>
+      <title>服务测试</title>
+      <link>/zh/docs/v2.7/admin/ops/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/admin/ops/test/</guid>
+      <description>请参考这篇博客</description>
+    </item>
+    
+    <item>
+      <title>API文档&amp;测试</title>
+      <link>/zh/docs/v2.7/admin/ops/apidocs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/admin/ops/apidocs/</guid>
+      <description>dubbo api docs dubbo 接口文档、测试工具,根据注解生成文档,并提供测试功能.
+增加一些注解就能生成类似swagger的文档, 不会把非web的dubbo项目变为web项目.
+相关仓库  dubbo-spi-extensions \分支: 2.7.x\dubbo-api-docs: Dubbo-Api-Docs 相关注解,解析注解 dubbo-admin: Dubbo-Api-Docs 文档展示,测试功能  如何使用?  dubbo项目的方法参数中加上 dubbo api docs 注解  dubbo提供者项目引入 dubbo-api-docs-core 如果dubbo的接口和参数是一个单独的jar包项目,引入dubbo-api-docs-annotations 在提供者项目的项目启动类(标注了@SpringBootApplication的类)或者配制类(标注了@Configuration的类)中增加注解 @EnableDubboApiDocs 以启用Dubbo Api Docs功能  为避免增加生产环境中的资源占用, 建议单独创建一个配制类用于启用Dubbo Api Docs, 并配合 @Profile(&amp;ldquo;dev&amp;rdquo;) 注解使用 当然, Dubbo Api Docs 仅在项目启动时多消耗了点CPU资源, 并使用了一点点内存用于缓存, 将来会考虑将缓存中的内容放到元数据中心.      当前版本: 同Dubbo版本号 &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;dubbo-api-docs-annotations&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${dubbo-version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;dubbo-api-docs-core&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${dubbo-version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  下载 dubbo-admin 下载地址</description>
+    </item>
+    
+    <item>
+      <title>服务治理和配置管理</title>
+      <link>/zh/docs/v2.7/admin/ops/governance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/admin/ops/governance/</guid>
+      <description>服务治理 服务治理主要作用是改变运行时服务的行为和选址逻辑，达到限流，权重配置等目的，主要有以下几个功能：
+应用级别的服务治理 在 Dubbo 2.6 及更早版本中，所有的服务治理规则都只针对服务粒度，如果要把某条规则作用到应用粒度上，需要为应用下的所有服务配合相同的规则，变更，删除的时候也需要对应的操作，这样的操作很不友好，因此 Dubbo 2.7 版本中增加了应用粒度的服务治理操作，对于条件路由(包括黑白名单)，动态配置(包括权重，负载均衡)都可以做应用级别的配置：
+上图是条件路由的配置，可以按照应用名，服务名两个维度来填写，也可以按照这两个维度来查询。
+标签路由 标签路由是 Dubbo 2.7 引入的新功能，配置以应用作为维度，给不同的服务器打上不同名字的标签，配置如下图所示：
+调用的时候，客户端可以通过setAttachment的方式，来设置不同的标签名称，比如本例中，setAttachment(tag1)，客户端的选址范围就在如图所示的三台机器中，可以通过这种方式来实现流量隔离，灰度发布等功能。
+条件路由 条件路由是 Dubbo 一直以来就有的功能，目前可以配置服务和应用两个维度，条件路由为 yaml 格式，具体的规则体以及各种适用场景，请参考这里
+黑白名单 黑白名单是条件路由的一部分，规则存储和条件路由放在一起，为了方便配置所以单独拿出来，同样可以通过服务和应用两个维度，指定黑名单和白名单:
+动态配置 动态配置是和路由规则平行的另一类服务治理治理功能，主要作用是在不重启服务的情况下，动态改变调用行为，从Dubbo2.7版本开始，支持服务和应用两个维度的配置，采用yaml格式，界面如下：
+具体的规则体说明请参考这里
+权重调节 权重调节是动态配置的子功能，主要作用是改变服务端的权重，更大的权重会有更大的几率被客户端选中作为服务提供者，从而达到流量分配的目的：
+负载均衡 负载均衡也是动态配置的子功能，主要作用是调整客户端的选址逻辑，目前可选的负载均衡策略有随机，轮训和最小活跃，关于各个策略的解释请参考这里
+配置管理 配置管理也是配合Dubbo2.7新增的功能，在Dubbo2.7中，增加了全局和应用维度的配置，分别在全局和应用范围内生效，其中应用配置也可以指定该应用中的服务级别的配置，可以在控制台中查看，修改配置规则，默认展示全局维度的配置。
+  全局配置：
+全局配置里可以指定注册中心，元数据中心的地址，服务端和客户端的超时时间等，这些配置在全局内生效。除了配置写入，也可以用来查看。如果使用zookeeper作为注册中心和元数据中心，还可以看到配置文件所在位置的目录结构。
+  应用， 服务配置
+应用级别的配置可以为应用或者应用内的服务指定配置，在服务维度上，需要区分提供者和消费者。dubbo.reference.{serviceName}表示作为该服务消费者的配置，dubbo.provider.{servcieName}表示作为该服务提供者的配置。其中注册中心和元数据中心的地址，只能在全局配置中指定，这也是Dubbo2.7中推荐的使用方式。
+  优先级： 服务配置 &amp;gt; 应用配置 &amp;gt; 全局配置
+  </description>
+    </item>
+    
+    <item>
+      <title>使用 Apache Skywalking 做分布式跟踪</title>
+      <link>/zh/docs/v2.7/admin/ops/skywalking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/admin/ops/skywalking/</guid>
+      <description>Apache Skywalking 简介 Apache Skywalking 专门为微服务架构和云原生架构系统而设计并且支持分布式链路追踪的APM系统。Apache Skywalking 通过加载探针的方式收集应用调用链路信息，并对采集的调用链路信息进行分析，生成应用间关系和服务间关系以及服务指标。Apache Skywalking 目前支持多种语言，其中包括 Java，.Net Core，Node.js 和 Go 语言。
+目前 Skywalking 已经支持从 6 个可视化维度剖析分布式系统的运行情况。总览视图是应用和组件的全局视图，其中包括组件和应用数量，应用的告警波动，慢服务列表以及应用吞吐量；拓扑图从应用依赖关系出发，展现整个应用的拓扑关系；应用视图则是从单个应用的角度，展现应用的上下游关系，TopN 的服务和服务器，JVM 的相关信息以及对应的主机信息。服务视图关注单个服务入口的运行情况以及此服务的上下游依赖关系，依赖度，帮助用户针对单个服务的优化和监控；调用链展现了调用的单次请求经过的所有埋点以及每个埋点的执行时长；告警视图根据配置阈值针对应用、服务器、服务进行实时告警。
+Dubbo 与 Apache Skywalking 编写 Dubbo 示例程序 Dubbo 实例程序已上传到 Github 仓库中。方便大家下载使用。
+API 工程 服务接口：
+package org.apache.skywalking.demo.interfaces; public interface HelloService { String sayHello(String name); } Dubbo 服务提供工程 package org.apache.skywalking.demo.provider; @Service(version = &amp;#34;${demo.service.version}&amp;#34;, application = &amp;#34;${dubbo.application.id}&amp;#34;, protocol = &amp;#34;${dubbo.protocol.id}&amp;#34;, registry = &amp;#34;${dubbo.registry.id}&amp;#34;, timeout = 60000) public class HelloServiceImpl implements HelloService { public String sayHello(String name) { LockSupport.</description>
+    </item>
+    
+    <item>
+      <title>使用 Pinpoint 做分布式跟踪</title>
+      <link>/zh/docs/v2.7/admin/ops/pinpoint/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/admin/ops/pinpoint/</guid>
+      <description>在使用 Dubbo 进行服务化或者整合应用后，假设某个服务后台日志显示有异常，这个服务又被多个应用调用的情况下，我们通常很难判断是哪个应用调用的，问题的起因是什么，因此我们需要一套分布式跟踪系统来快速定位问题，Pinpoint 可以帮助我们快速定位问题（当然，解决方案也不止这一种）。
+什么是 Pinpoint  摘自 Pinpoint 学习笔记
+ Pinpoint 是一个开源的 APM (Application Performance Management/应用性能管理)工具，用于基于java的大规模分布式系统。
+仿照 Google Dapper，Pinpoint 通过跟踪分布式应用之间的调用来提供解决方案，以帮助分析系统的总体结构和内部模块之间如何相互联系。
+ 注：对于各个模块之间的通讯英文原文中用的是transaction一词，但是我觉得如果翻译为&amp;quot;事务&amp;quot;容易引起误解，所以替换为&amp;quot;交互&amp;quot;或者&amp;quot;调用&amp;quot;这种比较直白的字眼。
+ 在使用上力图简单高效：
+ 安装 agent，不需要修改哪怕一行代码 最小化性能损失  服务器地图(ServerMap) 通过可视化分布式系统的模块和他们之间的相互联系来理解系统拓扑。点击某个节点会展示这个模块的详情，比如它当前的状态和请求数量。
+实时活动线程图表(Realtime Active Thread Chart) 实时监控应用内部的活动线程。
+请求/应答分布图表(Request/Response Scatter Chart) 长期可视化请求数量和应答模式来定位潜在问题。通过在图表上拉拽可以选择请求查看更多的详细信息。
+调用栈(CallStack) 在分布式环境中为每个调用生成代码级别的可视图，在单个视图中定位瓶颈和失败点。
+巡查(Inspector) 查看应用上的其他详细信息，比如CPU使用率，内存/垃圾回收，TPS，和JVM参数。
+支持模块  JDK 6+ Tomcat 6/7/8, Jetty 8/9, JBoss EAP 6, Resin 4, Websphere 6/7/8, Vertx 3.3/3.4/3.5 Spring, Spring Boot (Embedded Tomcat, Jetty) Apache HTTP Client 3.</description>
+    </item>
+    
+  </channel>
+</rss>

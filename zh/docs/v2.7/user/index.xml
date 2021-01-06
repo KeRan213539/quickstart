@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>用户文档 on Nacos</title>
+    <link>/zh/docs/v2.7/user/</link>
+    <description>Recent content in 用户文档 on Nacos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/zh/docs/v2.7/user/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>快速开始</title>
+      <link>/zh/docs/v2.7/user/quick-start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/quick-start/</guid>
+      <description>Dubbo 采用全 Spring 配置方式，透明化接入应用，对应用没有任何 API 侵入，只需用 Spring 加载 Dubbo 的配置即可，Dubbo 基于 Spring 的 Schema 扩展 进行加载。
+如果不想使用 Spring 配置，可以通过 API 的方式 进行调用。
+服务提供者 完整安装步骤，请参见：示例提供者安装
+定义服务接口 DemoService.java 1：
+package org.apache.dubbo.demo; public interface DemoService { String sayHello(String name); } 在服务提供方实现接口 DemoServiceImpl.java 2：
+package org.apache.dubbo.demo.provider; import org.apache.dubbo.demo.DemoService; public class DemoServiceImpl implements DemoService { public String sayHello(String name) { return &amp;#34;Hello &amp;#34; + name; } } 用 Spring 配置声明暴露服务 provider.xml：
+&amp;lt;?xml version=&amp;#34;1.0&amp;#34; encoding=&amp;#34;UTF-8&amp;#34;?&amp;gt; &amp;lt;beans xmlns=&amp;#34;http://www.</description>
+    </item>
+    
+    <item>
+      <title>依赖</title>
+      <link>/zh/docs/v2.7/user/dependencies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/dependencies/</guid>
+      <description>必须依赖 JDK 1.6+ 1
+缺省依赖 通过 mvn dependency:tree &amp;gt; dep.log 命令分析，Dubbo 缺省依赖以下三方库：
+[INFO] +- com.alibaba:dubbo:jar:2.5.9-SNAPSHOT:compile [INFO] | +- org.springframework:spring-context:jar:4.3.10.RELEASE:compile [INFO] | +- org.javassist:javassist:jar:3.21.0-GA:compile [INFO] | \- org.jboss.netty:netty:jar:3.2.5.Final:compile 这里所有依赖都是换照 Dubbo 缺省配置选的，这些缺省值是基于稳定性和性能考虑的。
+ javassist.jar 2: 如果 &amp;lt;dubbo:provider proxy=&amp;quot;jdk&amp;quot; /&amp;gt; 或 &amp;lt;dubbo:consumer proxy=&amp;quot;jdk&amp;quot; /&amp;gt;，以及 &amp;lt;dubbo:application compiler=&amp;quot;jdk&amp;quot; /&amp;gt;，则不需要。 spring-context.jar 3: 如果用 ServiceConfig 和 ReferenceConfig 的 API 调用，则不需要。 netty.jar 4: 如果 &amp;lt;dubbo:protocol server=&amp;quot;mina&amp;quot;/&amp;gt; 或 &amp;lt;dubbo:protocol server=&amp;quot;grizzly&amp;quot;/&amp;gt;，则换成 mina.jar 或 grizzly.jar。如果 &amp;lt;protocol name=&amp;quot;rmi&amp;quot;/&amp;gt;，则不需要。  可选依赖 以下依赖，在主动配置使用相应实现策略时用到，需自行加入依赖。
+ netty-all 4.</description>
+    </item>
+    
+    <item>
+      <title>成熟度</title>
+      <link>/zh/docs/v2.7/user/maturity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/maturity/</guid>
+      <description>功能成熟度    Feature Maturity Strength Problem Advise User     并发控制 Tested 并发控制  试用    连接控制 Tested 连接数控制  试用    直连提供者 Tested 点对点直连服务提供方，用于测试  测试环境使用 Alibaba   分组聚合 Tested 分组聚合返回值，用于菜单聚合等服务 特殊场景使用 可用于生产环境    参数验证 Tested 参数验证，JSR303验证框架集成 对性能有影响 试用 LaiWang   结果缓存 Tested 结果缓存，用于加速请求  试用    泛化引用 Stable 泛化调用，无需业务接口类进行远程调用，用于测试平台，开放网关桥接等  可用于生产环境 Alibaba   泛化实现 Stable 泛化实现，无需业务接口类实现任意接口，用于Mock平台  可用于生产环境 Alibaba   回声测试 Tested 回声测试  试用    隐式传参 Stable 附加参数  可用于生产环境    异步调用 Tested 不可靠异步调用  试用    本地调用 Tested 本地调用  试用    参数回调 Tested 参数回调 特殊场景使用 试用 Registry   事件通知 Tested 事件通知，在远程调用执行前后触发  试用    本地存根 Stable 在客户端执行部分逻辑  可用于生产环境 Alibaba   本地伪装 Stable 伪造返回结果，可在失败时执行，或直接执行，用于服务降级 需注册中心支持 可用于生产环境 Alibaba   延迟暴露 Stable 延迟暴露服务，用于等待应用加载warmup数据，或等待spring加载完成  可用于生产环境 Alibaba   延迟连接 Tested 延迟建立连接，调用时建立  试用 Registry   粘滞连接 Tested 粘滞连接，总是向同一个提供方发起请求，除非此提供方挂掉，再切换到另一台  试用 Registry   令牌验证 Tested 令牌验证，用于服务授权 需注册中心支持 试用    路由规则 Tested 动态决定调用关系 需注册中心支持 试用    配置规则 Tested 动态下发配置，实现功能的开关 需注册中心支持 试用    访问日志 Tested 访问日志，用于记录调用信息 本地存储，影响性能，受磁盘大小限制 试用    分布式事务 Research JTA/XA三阶段提交事务 不稳定 不可用     策略成熟度    Feature Maturity Strength Problem Advise User     Zookeeper注册中心 Stable 支持基于网络的集群方式，有广泛周边开源产品，建议使用dubbo-2.</description>
+    </item>
+    
+    <item>
+      <title>服务化最佳实践</title>
+      <link>/zh/docs/v2.7/user/best-practice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/best-practice/</guid>
+      <description>分包 建议将服务接口、服务模型、服务异常等均放在 API 包中，因为服务模型和异常也是 API 的一部分，这样做也符合分包原则：重用发布等价原则(REP)，共同重用原则(CRP)。
+如果需要，也可以考虑在 API 包中放置一份 Spring 的引用配置，这样使用方只需在 Spring 加载过程中引用此配置即可。配置建议放在模块的包目录下，以免冲突，如：com/alibaba/china/xxx/dubbo-reference.xml。
+粒度 服务接口尽可能大粒度，每个服务方法应代表一个功能，而不是某功能的一个步骤，否则将面临分布式事务问题，Dubbo 暂未提供分布式事务支持。
+服务接口建议以业务场景为单位划分，并对相近业务做抽象，防止接口数量爆炸。
+不建议使用过于抽象的通用接口，如：Map query(Map)，这样的接口没有明确语义，会给后期维护带来不便。
+版本 每个接口都应定义版本号，为后续不兼容升级提供可能，如： &amp;lt;dubbo:service interface=&amp;quot;com.xxx.XxxService&amp;quot; version=&amp;quot;1.0&amp;quot; /&amp;gt;。
+建议使用两位版本号，因为第三位版本号通常表示兼容升级，只有不兼容时才需要变更服务版本。
+当不兼容时，先升级一半提供者为新版本，再将消费者全部升为新版本，然后将剩下的一半提供者升为新版本。
+兼容性 服务接口增加方法，或服务模型增加字段，可向后兼容，删除方法或删除字段，将不兼容，枚举类型新增字段也不兼容，需通过变更版本号升级。
+各协议的兼容性不同，参见：服务协议
+枚举值 如果是完备集，可以用 Enum，比如：ENABLE, DISABLE。
+如果是业务种类，以后明显会有类型增加，不建议用 Enum，可以用 String 代替。
+如果是在返回值中用了 Enum，并新增了 Enum 值，建议先升级服务消费方，这样服务提供方不会返回新值。
+如果是在传入参数中用了 Enum，并新增了 Enum 值，建议先升级服务提供方，这样服务消费方不会传入新值。
+序列化 服务参数及返回值建议使用 POJO 对象，即通过 setter, getter 方法表示属性的对象。
+服务参数及返回值不建议使用接口，因为数据模型抽象的意义不大，并且序列化需要接口实现类的元信息，并不能起到隐藏实现的意图。
+服务参数及返回值都必须是传值调用，而不能是传引用调用，消费方和提供方的参数或返回值引用并不是同一个，只是值相同，Dubbo 不支持引用远程对象。
+异常 建议使用异常汇报错误，而不是返回错误码，异常信息能携带更多信息，并且语义更友好。
+如果担心性能问题，在必要时，可以通过 override 掉异常类的 fillInStackTrace() 方法为空方法，使其不拷贝栈信息。
+查询方法不建议抛出 checked 异常，否则调用方在查询时将过多的 try...catch，并且不能进行有效处理。
+服务提供方不应将 DAO 或 SQL 等异常抛给消费方，应在服务实现中对消费方不关心的异常进行包装，否则可能出现消费方无法反序列化相应异常。</description>
+    </item>
+    
+    <item>
+      <title>推荐用法</title>
+      <link>/zh/docs/v2.7/user/recommend/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/recommend/</guid>
+      <description>在 Provider 端尽量多配置 Consumer 端属性 原因如下：
+ 作服务的提供方，比服务消费方更清楚服务的性能参数，如调用的超时时间、合理的重试次数等 在 Provider 端配置后，Consumer 端不配置则会使用 Provider 端的配置，即 Provider 端的配置可以作为 Consumer 的缺省值 1。否则，Consumer 会使用 Consumer 端的全局设置，这对于 Provider 是不可控的，并且往往是不合理的  Provider 端尽量多配置 Consumer 端的属性，让 Provider 的实现者一开始就思考 Provider 端的服务特点和服务质量等问题。
+示例：
+&amp;lt;dubbo:service interface=&amp;#34;com.alibaba.hello.api.HelloService&amp;#34; version=&amp;#34;1.0.0&amp;#34; ref=&amp;#34;helloService&amp;#34; timeout=&amp;#34;300&amp;#34; retries=&amp;#34;2&amp;#34; loadbalance=&amp;#34;random&amp;#34; actives=&amp;#34;0&amp;#34; /&amp;gt; &amp;lt;dubbo:service interface=&amp;#34;com.alibaba.hello.api.WorldService&amp;#34; version=&amp;#34;1.0.0&amp;#34; ref=&amp;#34;helloService&amp;#34; timeout=&amp;#34;300&amp;#34; retries=&amp;#34;2&amp;#34; loadbalance=&amp;#34;random&amp;#34; actives=&amp;#34;0&amp;#34; &amp;gt; &amp;lt;dubbo:method name=&amp;#34;findAllPerson&amp;#34; timeout=&amp;#34;10000&amp;#34; retries=&amp;#34;9&amp;#34; loadbalance=&amp;#34;leastactive&amp;#34; actives=&amp;#34;5&amp;#34; /&amp;gt; &amp;lt;dubbo:service/&amp;gt; 建议在 Provider 端配置的 Consumer 端属性有：
+ timeout：方法调用的超时时间 retries：失败重试次数，缺省是 2 2 loadbalance：负载均衡算法 3，缺省是随机 random。还可以配置轮询 roundrobin、最不活跃优先 4 leastactive 和一致性哈希 consistenthash 等 actives：消费者端的最大并发调用限制，即当 Consumer 对一个服务的并发调用到上限后，新调用会阻塞直到超时，在方法上配置 dubbo:method 则针对该方法进行并发限制，在接口上配置 dubbo:service，则针对该服务进行并发限制  详细配置说明请参考：Dubbo配置参考手册</description>
+    </item>
+    
+    <item>
+      <title>容量规划</title>
+      <link>/zh/docs/v2.7/user/capacity-plan/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/capacity-plan/</guid>
+      <description>以下数据供参考：
+使用 Dubbo 的会员服务项目  每天接收 4 亿次远程调用 使用 12 台网站标配机器提供服务（8 核 CPU，8G 内存） 平均负载在 1 以下（对于 8 核 CPU 负载很低） 平均响应时间 2.3 到 2.5 毫秒，网络开销约占 1.5 到 1.6 毫秒（和数据包大小有关）  使用 Dubbo 的产品授权服务项目  每天接收 3 亿次远程调用 使用 8 台网站标配机器提供服务（8 核CPU，8G 内存） 平均负载在 1 以下（对于 8 核 CPU 负载很低） 平均响应时间 1.4 到 2.8 毫秒，网络开销约占 1.0 到 1.1 毫秒（和数据包大小有关）  </description>
+    </item>
+    
+    <item>
+      <title>性能测试报告</title>
+      <link>/zh/docs/v2.7/user/perf-test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/perf-test/</guid>
+      <description>测试说明  本次性能测试，测试了 dubbo 2.0 所有支持的协议在不同大小和数据类型下的表现，并与 dubbo 1.0 进行了对比。 整体性能相比 1.0 有了提升，平均提升 10%，使用 dubbo 2.0 新增的 dubbo 序列化还能获得 10%~50% 的性能提升，详见下面的性能数据。 稳定性测试中由于将底层通信框架从 mina 换成 netty，old 区对象的增长大大减少，50 小时运行，增长不到 200m，无 fullgc。 存在的问题：在 50k 数据的时候 2.0 性能不如 1.0，怀疑可能是缓冲区设置的问题，下版本会进一步确认。  测试环境 硬件部署与参数调整    机型 CPU 内存 网络 磁盘 内核     Tecal BH620 model name : Intel(R) Xeon(R) CPU E5520 @ 2.27GHz cache size : 8192 KB processor_count : 16 Total System Memory: 6G Hardware Memory Info: Size: 4096MB eth0: Link is up at 1000 Mbps, full duplex.</description>
+    </item>
+    
+    <item>
+      <title>测试覆盖率报告</title>
+      <link>/zh/docs/v2.7/user/coveragence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/coveragence/</guid>
+      <description> v2.0 Codecov报表 , 从 2017-12-29 后开始统计 测试覆盖率为 :  , 可以从 https://codecov.io/gh/apache/dubbo 页面得到覆盖率报表 v1.0 基于 2.0.12 版本，统计于 2012-02-03  </description>
+    </item>
+    
+    <item>
+      <title>基准测试工具包</title>
+      <link>/zh/docs/v2.7/user/benchmark-tool/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/benchmark-tool/</guid>
+      <description>下载源码： git clone https://github.com/apache/dubbo.git 编译benchmark: cd dubbo/dubbo-test/dubbo-test-benchmark; mvn clean install 解压 benchmark压缩包： dubbo/dubbo-test/dubbo-test-benchmark/target/dubbo-test-benchmark-2.6.2-SNAPSHOT.tar.gz  阅读ReadMe.txt（内容如下，请以压缩包内的为准）
+  新建一个benchmark工程，如demo.benchmark
+  导入自己服务的接口api包和dubbo.benchmark.jar(解压dubbo.benchmark.tar.gz，在lib目录下)
+  新建一个类，实现AbstractClientRunnable
+ 实现父类的构造函数 实现invoke方法，通过serviceFactory创建本地接口代理，并实现自己的业务逻辑，如下  public Object invoke(ServiceFactory serviceFactory) { DemoService demoService = (DemoService) serviceFactory.get(DemoService.class); return demoService.sendRequest(&amp;#34;hello&amp;#34;); }   将自己的benchmark工程打成jar包,如demo.benchmark.jar
+  将demo.benchmark.jar 和服务的api包放到dubbo.benchmark/lib目录下
+  配置dubbo.properties
+  运行run.bat(windows)或run.sh(linux)
+  如想测试dubbo的不同版本，直接替换lib下的dubbo的jar包即可。</description>
+    </item>
+    
+    <item>
+      <title>开发 REST 应用</title>
+      <link>/zh/docs/v2.7/user/rest/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/rest/</guid>
+      <description>作者：沈理
+文档版权：Apache 2.0许可证 署名-禁止演绎
+本文篇幅较长，因为REST本身涉及面较多。另外，本文参照 Spring 等的文档风格，不仅仅局限于框架用法的阐述，同时也努力呈现框架的设计理念和优良应用的架构思想。 对于想粗略了解 dubbo 和 REST 的人，只需浏览 概述 至 标准Java REST API：JAX-RS简介 几节即可。
+目录  概述 REST的优点 应用场景 快速入门 标准Java REST API：JAX-RS简介 REST服务提供端详解  HTTP POST/GET的实现 Annotation放在接口类还是实现类 JSON、XML等多数据格式的支持 中文字符支持 XML数据格式的额外要求 定制序列化 配置REST Server的实现 获取上下文（Context）信息 配置端口号和Context Path 配置线程数和IO线程数 配置长连接 配置最大的HTTP连接数 配置每个消费端的超时时间和HTTP连接数 GZIP数据压缩 用Annotation取代部分Spring XML配置 添加自定义的Filter、Interceptor等 添加自定义的Exception处理 配置HTTP日志输出 输入参数的校验 是否应该透明发布REST服务   REST服务消费端详解  场景1：非dubbo的消费端调用dubbo的REST服务 场景2：dubbo消费端调用dubbo的REST服务 场景3：dubbo的消费端调用非dubbo的REST服务   Dubbo中JAX-RS的限制 REST常见问题解答（REST FAQ）  Dubbo REST的服务能和Dubbo注册中心、监控中心集成吗？ Dubbo REST中如何实现负载均衡和容错（failover）？ JAX-RS中重载的方法能够映射到同一URL地址吗？ JAX-RS中作POST的方法能够接收多个参数吗？   Dubbo当前体系可能的不足之处（与REST相关的）  RpcContext的侵入性 Protocol配置的局限性 XML命名不符合spring规范   REST最佳实践 性能基准测试  测试环境 测试脚本 测试结果   扩展讨论  REST与Thrift、Protobuf等的对比 REST与传统WebServices的对比 JAX-RS与Spring MVC的对比   未来  概述 dubbo支持多种远程调用方式，例如dubbo RPC（二进制序列化 + tcp协议）、http invoker（二进制序列化 + http协议，至少在开源版本没发现对文本序列化的支持）、hessian（二进制序列化 + http协议）、WebServices （文本序列化 + http协议）等等，但缺乏对当今特别流行的REST风格远程调用（文本序列化 + http协议）的支持。</description>
+    </item>
+    
+    <item>
+      <title>简单监控</title>
+      <link>/zh/docs/v2.7/user/simple-monitor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/simple-monitor/</guid>
+      <description>Warning监控中心也是一个标准的 Dubbo 服务，可以通过注册中心发现，也可以直连。  暴露一个简单监控中心服务到注册中心: (如果是用安装包，不需要自己写这个配置，如果是自己实现监控中心，则需要)
+&amp;lt;beans xmlns=&amp;#34;http://www.springframework.org/schema/beans&amp;#34; xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34; xmlns:dubbo=&amp;#34;http://dubbo.apache.org/schema/dubbo&amp;#34; xsi:schemaLocation=&amp;#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd&amp;#34;&amp;gt; &amp;lt;!-- 当前应用信息配置 --&amp;gt; &amp;lt;dubbo:application name=&amp;#34;simple-monitor&amp;#34; /&amp;gt; &amp;lt;!-- 连接注册中心配置 --&amp;gt; &amp;lt;dubbo:registry address=&amp;#34;127.0.0.1:9090&amp;#34; /&amp;gt; &amp;lt;!-- 暴露服务协议配置 --&amp;gt; &amp;lt;dubbo:protocol port=&amp;#34;7070&amp;#34; /&amp;gt; &amp;lt;!-- 暴露服务配置 --&amp;gt; &amp;lt;dubbo:service interface=&amp;#34;org.apache.dubbo.monitor.MonitorService&amp;#34; ref=&amp;#34;monitorService&amp;#34; /&amp;gt; &amp;lt;bean id=&amp;#34;monitorService&amp;#34; class=&amp;#34;org.apache.dubbo.monitor.simple.SimpleMonitorService&amp;#34; /&amp;gt; &amp;lt;/beans&amp;gt;   通过注册中心发现监控中心服务:
+&amp;lt;dubbo:monitor protocol=&amp;#34;registry&amp;#34; /&amp;gt; 或者在 dubbo.properties 配置：
+dubbo.monitor.protocol=registry   暴露一个简单监控中心服务，但不注册到注册中心: (如果是用安装包，不需要自己写这个配置，如果是自己实现监控中心，则需要)
+&amp;lt;beans xmlns=&amp;#34;http://www.springframework.org/schema/beans&amp;#34; xmlns:xsi=&amp;#34;http://www.w3.org/2001/XMLSchema-instance&amp;#34; xmlns:dubbo=&amp;#34;http://dubbo.apache.org/schema/dubbo&amp;#34; xsi:schemaLocation=&amp;#34;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd&amp;#34;&amp;gt; &amp;lt;!</description>
+    </item>
+    
+    <item>
+      <title>Kryo 和 FST 序列化</title>
+      <link>/zh/docs/v2.7/user/serialization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/serialization/</guid>
+      <description>目录  序列化漫谈 启用Kryo和FST 注册被序列化类 无参构造函数和Serializable接口 序列化性能分析与测试  测试环境 测试脚本 Dubbo RPC中不同序列化生成字节大小比较 Dubbo RPC中不同序列化响应时间和吞吐量对比   未来  序列化漫谈 dubbo RPC是dubbo体系中最核心的一种高性能、高吞吐量的远程调用方式，我喜欢称之为多路复用的TCP长连接调用，简单的说：
+ 长连接：避免了每次调用新建TCP连接，提高了调用的响应速度 多路复用：单个TCP连接可交替传输多个请求和响应的消息，降低了连接的等待闲置时间，从而减少了同样并发数下的网络连接数，提高了系统吞吐量。  dubbo RPC主要用于两个dubbo系统之间作远程调用，特别适合高并发、小数据的互联网场景。
+而序列化对于远程调用的响应速度、吞吐量、网络带宽消耗等同样也起着至关重要的作用，是我们提升分布式系统性能的最关键因素之一。
+在dubbo RPC中，同时支持多种序列化方式，例如：
+ dubbo序列化：阿里尚未开发成熟的高效java序列化实现，阿里不建议在生产环境使用它 hessian2序列化：hessian是一种跨语言的高效二进制序列化方式。但这里实际不是原生的hessian2序列化，而是阿里修改过的hessian lite，它是dubbo RPC默认启用的序列化方式 json序列化：目前有两种实现，一种是采用的阿里的fastjson库，另一种是采用dubbo中自己实现的简单json库，但其实现都不是特别成熟，而且json这种文本序列化性能一般不如上面两种二进制序列化。 java序列化：主要是采用JDK自带的Java序列化实现，性能很不理想。  在通常情况下，这四种主要序列化方式的性能从上到下依次递减。对于dubbo RPC这种追求高性能的远程调用方式来说，实际上只有1、2两种高效序列化方式比较般配，而第1个dubbo序列化由于还不成熟，所以实际只剩下2可用，所以dubbo RPC默认采用hessian2序列化。
+但hessian是一个比较老的序列化实现了，而且它是跨语言的，所以不是单独针对java进行优化的。而dubbo RPC实际上完全是一种Java to Java的远程调用，其实没有必要采用跨语言的序列化方式（当然肯定也不排斥跨语言的序列化）。
+最近几年，各种新的高效序列化方式层出不穷，不断刷新序列化性能的上限，最典型的包括：
+ 专门针对Java语言的：Kryo，FST等等 跨语言的：Protostuff，ProtoBuf，Thrift，Avro，MsgPack等等  这些序列化方式的性能多数都显著优于hessian2（甚至包括尚未成熟的dubbo序列化）。
+有鉴于此，我们为dubbo引入Kryo和FST这两种高效Java序列化实现，来逐步取代hessian2。
+其中，Kryo是一种非常成熟的序列化实现，已经在Twitter、Groupon、Yahoo以及多个著名开源项目（如Hive、Storm）中广泛的使用。而FST是一种较新的序列化实现，目前还缺乏足够多的成熟使用案例，但我认为它还是非常有前途的。
+在面向生产环境的应用中，我建议目前更优先选择Kryo。
+启用Kryo和FST 使用Kryo和FST非常简单，只需要在dubbo RPC的XML配置中添加一个属性即可：
+&amp;lt;dubbo:protocol name=&amp;#34;dubbo&amp;#34; serialization=&amp;#34;kryo&amp;#34;/&amp;gt; &amp;lt;dubbo:protocol name=&amp;#34;dubbo&amp;#34; serialization=&amp;#34;fst&amp;#34;/&amp;gt; 注册被序列化类 要让Kryo和FST完全发挥出高性能，最好将那些需要被序列化的类注册到dubbo系统中，例如，我们可以实现如下回调接口：
+public class SerializationOptimizerImpl implements SerializationOptimizer { public Collection&amp;lt;Class&amp;gt; getSerializableClasses() { List&amp;lt;Class&amp;gt; classes = new LinkedList&amp;lt;Class&amp;gt;(); classes.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/zh/docs/v2.7/user/new-features-in-a-glance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/new-features-in-a-glance/</guid>
+      <description>Dubbo 版本发布及新特性速览 版本速览 Dubbo 社区目前主力维护的有 2.6.x 和 2.7.x 两大版本，其中，
+ 2.6.x 主要以 bugfix 和少量 enhancements 为主，因此能完全保证稳定性 2.7.x 作为社区的主要开发版本，得到持续更新并增加了大量新 feature 和优化，同时也带来了一些稳定性挑战  2.7.x 版本     版本 重要功能 升级建议     1 2.7.6 bugfix of 2.7.5
+服务鉴权 推荐生产使用   2 2.7.5 服务自省
+HTTP/2（gRPC） Protobuf TLS
+性能优化
+https://github.com/apache/dubbo/releases/tag/dubbo-2.7.5 不建议大规模生产使用   3 2.7.4.1 bugfixes and enhancements of 2.7.3 推荐生产使用   4 2.7.3 bigfixes of and enhancements of 2.</description>
+    </item>
+    
+  </channel>
+</rss>

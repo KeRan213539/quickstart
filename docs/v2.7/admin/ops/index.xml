@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dubbo Admin Guide on Nacos</title>
+    <link>/docs/v2.7/admin/ops/</link>
+    <description>Recent content in Dubbo Admin Guide on Nacos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/docs/v2.7/admin/ops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dubbo Admin Functions</title>
+      <link>/docs/v2.7/admin/ops/functions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/admin/ops/functions/</guid>
+      <description>Page search If you need to manage a Dubbo service, you need to search it first and open it&amp;rsquo;s management page
+Service provider page Service consumer page Add route rule page Add dynamic configuration page </description>
+    </item>
+    
+    <item>
+      <title>Dubbo Admin Introductions</title>
+      <link>/docs/v2.7/admin/ops/introduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/admin/ops/introduction/</guid>
+      <description>Now version 0.1 has been released, frontend uses Vue and Vuetify as javascript framework and UI framework, backend uses spring framework, you can deploy the whole project with maven or deploy frontend and backend separately.
+Deploy the whole project through maven  install  git clone https://github.com/apache/dubbo-admin.git cd dubbo-admin mvn clean package cd dubbo-admin-distribution/target java -jar dubbo-admin-0.1.jar  visit
+http://localhost:8080  Deploy frontend and backend separately  frontend deploy  cd dubbo-admin-ui npm install npm run dev  backend deploy  cd dubbo-admin-server mvn clean package cd target java -jar dubbo-admin-server-0.</description>
+    </item>
+    
+    <item>
+      <title>Service Search And Service Detail</title>
+      <link>/docs/v2.7/admin/ops/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/admin/ops/search/</guid>
+      <description>Service search is the basic function of Dubbo OPS, you can search by service name, application name and IP address, the service name and application name support wildcard and autocomplete:
+the service detail page display providers, consumers, medata information is supported in Dubbo 2.7 or higher version:</description>
+    </item>
+    
+    <item>
+      <title>Service Test</title>
+      <link>/docs/v2.7/admin/ops/test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/admin/ops/test/</guid>
+      <description>please refer to this blog</description>
+    </item>
+    
+    <item>
+      <title>API Docs&amp;Test</title>
+      <link>/docs/v2.7/admin/ops/apidocs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/admin/ops/apidocs/</guid>
+      <description>dubbo api docs Dubbo api documents, test tools, generate documents according to annotations, and provide test functions
+Adding some annotations can generate a swagger like document without turning a non web Dubbo project into a web project
+How to use?  Dubbo api docs annotation added to method parameters of Dubbo project  Dubbo provider project introduces dubbo-api-docs-core If Dubbo&amp;rsquo;s interface and parameters are a separate jar package project, introduce dubbo-api-docs-annotations Add the annotation @EnableDubboApiDocs to the project startup class (marked with @SpringBootApplication) or configuration class (marked with @Configuration) of the provider project to enable the Dubbo API Docs  In order to avoid increasing the resource consumption in the production environment, it is recommended to create a configuration class to enable Dubbo API Docs, and use it with the @Profile(&amp;ldquo;dev&amp;rdquo;) annotation Of course, Dubbo API Docs consumed a little CPU resources when the project starting and used a little memory for caching.</description>
+    </item>
+    
+    <item>
+      <title>Service Governance And Configuration Management</title>
+      <link>/docs/v2.7/admin/ops/governance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/admin/ops/governance/</guid>
+      <description>Service governance the basic function of service governance is changing the runtime behaviour and routing logic, to do weight configuration and current limiting:
+application level service governance In Dubbo 2.6 or earlier version, all service governance rule are in service scope, if you need to make application scope rule, you need to set the same rule for all services under an application, modify and delete need the same operation, this is very unfriendly.</description>
+    </item>
+    
+    <item>
+      <title>Tracking with Pinpoint</title>
+      <link>/docs/v2.7/admin/ops/pinpoint/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/admin/ops/pinpoint/</guid>
+      <description>After using Dubbo to serve or integrate applications, assuming that a service backstage log shows an exception and that the service is invoked by multiple applications, it is often difficult to determine which application is called, and what is the cause of the problem, so we need a set of distributed tracking systems to quickly locate the problem. Pinpoint can help us quickly locate problems (of course, there are more than one solution).</description>
+    </item>
+    
+    <item>
+      <title>Tracing Dubbo service with Apache Skywalking</title>
+      <link>/docs/v2.7/admin/ops/skywalking/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/admin/ops/skywalking/</guid>
+      <description>Introduction to Apache Skywalking Apache Skywalking(Incubator) is the APM system that it designed for micro-services architectures and cloud native architecture systems and supports distribute tracking. Apache skywalking (incubator) collects and analyzes the trace data and generates the relationship between the application and the service metric, Apache skywalking supports multiple languages agent, for example Java,.net core,Node.js and Go.
+Currently, Skywalking has supported analysis the operation of distributed systems from 6 visual dimensions.</description>
+    </item>
+    
+  </channel>
+</rss>

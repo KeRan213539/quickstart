@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>版本升级 on Nacos</title>
+    <link>/zh/docs/v2.7/user/versions/</link>
+    <description>Recent content in 版本升级 on Nacos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/zh/docs/v2.7/user/versions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>升级与可能的兼容性问题总结</title>
+      <link>/zh/docs/v2.7/user/versions/version-270/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/versions/version-270/</guid>
+      <description>环境要求：需要Java 8及以上版本。
+2.7.0版本在改造的过程中遵循了一个原则，即保持与低版本的兼容性，因此从功能层面来说它是与2.6.x及更低版本完全兼容的，而接下来将要提到的兼容性问题主要是包重命名带来的。另外，虽然功能用法保持向后兼容，但参考本文能帮助您尽快用到2.7.0版本的新特性。
+升级步骤  升级pom到2.7.0（以all-in-one依赖为例）。  &amp;lt;properties&amp;gt; &amp;lt;dubbo.version&amp;gt;2.7.0&amp;lt;/dubbo.version&amp;gt; &amp;lt;/properties&amp;gt; &amp;lt;dependencyManagement&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;dubbo-dependencies-bom&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${dubbo.version}&amp;lt;/version&amp;gt; &amp;lt;type&amp;gt;pom&amp;lt;/type&amp;gt; &amp;lt;scope&amp;gt;import&amp;lt;/scope&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt; &amp;lt;/dependencyManagement&amp;gt; &amp;lt;dependencies&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;dubbo&amp;lt;/artifactId&amp;gt; &amp;lt;version&amp;gt;${dubbo.version}&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;io.netty&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;netty-all&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; &amp;lt;/dependencies&amp;gt; 如果升级依赖后出现API或SPI扩展相关的编译错误，请参考包兼容性问题
+此时重新部署应用，所有默认行为和2.6.x保持一致，如果要用到2.7的新特性，则需要继续做以下配置（可选）：
+ 简化的URL 配置元数据中心 使用外部化配置 服务治理规则 使用异步API  下面我们就对这几部分的配置分别做详细说明。
+简化的URL &amp;lt;!-- simplified=&amp;#34;true&amp;#34;表示注册简化版的URL到Registry --&amp;gt; &amp;lt;dubbo:registry address=&amp;#34;zookeeper://127.0.0.1:2181&amp;#34; simplified=&amp;#34;true&amp;#34;/&amp;gt; dubbo.registry.simplified=true 建议将此配置集中管理，参考外部化配置。
+ URL简化只是剔除了一些纯粹的查询用的参数，并没有做大刀阔斧的服务发现模型改造，因此精简后的URL完全可以被2.6及以下版本的消费端实现服务发现与调用，同样2.7版本也可以发现和调用低版本的提供者。
+ 配置元数据中心 &amp;lt;dubbo:metadata-report address=&amp;#34;redis://127.0.0.1:6379&amp;#34;/&amp;gt; dubbo.metadataReport.address=redis://127.0.0.1:6379 建议将此配置集中管理，参考外部化配置。 在此了解更多元数据中心设计目的与用途。
+使用外部化配置需要在项目启动前，使用[最新版本Dubbo-OPS](https://github.com/apache/dubbo-ops)完成外部化配置迁移，理论上配置中心支持所有本地dubbo.properties所支持的配置项。以XML开发形式为例，假设我们本地有如下配置：
+&amp;lt;dubbo:application name=&amp;#34;demo-provider&amp;#34;/&amp;gt; &amp;lt;dubbo:config-center address=&amp;#34;zookeeper://127.0.0.1:2181&amp;#34;/&amp;gt; &amp;lt;dubbo:registry address=&amp;#34;zookeeper://127.0.0.1:2181&amp;#34; simplified=&amp;#34;true&amp;#34;/&amp;gt; &amp;lt;dubbo:metadata-report address=&amp;#34;redis://127.</description>
+    </item>
+    
+  </channel>
+</rss>

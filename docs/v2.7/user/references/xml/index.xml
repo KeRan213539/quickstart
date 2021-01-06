@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Schema Configuration Reference on Nacos</title>
+    <link>/docs/v2.7/user/references/xml/</link>
+    <description>Recent content in Schema Configuration Reference on Nacos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/docs/v2.7/user/references/xml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>dubbo:application</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-application/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-application/</guid>
+      <description>Application configuration. The corresponding class: org.apache.dubbo.config.ApplicationConfig
+   Property Corresponding URL parameter Type Requisite Default Effect Description Compatibility     name application string Y  service governance Application name is the unique identifier of an application. It is for registry combing the dependencies of applications. Note: Consumer and provider application name should not be the same, and this parameter is not a match condition. As a suggestion, you can name it as your project name.</description>
+    </item>
+    
+    <item>
+      <title>dubbo:argument</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-argument/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-argument/</guid>
+      <description>Method argument configuration. The corresponding class：org.apache.dubbo.config.ArgumentConfig. This tag is child of &amp;lt;dubbo:method&amp;gt;, which is for feature description of method argument, such as:
+&amp;lt;dubbo:method name=&amp;#34;findXxx&amp;#34; timeout=&amp;#34;3000&amp;#34; retries=&amp;#34;2&amp;#34;&amp;gt; &amp;lt;dubbo:argument index=&amp;#34;0&amp;#34; callback=&amp;#34;true&amp;#34; /&amp;gt; &amp;lt;/dubbo:method&amp;gt;    Property Corresponding URL parameter Type Requisite Default Effect Description Compatibility     index  int Y  identification method name above 2.0.6   type  String Index and type choose one  identification Find index of argument by it above 2.</description>
+    </item>
+    
+    <item>
+      <title>dubbo:config-center</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-config-center/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-config-center/</guid>
+      <description>Configuration center. Corresponding configuration class: org.apache.dubbo.config.ConfigCenterConfig
+   property Corresponding URL parameter type required default value description compatibility     protocol config.protocol string optional zookeeper Which configuration center to use: apollo, zookeeper, nacos, etc.
+take zookeeper for example
+1. If protocol is specified, address can be simplified to 127.0.0.1:2181;
+2. If protocol is not specified, address is set to zookeeper://127.0.0.1:2181 2.7.0+   address config.address string required  Configuration center address.</description>
+    </item>
+    
+    <item>
+      <title>dubbo:consumer</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-consumer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-consumer/</guid>
+      <description>Consumer default configuration. The corresponding clas： org.apache.dubbo.config.ConsumerConfig. It is also default configuration of &amp;lt;dubbo:reference&amp;gt;.
+   Property Corresponding URL parameter Type Requisite Default Effect Description Compatibility     timeout default.timeout int N 1000 performance optimization invoking timeout(ms) above 1.0.16   retries default.retries int N 2 performance optimization Invoking retry times, exclude the first invoking. Set 0 to disable it.Only valid if the cluster&amp;rsquo;s value is failback/failover above 1.</description>
+    </item>
+    
+    <item>
+      <title>dubbo:method</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-method/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-method/</guid>
+      <description>Method level configuration. The corresponding class: org.apache.dubbo.config.MethodConfig. This tag is a child tag of &amp;lt;dubbo:service&amp;gt; or &amp;lt;dubbo:reference&amp;gt;, for accuracy to method level.
+   Property Corresponding URL parameter Type Requisite Default Effect Description Compatibility     name  string Y  identifier Method name above 1.0.8   timeout &amp;lt;metodName&amp;gt;.timeout int N &amp;lt;dubbo:reference&amp;gt; timeout performance optimization Method call timeout(ms) above 1.0.8   retries &amp;lt;metodName&amp;gt;.retries int N &amp;lt;dubbo:reference&amp;gt; retries performance optimization Invoking retry times, exclude the first invoking.</description>
+    </item>
+    
+    <item>
+      <title>dubbo:module</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-module/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-module/</guid>
+      <description>Module configuration. The corresponding class org.apache.dubbo.config.ModuleConfig
+   Property The corresponding class Type Requisite Default Effect Description Compatibility     name module string Y  service governance Module name is for registry combing the dependencies of modules. above 2.2.0   version module.version string N  service governance module version above 2.2.0   owner owner string N  service governance Module manager, Pls. fill in the mailbox prefix of the person in charge above 2.</description>
+    </item>
+    
+    <item>
+      <title>dubbo:monitor</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-monitor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-monitor/</guid>
+      <description>Monitor center configuration. The corresponding class: org.apache.dubbo.config.MonitorConfig
+   Property The corresponding class Type Requisite Default Effect Description Compatibility     protocol protocol string N dubbo service governance Monitor center protocol. &amp;ldquo;registry&amp;rdquo; means looking up monitor center from registry. Others mean communicating to monitor center directly above 2.0.9   address &amp;lt;url&amp;gt; string N N/A service governance Communicating to monitor center directly. address=&amp;ldquo;10.20.130.230:12080&amp;rdquo; above 1.0.16    </description>
+    </item>
+    
+    <item>
+      <title>dubbo:parameter</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-parameter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-parameter/</guid>
+      <description>Optional parameter configuration. The corresponding class is java.util.Map. This tag is used as a sub tag to configure custom parameters for extending &amp;lt;dubbo:protocol&amp;gt;, &amp;lt;dubbo:service&amp;gt;, &amp;lt;dubbo:provider&amp;gt;, &amp;lt;dubbo:reference&amp;gt; or &amp;lt;dubbo:consumer&amp;gt;.
+   Attribute Corresponding URL parameter Type Required Default Value Function Description Compatibility     key key string True  Service governance routing parameter key Above 2.0.0   value value string True  Service governance routing parameter value Above 2.</description>
+    </item>
+    
+    <item>
+      <title>dubbo:protocol</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-protocol/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-protocol/</guid>
+      <description>Service provider protocol configuration. The corresponding class is org.apache.dubbo.config.ProtocolConfig. If you need to support multiple protocols, you could declare multiple &amp;lt;dubbo:protocol&amp;gt; tags, and specify the protocol via protocol property.
+   Attribute Corresponding URL parameter Type Required Default Value Function Description Compatibility     id  string False dubbo Configuration association Bean Id of the protocol, can be referenced in &amp;lt;dubbo:service protocol=&amp;quot;&amp;quot;&amp;gt; The default value is equal to the value of name attribute while id is not filled.</description>
+    </item>
+    
+    <item>
+      <title>dubbo:provider</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-provider/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-provider/</guid>
+      <description>The default configuration of service provider. The corresponding class is org.apache.dubbo.config.ProviderConfig. This tag provider default values for &amp;lt;dubbo:service&amp;gt; and &amp;lt;dubbo:protocol&amp;gt;.
+   Attribute Corresponding URL parameter Type Required Default Value Function Description Compatibility     id  string False dubbo Configuration association Bean Id of the protocol, can be referenced in &amp;lt;dubbo:service proivder=&amp;quot;&amp;quot;&amp;gt; Above 1.0.16   protocol &amp;lt;protocol&amp;gt; string False dubbo Performance optimize Protocol name Above 1.</description>
+    </item>
+    
+    <item>
+      <title>dubbo:reference</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-reference/</guid>
+      <description>The configuration of service consumer. The corresponding class isorg.apache.dubbo.config.ReferenceConfig
+   Attribute Corresponding URL parameter Type Required Default Value Function Description Compatibility     id  string True  Configuration association Bean Id of the service reference Above 1.0.0   interface  class True  Service discovery Interface name of the service Above 1.0.0   version version string False  Service discovery Service version, must be equal to the provider&amp;rsquo;s version Above 1.</description>
+    </item>
+    
+    <item>
+      <title>dubbo:registry</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-registry/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-registry/</guid>
+      <description>The configuration of the registry center. The corresponding class is org.apache.dubbo.config.RegistryConfig. If you have multiple different registries, you can declare multiple &amp;lt;dubbo:registry&amp;gt; tags, and then reference specified registry with registry property in &amp;lt;dubbo:service&amp;gt; or &amp;lt;dubbo:reference&amp;gt; tag.
+   Attribute Corresponding URL parameter Type Required Default Value Function Description Compatibility     id  string False  Configuration association Bean Id of the registry center, can be referenced in &amp;lt;dubbo:service registry=&amp;quot;&amp;quot;&amp;gt;or &amp;lt;dubbo:reference registry=&amp;quot;&amp;quot;&amp;gt; Above 1.</description>
+    </item>
+    
+    <item>
+      <title>dubbo:service</title>
+      <link>/docs/v2.7/user/references/xml/dubbo-service/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/xml/dubbo-service/</guid>
+      <description>The configuration of the service provider. The corresponding class is org.apache.dubbo.config.ServiceConfig.
+   Attribute Corresponding URL parameter Type Required Default Value Function Description Compatibility     interface  class True  Service discovery The service interface name Above 1.0.0   ref  object True  Service discovery The reference to the service implementation Above 1.0.0   version version string False 0.0.0 Service discovery Service version. It&amp;rsquo;s recommended to use 2 digitals such as 1.</description>
+    </item>
+    
+  </channel>
+</rss>

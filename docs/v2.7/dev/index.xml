@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dubbo Developer Guide on Nacos</title>
+    <link>/docs/v2.7/dev/</link>
+    <description>Recent content in Dubbo Developer Guide on Nacos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/docs/v2.7/dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Source Code Build</title>
+      <link>/docs/v2.7/dev/build/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/dev/build/</guid>
+      <description>Checkout checkout the lastest project source code with commands blow:
+git clone https://github.com/apache/dubbo.git dubbo Branches We use master as the major branch for new feature development, and use other branches for maintenance. Tags for all versions can be checked via https://github.com/apache/dubbo/tags.
+Building Dubbo relies on maven as the building tool.
+Requirements:
+ Java above 1.5 version Maven version 2.2.1 or above  The following MAVEN_OPTSshould be configured before building:
+export MAVEN_OPTS=-Xmx1024m -XX:MaxPermSize=512m build with below command:</description>
+    </item>
+    
+    <item>
+      <title>Framework Design</title>
+      <link>/docs/v2.7/dev/design/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/dev/design/</guid>
+      <description>Overall design Image description:
+ Left area with light blue background shows service consumer interfaces, Right area with light green background shows service provider interfaces, center area shows both side interfaces. The image is divided into 10 layers from the bottom to the top, and the layers are one-way dependence. The black arrow on the right represents the dependency between layers, and each layer can be stripped from the upper layer to be reused, the Service and Config layers are API, and the other layers are SPI.</description>
+    </item>
+    
+    <item>
+      <title>SPI Loading</title>
+      <link>/docs/v2.7/dev/spi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/dev/spi/</guid>
+      <description>SPI Config Source: Dubbo SPI is inherited from standard JDK SPI(Service Provider Interface) and makes it more powerful.
+Dubbo fixed below issues of the standard JDK SPI:
+ The standard JDK SPI will load and instantize all the implementations at once. It will be a waste of resources if one implementation is timecosted, but never be used. We can&amp;rsquo;t accquire the SPI name, if loading the SPI implementation is failed.For example: standard JDK ScriptEngine, get script type by invoking method getName().</description>
+    </item>
+    
+    <item>
+      <title>Implementation details</title>
+      <link>/docs/v2.7/dev/implementation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/dev/implementation/</guid>
+      <description>Initialization details Service parsing Based on META-INF/spring.handlers config in dubbo.jar, Spring calls DubboNamespaceHandler when meeting dubbo namespace.
+All Dubbo tags are parsed by DubboBeanDefinitionParser, based on one to one attribute mapping, the XML label is parsed as a Bean object.
+Transfer Bean object to URL, and transfer all attributes of Bean to URL parameters when ServiceConfig.export() or ReferenceConfig.get() initialization.
+Then pase URL to Protocol extension point, based on Extension point adaptive mechanism of extension point, processing service exposure or reference for different protocols according to URL protocol header.</description>
+    </item>
+    
+    <item>
+      <title>Public Agreement</title>
+      <link>/docs/v2.7/dev/contract/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/dev/contract/</guid>
+      <description>This document is Dubbo public agreement, we expect all extension points comply with it.
+URL  All extension points must include URL parameter, design URL as a context information which throughouts the whole extension point design system. URL standard style: protocol://username:password@host:port/path?key=value&amp;amp;key=value  Logging  Print ERROR log for unrecoverable and NEED TO ALARM situation. Print WARN log for recoverable exception or transient state inconsistency. Print INFO log for normally status.  </description>
+    </item>
+    
+    <item>
+      <title>Versions</title>
+      <link>/docs/v2.7/dev/release/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/dev/release/</guid>
+      <description>New feature development and stability improvement are equally important to product. But adding new features will affect stability, dubbo uses the following version development pattern to achieve a good balance.
+Two versions evolving at the same time  BugFix Version：low version，e.g. 2.4.x. This is called the GA version, which can be applied in production. We are supposed only to fix bugs in this version, and increase the third version number when release.</description>
+    </item>
+    
+    <item>
+      <title>Checklist</title>
+      <link>/docs/v2.7/dev/checklist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/dev/checklist/</guid>
+      <description>Checklist before release  github milestones github change lists Travis CI test code find bugs  Checklist for bigfix versions  Create a github issue before coding Create unit test before bugfix Review Test your code (Normal process / Abnormal process) Record your design on github issue Complete javadoc and comment in code Manager for every version, responsible for scope and check  </description>
+    </item>
+    
+    <item>
+      <title>Bad Smell</title>
+      <link>/docs/v2.7/dev/code-smell/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/dev/code-smell/</guid>
+      <description>Ugly Dubbo design or implementation will be record here.
+URL Convertion 1. Point to Point Service export and refer service directly export：
+EXPORT(dubbo://provider-address/com.xxx.XxxService?version=1.0.0&amp;#34;) service directly refer：
+REFER(dubbo://provider-address/com.xxx.XxxService?version=1.0.0) 2. Export servie by registry export service to registry：
+EXPORT(registry://registry-address/org.apache.dubbo.registry.RegistrySerevice?registry=dubbo&amp;amp;export=ENCODE(dubbo://provider-address/com.xxx.XxxService?version=1.0.0)) accquire registry：
+url.setProtocol(url.getParameter(&amp;#34;registry&amp;#34;, &amp;#34;dubbo&amp;#34;)) GETREGISTRY(dubbo://registry-address/org.apache.dubbo.registry.RegistrySerevice) registry service address：
+url.getParameterAndDecoded(&amp;#34;export&amp;#34;)) REGISTER(dubbo://provider-address/com.xxx.XxxService?version=1.0.0) 3. Refer service from registry refer service from registry：
+REFER(registry://registry-address/org.apache.dubbo.registry.RegistrySerevice?registry=dubbo&amp;amp;refer=ENCODE(version=1.0.0)) accquire registry：
+url.setProtocol(url.getParameter(&amp;#34;registry&amp;#34;, &amp;#34;dubbo&amp;#34;)) GETREGISTRY(dubbo://registry-address/org.apache.dubbo.registry.RegistrySerevice) subscribe service address：
+url.addParameters(url.getParameterAndDecoded(&amp;#34;refer&amp;#34;)) SUBSCRIBE(dubbo://registry-address/com.xxx.XxxService?version=1.0.0) notify service address：</description>
+    </item>
+    
+    <item>
+      <title>Coding Convention</title>
+      <link>/docs/v2.7/dev/coding/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/dev/coding/</guid>
+      <description>Code style The source and JavaDoc of Dubbo follow below specifications:
+ Code Conventions for the Java Programming Language How to Write Doc Comments for the Javadoc Tool  Exception and Logging  Log more context information as possible, such as error reason, error server address, client address, registry center address, dubbo version and so on. Try to put the main cause at the front, and display all other context information with key-value paris after it.</description>
+    </item>
+    
+    <item>
+      <title>Compatibility Test</title>
+      <link>/docs/v2.7/dev/tck/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/dev/tck/</guid>
+      <description>Dubbo&amp;rsquo;s protocol, communication, serialization, registry, load balancing and other SPI all offer alternative strategies for different application scenarios while our test cases are very scattered. Ours is always uncertain whether it can satisfy the complete contract of the extension point when users need to add a new implementation.
+Thus we need to use TCK (Technology Compatibility Kit) for the core extension points. When users add a new implementaion, compatibility with the rest of the framework can be ensured with TCK.</description>
+    </item>
+    
+  </channel>
+</rss>

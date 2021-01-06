@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+<html lang="en">
+<head>
+  
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Dubbo&#39;s Load Balance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    <meta http-equiv="content-language" content="en-us" />
+
+  
+
+    
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nacos">
+    <meta property="og:title" content="Dubbo&#39;s Load Balance">
+    <meta property="og:url" content="/blog/2018/08/10/dubbos-load-balance/">
+    <meta property="og:image" content="/images/">
+    <meta name="twitter:title" content="Nacos" />
+    <meta name="twitter:url" content="/blog/2018/08/10/dubbos-load-balance/" />
+    <meta name="twitter:image" content="/images/" />
+    <meta name="twitter:card" content="" />
+    
+    
+    
+    <link rel="canonical" href="/blog/2018/08/10/dubbos-load-balance/"/>
+
+    
+
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="/css/leaflet.css" />
+
+    
+    <link rel="stylesheet" href="/css/animate.css">
+    
+    <link rel="stylesheet" href="/css/icomoon.css">
+    
+    <link rel="stylesheet" href="/css/simple-line-icons.css">
+    
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+    
+    <link rel="stylesheet" href="/css/style.css">
+
+    
+    
+    <link rel="stylesheet" href="/css/custom1.css">
+    
+    <link rel="stylesheet" href="/css/custom2.css">
+    
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    
+
+    
+    <script src="/js/modernizr-2.6.2.min.js"></script>
+    
+    
+
+  <meta name="referrer" content="no-referrer"/>
+  <link rel="shortcut icon" href="https://img.alicdn.com/tfs/TB1hgJpHAPoK1RjSZKbXXX1IXXa-64-64.png"/>
+  	
+	<script src="/js/jquery.min.js"></script>
+	
+	<script src="/js/jquery.easing.1.3.js"></script>
+	
+	<script src="/js/bootstrap.min.js"></script>
+	
+	<script src="/js/jquery.waypoints.min.js"></script>
+	
+	<script src="/js/jquery.stellar.min.js"></script>
+	
+	<script src="/js/jquery.countTo.js"></script>
+	
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/magnific-popup-options.js"></script>
+	
+
+
+	
+	<script src="/js/main.js"></script>
+
+</head>
+<body>
+
+
+    <header role="banner" id="fh5co-header">
+        <div class="container">
+            
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    
+                    <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+                    <a class="navbar-brand" href="index.html"><img id="nacosLogo" src="/images/nacos.png"></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    
+                    
+                    
+                    <li><a class="external" href="/"><span>Home</span></a></li>
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                        <li><a class="external" href="/docs"><span>Documentation</span></a></li>
+                    
+                        <li class="active"><a class="external" href="/blog"><span>Blog</span></a></li>
+                    
+                    <li>
+                      
+
+<div class="dropdown">
+	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false" >
+		English
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu">
+		
+		<li><a class="external" href="/zh/blog/2018/08/10/dubbo%E7%9A%84%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/">中文</a></li>
+		
+	</ul>
+</div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+    </div>
+</header>
+
+<section class="animated">
+  <div class="col-md-2 blogDocSidebar">
+    
+
+
+
+
+<a href="#" id="sidebarConsoleBtn"><i class="fa fa-bars fa-fw"></i></a>
+<div id="sidebarContent">
+  
+  
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/blog/" >Blog</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="blog">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a class="active" href="/blog/news/" >Articles</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="blognews">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20190826service-test" href="/blog/2019/08/26/service-test/">Service test in dubbo admin</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20190811tracing-dubbo-service-with-apache-skywalking" href="/blog/2019/08/11/tracing-dubbo-service-with-apache-skywalking/">Use apache skywalking in dubbo</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20190502dubbo-extensible-mechanism-source-code-analysis-part-2" href="/blog/2019/05/02/dubbo-extensible-mechanism-source-code-analysis-part-2/">Dubbo extensible mechanism - part 2</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20190425dubbo-extensible-mechanism-source-code-analysis-part-1" href="/blog/2019/04/25/dubbo-extensible-mechanism-source-code-analysis-part-1/">Dubbo extensible mechanism - part 1</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20190220implementation-background-and-practice-of-dubbo-client-asynchronous-interface" href="/blog/2019/02/20/implementation-background-and-practice-of-dubbo-client-asynchronous-interface/">Dubbo Async Client</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20190220implementation-background-and-practice-of-dubbo-server-asynchronous-interface" href="/blog/2019/02/20/implementation-background-and-practice-of-dubbo-server-asynchronous-interface/">Dubbo Async Server</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20190117how-to-use-seata-to-ensure-consistency-between-dubbo-microservices" href="/blog/2019/01/17/how-to-use-seata-to-ensure-consistency-between-dubbo-microservices/">Use Seata in Dubbo</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20181210the-fifth-dubbo-meetup-has-been-held-in-hangzhou" href="/blog/2018/12/10/the-fifth-dubbo-meetup-has-been-held-in-hangzhou/">The fifth Dubbo meetup</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20181107dubbo-integrates-with-nacos-to-become-a-registry" href="/blog/2018/11/07/dubbo-integrates-with-nacos-to-become-a-registry/">Use Dubbo with Nacos</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20181005introduction-to-the-dubbo-protocol" href="/blog/2018/10/05/introduction-to-the-dubbo-protocol/">Introduction to the Dubbo protocol</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180930integrate-dubbo-with-kubernetes" href="/blog/2018/09/30/integrate-dubbo-with-kubernetes/">Integrate Dubbo with Kubernetes</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180902how-to-prepare-an-apache-release" href="/blog/2018/09/02/how-to-prepare-an-apache-release/">How to prepare an Apache Release</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180902how-to-implement-a-fully-asynchronous-calls-chain-based-on-dubbo" href="/blog/2018/09/02/how-to-implement-a-fully-asynchronous-calls-chain-based-on-dubbo/">New Async Call</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180826the-fourth-dubbo-meetup-has-been-held-in-chengdu" href="/blog/2018/08/26/the-fourth-dubbo-meetup-has-been-held-in-chengdu/">The fourth Dubbo meetup</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180814dubbo-basic-usage-dubbo-consumer-configuration" href="/blog/2018/08/14/dubbo-basic-usage-dubbo-consumer-configuration/">Dubbo Consumer Configuration</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180814dubbo-several-ways-about-synchronousasynchronous-invoke" href="/blog/2018/08/14/dubbo-several-ways-about-synchronous/asynchronous-invoke/">Dubbo Invoke</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180814dubbo-basic-usage-dubbo-provider-configuration" href="/blog/2018/08/14/dubbo-basic-usage-dubbo-provider-configuration/">Dubbo Provider Configuration</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180814manipulating-services-dynamically-via-qos" href="/blog/2018/08/14/manipulating-services-dynamically-via-qos/">Dubbo QoS Introduction</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180814source-code-analysis-of-spring-boot-dubbo-app-start-and-stop" href="/blog/2018/08/14/source-code-analysis-of-spring-boot-dubbo-app-start-and-stop/">Dubbo start/stop in spring boot</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180814implementation-of-cross-language-calls-by-dubbo2js" href="/blog/2018/08/14/implementation-of-cross-language-calls-by-dubbo2.js/">dubbo2.js introduction</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180814generic-invoke-of-dubbo" href="/blog/2018/08/14/generic-invoke-of-dubbo/">Generic invoke</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180810dubbos-load-balance" class="active2" href="/blog/2018/08/10/dubbos-load-balance/">Dubbo&#39;s Load Balance</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180807use-annotations-in-dubbo" href="/blog/2018/08/07/use-annotations-in-dubbo/">Use Annotations In Dubbo</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180807using-zookeeper-in-dubbo" href="/blog/2018/08/07/using-zookeeper-in-dubbo/">Using Zookeeper in Dubbo</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180807dubbo-101" href="/blog/2018/08/07/dubbo-101/">Your First Dubbo Demo</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180730the-third-dubbo-meetup-has-been-held-in-shenzhen" href="/blog/2018/07/30/the-third-dubbo-meetup-has-been-held-in-shenzhen/">The third Dubbo meetup</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180727sentinel-the-flow-sentinel-of-dubbo-services" href="/blog/2018/07/27/sentinel-the-flow-sentinel-of-dubbo-services/">Introduce sentinel</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180712tracking-with-pinpoint" href="/blog/2018/07/12/tracking-with-pinpoint/">Tracking with Pinpoint</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180701your-first-dubbo-filter" href="/blog/2018/07/01/your-first-dubbo-filter/">Your First Dubbo Filter</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180623the-second-dubbo-shanghai-meetup-has-been-held-successfully" href="/blog/2018/06/23/the-second-dubbo-shanghai-meetup-has-been-held-successfully/">The second Dubbo meetup</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180512the-first-dubbo-meetup-has-been-held-in-beijing" href="/blog/2018/05/12/the-first-dubbo-meetup-has-been-held-in-beijing/">The first Dubbo meetup</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180502the-apachecon-na-schedule-has-been-announced" href="/blog/2018/05/02/the-apachecon-na-schedule-has-been-announced/">ApacheCon NA</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180425the-gsocgoogle-summer-of-code-2018" href="/blog/2018/04/25/the-gsocgoogle-summer-of-code-2018/">GSoC 2018</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20180422dubbo-roadmap-is-announced-in-qcon-beijing-2018" href="/blog/2018/04/22/dubbo-roadmap-is-announced-in-qcon-beijing-2018/">QCon Beijing 2018</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/blog/releases/" >Releases</a>
+  </li>
+  <ul>
+    <li class="collapse " id="blogreleases">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-blog20200518past-releases" href="/blog/2020/05/18/past-releases/">Past Releases</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+</div>
+
+<script>
+  $(function() {
+    $("#sidebarConsoleBtn").click(function () {
+      $("#sidebarContent").toggle();
+    });
+  });
+</script>
+
+
+
+  </div>
+  <div class="col-md-2 blogDocToc">
+    
+
+
+
+
+
+
+<div class="td-page-meta">
+
+
+
+
+
+
+<a href="https://github.com/nacos-group/nacos-group.github.io/issues/new?title=Dubbo&amp;#39;s%20Load%20Balance" target="_blank"><i class="fa fa-github fa-fw"></i> Create documentation issue</a>
+
+
+<a href="https://github.com/alibaba/nacos/issues/new" target="_blank"><i class="fa fa-tasks fa-fw"></i> Create project issue</a>
+
+</div>
+
+
+
+
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#concepts">Concepts</a></li>
+    <li><a href="#dubbos-internal-load-balancing-strategy">Dubbo&rsquo;s Internal Load Balancing Strategy</a>
+      <ul>
+        <li><a href="#1-random-load-balancing">1. Random Load Balancing</a></li>
+        <li><a href="#2-round-robin-load-balancing">2. Round Robin Load Balancing</a></li>
+        <li><a href="#3-minimum-active-call-load-balancing">3. Minimum Active Call Load Balancing</a></li>
+        <li><a href="#4-consistent-hash-algorithm">4. Consistent Hash Algorithm</a></li>
+      </ul>
+    </li>
+    <li><a href="#load-balancing-configuration">Load Balancing Configuration</a>
+      <ul>
+        <li><a href="#server-side-service-level">Server Side Service Level</a></li>
+        <li><a href="#client-side-service-level">Client Side Service Level</a></li>
+        <li><a href="#server-side-method-level">Server Side Method Level</a></li>
+        <li><a href="#client-side-method-level">Client Side Method Level</a></li>
+      </ul>
+    </li>
+    <li><a href="#extended-load-balancing">Extended Load Balancing</a></li>
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8 blogDocContent">
+      <main role="main">
+        <a class="btn btn-lg rssIcon" href="/blog/news/index.xml"
+           target="_blank">
+          RSS <i class="fa fa-rss ml-2 "></i>
+        </a>
+        
+
+
+<div class="row">
+  <div class="col-md-2">
+    <ul>
+      
+    </ul>
+  </div>
+  <div class="col-md-10">
+    
+  </div>
+</div>
+<div class="td-content">
+  <h1>Dubbo&#39;s Load Balance</h1>
+  
+  <div class="lead">This article introduces you what is load balance and how load balance strategy is implemented in Dubbo.</div>
+  
+  <div class="td-byline mb-4">
+    <time datetime="2018-08-10" class="text-muted">Friday, August 10, 2018</time>
+  </div>
+  
+  <h2 id="background">Background</h2>
+<p>Dubbo is a distributed service framework that avoids single point of failure and horizontal expansion of support services. A service typically deploys multiple instances. How to select a call from a cluster of multiple service providers involves a load balancing strategy.</p>
+<h2 id="concepts">Concepts</h2>
+<p>Before discussing load balancing, I will explain these three concepts first.</p>
+<ol>
+<li>Load Balancing</li>
+<li>Fault-tolerant Cluster</li>
+<li>Service Route</li>
+</ol>
+<p>These three concepts are confusing. They all describe how to choose from multiple Providers to make calls. So what is the difference between them? Let me give a simple example and explain these concepts clearly.</p>
+<p>There is a Dubbo user service, 10 deployed in Beijing and 20 deployed in Shanghai. A service consumer in Hangzhou initiated a call and then the following steps executed:</p>
+<ol>
+<li>According to the configured routing rule, if the call is initiated by Hangzhou, it will be routed to the nearest 20 Providers in Shanghai.</li>
+<li>According to the configured random load balancing strategy, one of the 20 Providers is randomly selected to be called, assuming that the 7th Provider is randomly selected.</li>
+<li>As a result, calling the 7th Provider failed.</li>
+<li>Retried other servers according to the configured Fault-tolerant Cluster mode.</li>
+<li>The call to the 13th Provider was successful.</li>
+</ol>
+<p>Steps 1, 2, and 4 above correspond to routing, load balancing, and fault-tolerant cluster. In Dubbo, a subset is selected by routing from multiple Providers according to routing rules, then a Provider selected from the subset according to load balancing to make this call. If the call fails, Dubbo retry or schedule retransmission or fail-fast according to the Fault-tolerant Cluster policy. You can see the routes in Dubbo, load balancing and Fault-tolerant Cluster exectute at different stages of an RPC call. The first stage is routing, then load balancing, and finally cluster fault tolerance. This document only discusses load balancing, routing and cluster fault tolerance are described in other documents.</p>
+<h2 id="dubbos-internal-load-balancing-strategy">Dubbo&rsquo;s Internal Load Balancing Strategy</h2>
+<p>Dubbo has four Internal Load Balancing Strategies:</p>
+<ol>
+<li>RandomLoadBalance: Random load balancing. Choose a Provider randomly. It is Dubbo&rsquo;s default load balancing strategy.</li>
+<li>Round Robin Load Balancing: Polling load balancing, then chooses one Provider.</li>
+<li>LeastActiveLoadBalance: The minimum number of active calls, the random number of the same active number. The active number refers to the difference before and after the call. Make slow providers receive fewer requests, because the slower Provider before and after the difference of calls will be larger.</li>
+<li>ConsistentHashLoadBalance: Consistent hash load balancing. Requests with the same parameters always fall on the same machine.</li>
+</ol>
+<h3 id="1-random-load-balancing">1. Random Load Balancing</h3>
+<p>As the name implies, the random load balancing strategy is to select one from multiple Providers randomly. However, random load balancing in Dubbo has a weighting concept that sets the random probability according to the weight. For example, there are 10 Providers, it&rsquo;s not to say that the probability of each Provider is the same, but to assign the probability by combining the weights of these 10 providers.</p>
+<p>In Dubbo, you can set weights on the Provider. For example, if the performance of the machine is better, you can set a larger weight. If the performance is poorer, you can set a smaller weight. Weights have an impact on load balancing. The weight of provider can be set in Dubbo Admin.</p>
+<h4 id="weight-based-load-balancing-algorithm">Weight-based Load Balancing Algorithm</h4>
+<p>The stochastic strategy will determine whether the weights of all the invokers are the same at first. If they are all the same, then the processing is relatively simple. Using <code>random.nexInt(length)</code>, you can randomly generate an invoker serial number, and select the corresponding invoker according to the serial number. If the service provider not set weight in Dubbo Admin, then all the invokers have the same weight, the default is 100. If the weights are different, then you need to combine the weights to set the random probability. The algorithm is probably as follows: If there are 4 invokers</p>
+<table>
+<thead>
+<tr>
+<th>Invoker</th>
+<th>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>10</td>
+</tr>
+<tr>
+<td>B</td>
+<td>20</td>
+</tr>
+<tr>
+<td>C</td>
+<td>20</td>
+</tr>
+<tr>
+<td>D</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<p>The total weight of A, B, C and D is 10 + 20 + 20 + 30 = 80. Spread 80 numbers in the following diagram:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">+-----------------------------------------------------------------------------------+
+|          |                    |                    |                              |
++-----------------------------------------------------------------------------------+
+1          10                   30                   50                             80
+
+|-----A----|---------B----------|----------C---------|---------------D--------------|
+
+
+---------------------15
+
+-------------------------------------------37
+
+-----------------------------------------------------------54
+</code></pre></div><p>There are four areas in the above picture, and the lengths are the weights of A, B, C and D, respectively. Use <code>random.nextInt(10 + 20 + 20 + 30)</code> to randomly select one of the 80 numbers. Then determine which area the number is distributed in. For example, if random to 37, 37 is distributed in the C region, then select inboker C. 15 is in the B area, 54 is in the D area.</p>
+<h4 id="random-load-balancing-source-code">Random load balancing Source code</h4>
+<p>Below is the source code for random load balancing. For ease of reading and understanding, I removed the extraneous parts.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">public class RandomLoadBalance extends AbstractLoadBalance {
+
+    private final Random random = new Random();
+
+    protected &lt;T&gt; Invoker&lt;T&gt; doSelect(List&lt;Invoker&lt;T&gt;&gt; invokers, URL url, Invocation invocation) {
+        int length = invokers.size();      // total invoker
+        int totalWeight = 0;               // Sum of invokers&#39; weights
+
+        // Determine if all the invokers have the same weight
+        // If the weights are the same, it is simple to generate an index directly from Random.
+        boolean sameWeight = true;
+        for (int i = 0; i &lt; length; i++) {
+            int weight = getWeight(invokers.get(i), invocation);
+            totalWeight += weight; // Sum
+            if (sameWeight &amp;&amp; i &gt; 0 &amp;&amp; weight != getWeight(invokers.get(i - 1), invocation)) {
+                sameWeight = false;
+            }
+        }
+
+        if (totalWeight &gt; 0 &amp;&amp; !sameWeight) {
+            // If not all of the invoker weights are the same, load balancer will randomly choose invoker based on its weight. The greater the weight, the greater the probability of being selected
+            int offset = random.nextInt(totalWeight);
+            for (int i = 0; i &lt; length; i++) {
+                offset -= getWeight(invokers.get(i), invocation);
+                if (offset &lt; 0) {
+                    return invokers.get(i);
+                }
+            }
+        }
+        // If all invokers have the same weight
+        return invokers.get(random.nextInt(length));
+    }
+}
+</code></pre></div><h3 id="2-round-robin-load-balancing">2. Round Robin Load Balancing</h3>
+<p>Round Robin Load Balancing, is to call all Providers in turn. As with random load balancing strategies, Round Robin Load Balancing policies also has a weighting concept. The Round Robin Load Balancing algorithm allows RPC calls to be allocated exactly as we set. Whether it is a small or large number of calls. However, there are also some shortcomings in the Round Robin Load Balancing algorithm. There is a problem that the slow provider accumulates the request. For example, the second machine is slow, but it is not crashed. When the request is transferred to the second machine, it is stuck. Over time, all The request get stuck on the second machine, causing the entire system to slow down.</p>
+<h3 id="3-minimum-active-call-load-balancing">3. Minimum Active Call Load Balancing</h3>
+<p>Official explanation:</p>
+<blockquote>
+<p>The active number refers to the difference between the counts before and after the call. Select the machine with the minimum number of active calls or choose a random one among machines with the same active number, so that the slower machine can receives less requests.</p>
+</blockquote>
+<p>This explanation seems to be ambigious. We know the purpose is to ensure the slower machine receive less requests, but it is not clear how to achieve it. An example is here: each service maintains an active number counter. When A machine starts processing the request, the counter is incremented by 1. At this time, A is still processing. If the processing is completed, the counter is decremented by 1. B machine processes very quickly after receiving the request. Then the active numbers of A and B are 1,0 respectively. When a new request is generated, the B machine is selected for execution (as B has the minimum active number), so that the slower machine A receives fewer requests.</p>
+<p>When processing a new request, Consumer will check the active number of all Providers. If there is only one Invoker with the minimum active number, the Invoker is returned directly.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if (leastCount == 1) {
+    // if there is only one minimum value then return directly
+    return invokers.get(leastIndexs[0]);
+}
+</code></pre></div><p>If there are multiple Invokers with the minimum active number, plus the weights are not equal and the total weight is greater than 0, then generate a random weight ranging from 0 to totalWeight. Finally, the Invoker is selected based on the randomly generated weights.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">if (! sameWeight &amp;&amp; totalWeight &gt; 0) {
+    // if the weights are not equal and the toatl weight is greater than 0 then choose randomly according to total weight
+
+    int offsetWeight = random.nextInt(totalWeight);
+
+    // and determine which segment the random value falls on.
+
+    for (int i = 0; i &lt; leastCount; i++) {
+        int leastIndex = leastIndexs[i];
+        offsetWeight -= getWeight(invokers.get(leastIndex), invocation);
+        if (offsetWeight &lt;= 0)
+            return invokers.get(leastIndex);
+    }
+}
+</code></pre></div><h3 id="4-consistent-hash-algorithm">4. Consistent Hash Algorithm</h3>
+<p>Use consistent hash algorithm to ensure that requests with same parameters are always sent to the same Provider. When a Provider crashes, requests originally sent to the Provider is spread evenly to other Providers based on the virtual node without causing drastic changes. The algorithm can be seen at: <a href="http://en.wikipedia.org/wiki/Consistent_hashing">http://en.wikipedia.org/wiki/Consistent_hashing</a></p>
+<p>By default, only the first parameter is hashed. Configure if you would like to modify it:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;dubbo:parameter key=&#34;hash.arguments&#34; value=&#34;0,1&#34; /&gt;
+</code></pre></div><p>By default, 160 virtual nodes are used. Configure if you would like to modify it:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;dubbo:parameter key=&#34;hash.nodes&#34; value=&#34;320&#34; /&gt;
+</code></pre></div><p>Consistent hash algorithms can be used in conjunction with caching mechanisms. For example, there is a service getUserInfo(String userId). After the hash algorithm is set, the same userId call is sent to the same Provider. This Provider can cache user data in memory, reducing the number of accesses to the database or distributed cache. If this part of the data is allowed to be inconsistent for some time, this approach can be considered. The number of dependencies and accesses to middleware such as databases, caches, etc. and network IO operations is reduced, while the system performance is improved.</p>
+<h2 id="load-balancing-configuration">Load Balancing Configuration</h2>
+<p>If load balancing is not specified, random load balancing is used by default. Load balancing can also be explicitly specified based on our needs. Load balancing can be configured in multiple local classes, such as Provider Side, Consumer Side, Service Level, and Method Level.</p>
+<h3 id="server-side-service-level">Server Side Service Level</h3>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;dubbo:service interface=&#34;...&#34; loadbalance=&#34;roundrobin&#34; /&gt;
+</code></pre></div><p>All methods of the service use roundrobin load balancing.</p>
+<h3 id="client-side-service-level">Client Side Service Level</h3>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;dubbo:reference interface=&#34;...&#34; loadbalance=&#34;roundrobin&#34; /&gt;
+</code></pre></div><p>All methods of the service use roundrobin load balancing.</p>
+<h3 id="server-side-method-level">Server Side Method Level</h3>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;dubbo:service interface=&#34;...&#34;&gt;
+    &lt;dubbo:method name=&#34;hello&#34; loadbalance=&#34;roundrobin&#34;/&gt;
+&lt;/dubbo:service&gt;
+</code></pre></div><p>Only the hello method of the service uses roundrobin load balancing.</p>
+<h3 id="client-side-method-level">Client Side Method Level</h3>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;dubbo:reference interface=&#34;...&#34;&gt;
+    &lt;dubbo:method name=&#34;hello&#34; loadbalance=&#34;roundrobin&#34;/&gt;
+&lt;/dubbo:reference&gt;
+</code></pre></div><p>Only the hello method of the service uses roundrobin load balancing.</p>
+<p>Similar to other Dubbo configurations, multiple configurations are covered:</p>
+<ol>
+<li>The method level takes precedence, the interface level is next, and the global configuration comes last.</li>
+<li>If the level is the same, the Consumer is given priority and the Provider is next</li>
+</ol>
+<p>Therefore, the priority of the above four configurations is:</p>
+<ol>
+<li>Client side method level configuration.</li>
+<li>Client side interface level configuration.</li>
+<li>Server side method level configuration.</li>
+<li>Server side interface level configuration.</li>
+</ol>
+<h2 id="extended-load-balancing">Extended Load Balancing</h2>
+<p>Four load balancing implementations of Dubbo meet the requirements in most cases. Sometimes, we may need to implement our own load balancing strategy because of the needs of the business. This chapter only explains how to configure the load balancing algorithm. For more on the Dubbo extension mechanism, go to the Dubbo extension mechanism practice.</p>
+<ol>
+<li>Implementing the LoadBalance interface</li>
+</ol>
+<p>The following is Dubbo&rsquo;s LoadBalance interface:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">@SPI(RandomLoadBalance.NAME)
+public interface LoadBalance {
+    @Adaptive(&#34;loadbalance&#34;)
+    &lt;T&gt; Invoker&lt;T&gt; select(List&lt;Invoker&lt;T&gt;&gt; invokers, URL url, Invocation invocation) throws RpcException;
+}
+</code></pre></div><p>This is the interface of the SPI. The parameters of the select method are as follows:</p>
+<ul>
+<li>invokers: A list of all service Providers.</li>
+<li>url: Some configuration information, such as interface name, check or not, serialization.</li>
+<li>invocation: Information called by the RPC, including the method name, method parameter type, and method parameters. Here is a LoadBalance implemented by us. The implementation is very simple - Choose the first Invoker:</li>
+</ul>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#719e07">package</span> com.demo.dubbo;
+public class DemoLoadBalance implements LoadBalance {
+    @Override
+    public &lt;T&gt; Invoker&lt;T&gt; <span style="color:#719e07">select</span>(List&lt;Invoker&lt;T<span style="color:#719e07">&gt;&gt;</span> invokers, URL url, Invocation invocation) throws RpcException {
+        System.out.<span style="color:#b58900">println</span>(<span style="color:#2aa198">&#34;[DemoLoadBalance]Select the first invoker...&#34;</span>);
+        <span style="color:#719e07">return</span> invokers.<span style="color:#268bd2">get</span>(<span style="color:#2aa198">0</span>);
+    }
+}
+</code></pre></div><ol start="2">
+<li>Add a resource file</li>
+</ol>
+<p>Add a file:
+<code>src/main/resource/META-INF/dubbo/com.alibaba.dubbo.rpc.cluster.LoadBalance</code>
+This is a simple text file. The file contents are as follows:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">demo=my=com.demo.dubbo.DemoLoadBalance
+</code></pre></div><ol start="3">
+<li>Configure to use custom LoadBalance</li>
+</ol>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">&lt;dubbo:reference id=&#34;helloService&#34; interface=&#34;com.demo.dubbo.api.IHelloService&#34; loadbalance=&#34;demo&#34; /&gt;
+</code></pre></div><p>Configure  <code>&lt;loadbalance=&quot;demo&quot;&gt;</code> in <code>dubbo:reference</code> at the Consumer side.</p>
+<p>After 3 steps above, we wrote a custom LoadBalance and told Dubbo to use it. Start Dubbo and we can see that Dubbo has used a custom DemoLoadBalance.</p>
+
+  
+  
+</div>
+
+
+      </main>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  
+</section>
+
+  
+
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <img src="/images/nacos_gray.png"/>
+    <div class="row">
+      <div class="col-md-6"><h3>Vision</h3>
+        <p>By providing an easy-to-use service infrastructure such as dynamic service
+            discovery, service configuration, service sharing and management and etc., Nacos help users better
+            construct, deliver and manage their own service platform, reuse and composite business service
+            faster and deliver value of business innovation more quickly so as to win market for users in the
+            era of cloud native and in all cloud environments, such as private, mixed, or public clouds.</p></div>
+      <div class="col-md-3">
+        <dl>
+          <dt>Documentation</dt>
+          
+          <dd><a href="/en-us/docs/what-is-nacos.html" target="_self">Overview</a></dd>
+          
+          <dd><a href="/en-us/docs/quick-start.html" target="_self">Quick start</a></dd>
+          
+          <dd><a href="/en-us/docs/contributing.html" target="_self">Developer guide</a></dd>
+          
+        </dl>
+      </div>
+      <div class="col-md-3">
+        <dl>
+          <dt>Resources</dt>
+          
+          <dd><a href="/en-us/community/index.html" target="_self">Community</a></dd>
+          
+          <dd><a href="https://cn.aliyun.com/product/aliware/mse?spm=nacos-website.topbar.0.0.0" target="_self">Cloud Service MSE</a></dd>
+          
+          <dd><a href="https://www.aliyun.com/product/edas?source_type=nacos_pc_20181219" target="_self">Cloud Service EDAS</a></dd>
+          
+          <dd><a href="https://www.aliyun.com/product/ahas?source_type=nacos_pc_20190225" target="_self">Cloud Service AHAS</a></dd>
+          
+        </dl>
+      </div>
+    </div>
+    <div class="col-md-12 text-center copyright">
+      <span>© 2018 The Nacos Authors | An Alibaba Middleware (Aliware) Project</span>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+<script type="text/javascript">
+  ;(function () {
+    $('#fh5co-header').addClass('navbar-fixed-top fh5co-animated slideInDown');
+    $('#nacosLogo').attr("src", "/images/nacos_colorful.png")
+  }());
+</script>
+</html>

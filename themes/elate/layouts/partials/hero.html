@@ -1,0 +1,59 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $config := $data.config }}
+<section id="fh5co-home" data-section="home">
+  <div class="gradient"></div>
+  <div class="container">
+    <div class="text-wrap">
+      <div class="text-inner">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <h1 class="to-animate nacos-info-img">{{ with $config.params.hero.title }}{{ . | markdownify }}{{ end }}</h1>
+            <h2 class="to-animate">{{ with $config.params.hero.subtitle }}{{ . | markdownify }}{{ end }}</h2>
+            <div class="margin-top-15">
+              {{ range $config.params.hero.buttons }}
+              <a href="{{ .link }}" class="btn {{ .type }} margin-right-15"{{ if .isTargetBlank}} target="_blank"{{ end }}>{{ .text }}</a>
+              {{ end }}
+            </div>
+            {{ if $config.params.hero.github }}
+            <div class="github-buttons">
+              <a href="{{ $config.params.hero.github.link }}" target="_blank">
+                <div class="star">
+                  <img src="https://img.alicdn.com/tfs/TB1FlB1JwHqK1RjSZFPXXcwapXa-32-32.png">
+                  <span id="starCount" class="count">0</span>
+                </div>
+              </a>
+              <a href="{{ $config.params.hero.github.link }}/fork" target="_blank">
+                <div class="fork">
+                  <img src="https://img.alicdn.com/tfs/TB1zbxSJwDqK1RjSZSyXXaxEVXa-32-32.png">
+                  <span id="forkCount" class="count">0</span>
+                </div>
+              </a>
+            </div>
+            {{ end }}
+            <div class="version-note">
+              {{ range $config.params.hero.versionNote }}
+              <a target="_blank" href="{{ .link }}">{{ .text }}</a>
+              {{ end }}
+            </div>
+            <div class="release-date">{{ $config.params.hero.releaseDate }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slant"></div>
+  <div class="animation animation1"></div>
+  <div class="animation animation2"></div>
+  <div class="animation animation3"></div>
+  <div class="animation animation4"></div>
+  <div class="animation animation5"></div>
+</section>
+<script type="text/javascript">
+  ;(function () {
+    var githubApiLink = {{ $config.params.hero.github.apiLink }}
+    $.getJSON(githubApiLink, function(data){
+      $("#starCount").html(data.stargazers_count);
+      $("#forkCount").html(data.forks_count);
+    });
+  }());
+</script>

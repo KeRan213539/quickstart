@@ -1,0 +1,44 @@
+{{/* We cache this partial for bigger sites and set the active class client side. */}}
+{{ $shouldDelayActive := ge (len .Site.Pages) 2000 }}
+<a href="#" id="sidebarConsoleBtn"><i class="fa fa-bars fa-fw"></i></a>
+<div id="sidebarContent">
+  {{ $navRoot := cond (and (ne .Params.toc_root true) (eq .Site.Home.Type "docs")) .Site.Home .FirstSection }}
+  {{ template "section-tree-nav-section" (dict "page" . "section" $navRoot "delayActive" $shouldDelayActive)  }}
+</div>
+{{ define "section-tree-nav-section" }}
+{{ $s := .section }}
+{{ $p := .page }}
+{{ $shouldDelayActive := .delayActive }}
+{{ $active := eq $p.CurrentSection $s }}
+{{ $show := or (and (not $p.Site.Params.ui.sidebar_menu_compact) ($p.IsAncestor $s)) ($p.IsDescendant $s) }}
+{{ $sid := $s.RelPermalink | anchorize }}
+<ul>
+  <li>
+    <a{{ if $active }} class="active"{{ end }} href="{{ $s.RelPermalink }}" >{{ $s.LinkTitle }}</a>
+  </li>
+  <ul>
+    <li class="collapse {{ if $show }}show{{ end }}" id="{{ $sid }}">
+      {{ $pages := where (union $s.Pages $s.Sections).ByWeight ".Params.toc_hide" "!=" true }}
+      {{ $pages := $pages | first 50 }}
+      {{ range $pages }}
+      {{ if (not (and (eq $s $p.Site.Home) (eq .Params.toc_root true))) }}
+        {{ if .IsPage }}
+          {{ $mid := printf "m-%s" (.RelPermalink | anchorize) }}
+          {{ $active := eq . $p }}
+          <a id="{{ $mid }}"{{ if and (not $shouldDelayActive) $active }} class="active2"{{ end }} href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        {{ else }}
+          {{ template "section-tree-nav-section" (dict "page" $p "section" .) }}
+        {{ end }}
+      {{ end }}
+      {{ end }}
+    </li>
+  </ul>
+</ul>
+{{ end }}
+<script>
+  $(function() {
+    $("#sidebarConsoleBtn").click(function () {
+      $("#sidebarContent").toggle();
+    });
+  });
+</script>

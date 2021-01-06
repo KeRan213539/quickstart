@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>
+<html class="no-js"> <![endif]-->
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $config := $data.config }}
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  {{ partial "head.html" .}}
+  <meta name="referrer" content="no-referrer"/>
+  <link rel="shortcut icon" href="https://img.alicdn.com/tfs/TB1hgJpHAPoK1RjSZKbXXX1IXXa-64-64.png"/>
+  {{ partial "js.html" .}}
+</head>
+<body>
+	{{ partial "nav.html" .}}
+	
+	{{ partial "hero.html" .}}
+	
+	{{ partial "intro.html" .}}
+	
+	{{ if $config.params.work.enable }}
+		{{ partial "work.html" .}}
+	{{ end }}
+	
+	{{ if $config.params.services.enable }}
+		{{ partial "services.html" .}}
+	{{ end }}
+	
+	{{ if $config.params.testimonials.enable }}
+		{{ partial "testimonials.html" .}}
+	{{ end }}
+	
+	{{ if $config.params.about.enable }}
+		{{ partial "about.html" .}}
+	{{ end }}
+	
+	{{ if $config.params.whoisusing.enable }}
+		{{ partial "whoisusing.html" .}}
+	{{ end }}
+	
+	{{ if $config.params.counters.enable }}
+		{{ partial "counters.html" .}}
+	{{ end }}
+	
+	{{ if $config.params.contact.enable }}
+		{{ partial "contact.html" .}}
+	{{ end }}
+	
+	{{ if $config.params.footer.enable }}
+		{{ partial "footer.html" .}}
+	{{ end }}
+</body>
+<script type="text/javascript">
+	// Window Scroll
+	var windowScroll = function() {
+		var lastScrollTop = 0;
+		
+		$(window).scroll(function(event){
+			
+			var header = $('#fh5co-header'),
+					scrlTop = $(this).scrollTop();
+			
+			if ( scrlTop > 500 && scrlTop <= 2000 ) {
+				header.addClass('navbar-fixed-top fh5co-animated slideInDown');
+				$('#nacosLogo').attr("src", "/images/nacos_colorful.png")
+			} else if ( scrlTop <= 500) {
+				if ( header.hasClass('navbar-fixed-top') ) {
+					header.addClass('navbar-fixed-top fh5co-animated slideOutUp');
+					$('#nacosLogo').attr("src", "/images/nacos_colorful.png")
+					setTimeout(function(){
+						header.removeClass('navbar-fixed-top fh5co-animated slideInDown slideOutUp');
+						$('#nacosLogo').attr("src", "/images/nacos.png")
+					}, 100 );
+				}
+			}
+			
+		});
+	};
+	windowScroll();
+</script>
+</html>

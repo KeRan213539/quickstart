@@ -1,0 +1,84 @@
+# 页面设置
+baseurl = "/"
+title = "Nacos"
+languageCode = "en-us"
+theme = "elate"
+
+enableGitInfo = true
+enableRobotsTXT = true
+# Language settings
+contentDir = "content/en"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+## Useful when translating.
+enableMissingTranslationPlaceholders = true
+
+disableKinds = ["taxonomy", "taxonomyTerm"]
+[languages]
+    [languages.en]
+        title = "Nacos"
+        description = "Nacos Official Website"
+        languageName = "English"
+        # Weight used for sorting.
+        weight = 1
+
+    [languages.zh]
+        title = "Nacos"
+        description = "Nacos 官方网站"
+        languageName = "中文"
+        contentDir = "content/zh"
+
+# Highlighting config
+pygmentsCodeFences = true
+pygmentsUseClasses = false
+# Use the new Chroma Go highlighter in Hugo.
+pygmentsUseClassic = false
+#pygmentsOptions = "linenos=table"
+# See https://help.farbox.com/pygments.html
+pygmentsStyle = "tango"
+
+[permalinks]
+blog = "/:section/:year/:month/:day/:slug/"
+
+## Configuration for BlackFriday markdown parser: https://github.com/russross/blackfriday
+[blackfriday]
+plainIDAnchors = true
+hrefTargetBlank = true
+angledQuotes = false
+latexDashes = true
+
+# Image processing configuration.
+[imaging]
+resampleFilter = "CatmullRom"
+quality = 75
+anchor = "smart"
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+[markup.highlight]
+# See a complete list of available styles at https://xyproto.github.io/splash/docs/all.html
+style = "solarized-dark"
+# Uncomment if you want your chosen highlight style used for code blocks without a specified language
+guessSyntax = "true"
+
+[sitemap]
+changefreq = "monthly"
+filename = "sitemap.xml"
+priority = 0.5
+
+[params]
+github_repo = "https://github.com/nacos-group/nacos-group.github.io"
+# An optional link to a related project repo. For example, the sibling repository where your product code lives.
+github_project_repo = "https://github.com/alibaba/nacos"
+
+[params.ui]
+# Enable to show the side bar menu in its compact state.
+sidebar_menu_compact = true
+
+[params.ui.feedback]
+enable = true
+# The responses that the user sees after clicking "yes" (the page was helpful) or "no" (the page was not helpful).
+yes = 'Glad to hear it! Please <a href="https://github.com/apache/dubbo-website/issues/new">tell us how we can improve</a>.'
+no = 'Sorry to hear that. Please <a href="https://github.com/apache/dubbo-website/issues/new">tell us how we can improve</a>.'

@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ if .Parent.IsHome }}
+{{ $.Scratch.Set "blog-pages" (where .Site.RegularPages "Section" .Section) }}
+{{ else }}
+{{$.Scratch.Set "blog-pages" .Pages }}
+{{ end }}
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $config := $data.config }}
+<div class="col-md-12">
+  {{- if .Pages -}}
+  {{ $pag := .Paginate (( $.Scratch.Get "blog-pages").GroupByDate "2006")}}
+  {{ range $pag.PageGroups }}
+  <h2>{{ T "post_posts_in" }} {{ .Key }}</h2>
+  <ul id="blogList" class="list-unstyled">
+    {{ range .Pages }}
+    <li class="panel panel-primary">
+      <div class="panel-heading">
+        <h5 class="panel-title"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h5>
+      </div>
+      <div class="panel-body">
+        <p class=""><small class="text-muted">{{ .Date.Format ($config.params.time_format_blog) }} {{ T "ui_in"}} {{ .CurrentSection.LinkTitle }}</small></p>
+        {{ partial "featured-image.html" (dict "p" . "w" 250 "h" 125 "class" "float-left mr-3 pt-1 d-none d-md-block") }}
+        <p class="">{{ .Plain | safeHTML | truncate 250 }}</p>
+        <p class=""><h5><a href="{{ .RelPermalink }}">{{ T "ui_read_more"}}</a></h5></p>
+      </div>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+  {{ end }}
+</div>
+<div class="col-md-12">
+  {{ if .Pages }}
+  {{ template "_internal/pagination.html" . }}
+  {{ end }}
+</div>
+{{ end }}

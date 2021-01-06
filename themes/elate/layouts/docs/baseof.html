@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>
+<html class="no-js"> <![endif]-->
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $config := $data.config }}
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  {{ partial "head.html" .}}
+  <meta name="referrer" content="no-referrer"/>
+  <link rel="shortcut icon" href="https://img.alicdn.com/tfs/TB1hgJpHAPoK1RjSZKbXXX1IXXa-64-64.png"/>
+  {{ partial "js.html" .}}
+</head>
+<body>
+{{ partial "nav.html" .}}
+<section class="animated">
+  <div class="col-md-2 blogDocSidebar">
+    {{ partial "sidebar.html" . }}
+  </div>
+  <div class="col-md-2 blogDocToc">
+    {{ partial "toc.html" . }}
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8 blogDocContent">
+      {{ block "main" . }}{{ end }}
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  
+</section>
+{{ if $config.params.footer.enable }}
+  {{ partial "footer.html" .}}
+{{ end }}
+</body>
+<script type="text/javascript">
+  ;(function () {
+    $('#fh5co-header').addClass('navbar-fixed-top fh5co-animated slideInDown');
+    $('#nacosLogo').attr("src", "/images/nacos_colorful.png")
+  }());
+</script>
+</html>

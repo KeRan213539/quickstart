@@ -1,0 +1,30 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $config := $data.config }}
+<section id="fh5co-intro">
+		<div class="container">
+			<div class="row row-bottom-padded-lg">
+				{{ range $config.params.intro.item }}
+				<div class="fh5co-block to-animate">
+					<div class="overlay-darker"></div>
+					<div class="overlay"></div>
+					<div class="fh5co-text">
+						<img class="features-img" src="{{ .img }}" />
+						<h2>{{ .title }}</h2>
+						<p>{{ .description }}</p>
+						{{ if .button}}
+						<p><a href="{{ .url }}" class="btn btn-primary">{{ .button}}</a></p>
+						{{ end }}
+					</div>
+				</div>
+				{{ end }}
+			</div>
+			{{ if $config.params.intro.video.enable }}
+			<div class="row watch-video text-center to-animate">
+				<!-- <span>{{ with $config.params.intro.video }}{{ . }}{{ end }}</span> -->
+				<span>{{$config.params.intro.video.title | markdownify }}</span>
+
+				<a href="{{ $config.params.intro.video.url }}" class="popup-vimeo btn-video"><i class="{{ $config.params.intro.video.icon | markdownify }}"></i></a>
+			</div>
+			{{ end }}
+		</div>
+	</section>

@@ -1,0 +1,55 @@
+{{ $data := index .Site.Data .Site.Language.Lang }}
+{{ $config := $data.config }}
+    <header role="banner" id="fh5co-header">
+        <div class="container">
+            <!-- <div class="row"> -->
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <!-- Mobile Toggle Menu Button -->
+                    <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+                    <a class="navbar-brand" href="index.html"><img id="nacosLogo" src="/images/nacos.png"></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    {{ $p := . }}
+                    {{ range $config.menu.prepend }}
+                        <li><a class="external" href="{{ .url }}"><span>{{ .name | markdownify }}</span></a></li>
+                    {{ end }}
+                    {{ if $p.IsHome }}
+                    <li class="active"><a href="#" data-nav-section="home"><span>{{ with $config.params.navigation.home }}{{ . | markdownify }}{{ end }}</span></a></li>
+                    {{ else }}
+                    <li><a class="external" href="/"><span>{{ with $config.params.navigation.home }}{{ . | markdownify }}{{ end }}</span></a></li>
+                    {{ end }}
+                    
+                    {{ if $config.params.navigation.work }}
+                    <li><a href="#" data-nav-section="work"><span>{{ with $config.params.navigation.work }}{{ . | markdownify }}{{ end }}</span></a></li> 
+                    {{ end }}
+
+                    {{ if $config.params.navigation.testimonials }}
+                    <li><a href="#" data-nav-section="testimonials"><span>{{ with $config.params.navigation.testimonials }}{{ . | markdownify }}{{ end }}</span></a></li> 
+                    {{ end }}
+
+                    {{ if $config.params.navigation.services }}
+                    <li><a href="#" data-nav-section="services"><span>{{ with $config.params.navigation.services }}{{ . | markdownify }}{{ end }}</span></a></li> 
+                    {{ end }}
+
+                    {{ if $config.params.navigation.about }}
+                    <li><a href="#" data-nav-section="about"><span>{{ with $config.params.navigation.about }}{{ . | markdownify }}{{ end }}</span></a></li> 
+                    {{ end }}
+
+                    {{ if $config.params.navigation.contact }}
+                    <li><a href="#" data-nav-section="contact"><span>{{ with $config.params.navigation.contact }}{{ . | markdownify }}{{ end }}</span></a></li> 
+                    {{ end }}
+
+                    {{ range $config.menu.postpend }}
+                        <li{{ if eq $p.Type .type }} class="active"{{ end }}><a class="external" href="{{ .url }}"><span>{{ .name | markdownify }}</span></a></li>
+                    {{ end }}
+                    <li>
+                      {{ partial "nav-lang-selector.html" .}}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- </div> -->
+    </div>
+</header>

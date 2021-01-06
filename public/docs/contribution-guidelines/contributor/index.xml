@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Contributor Guide on Nacos</title>
+    <link>/docs/contribution-guidelines/contributor/</link>
+    <description>Recent content in Contributor Guide on Nacos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/docs/contribution-guidelines/contributor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to become a Dubbo committer</title>
+      <link>/docs/contribution-guidelines/contributor/become-a-committer_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/contribution-guidelines/contributor/become-a-committer_dev/</guid>
+      <description>Anyone can be a contributor to an Apache project. Being a contributor simply means that you take an interest in the project and contribute in some way, ranging from asking sensible questions (which documents the project and provides feedback to developers) through to providing new features as patches.
+If you become a valuable contributor to the project you may well be invited to become a committer. Committer is a term used at the ASF to signify someone who is committed to a particular project.</description>
+    </item>
+    
+    <item>
+      <title>CLA Signing Guide</title>
+      <link>/docs/contribution-guidelines/contributor/cla-signing-guide_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/contribution-guidelines/contributor/cla-signing-guide_dev/</guid>
+      <description>You are required to sign the Apache ICLA under the following condition:
+ You have made lots of contribution to Dubbo before Dubbo get donated to Apache, and you haven&amp;rsquo;t sign the Alibaba-CLA before. You have made lots of contribution to Dubbo, and you are invited to become committer of Dubbo, and you have not signed Alibaba-CLA or Apache ICLA before.  Steps  Download this pdf Fill in the necessary blanks Print it out Sign the printed file Scan it Send an email to secretary@apache.</description>
+    </item>
+    
+    <item>
+      <title>New Contributor Guide</title>
+      <link>/docs/contribution-guidelines/contributor/new-contributor-guide_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/contribution-guidelines/contributor/new-contributor-guide_dev/</guid>
+      <description>This is a guide for new comers who wants to contribute to Dubbo.
+Subscribe to the mailing list The mailing list is the recommended way for discussing almost anything that related to Dubbo. Please refer to this issue for detailed documentation on how to subscribe.
+To subscribe to the following mailing list, please refer to Mailing list subscription guide
+ dev@dubbo.apache.org: the develop mailing list, you can ask question here if you have encountered any problem when using or developing Dubbo.</description>
+    </item>
+    
+    <item>
+      <title>Mailing List Subscription Guide</title>
+      <link>/docs/contribution-guidelines/contributor/mailing-list-subscription-guide_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/contribution-guidelines/contributor/mailing-list-subscription-guide_dev/</guid>
+      <description>The Dubbo developer mailing list (dev@dubbo.apache.org) for Apache Incubator has been established, please feel free to subscribe and refer to [^1] for more details.
+You can also view the archive of the mailing list
+Here is a brief guide specific to Dubbo:
+ Send an email to dev-subscribe@dubbo.apache.org, you can have empty subject and empty content. You will receive an email with the following content:  from: dev-help@dubbo.apache.org reply-to: dev-sc.xxxxxxx.xxxxxxxx-hello=example.com@dubbo.apache.org to: hello@example.</description>
+    </item>
+    
+    <item>
+      <title>Software Donation Guide</title>
+      <link>/docs/contribution-guidelines/contributor/software-donation-guide_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/contribution-guidelines/contributor/software-donation-guide_dev/</guid>
+      <description>Before you go through this guide, make sure you have confirmed with PMC that a SGA is actually needed.
+If you are donating significant amount of code or documentation to Apache Dubbo , you will be required to sign a Software Grant before your code/doc could be merged.
+Steps  Download this pdf Print it out Fill in the blanks (see below as an example) Request your boss to sign it Scan it Send an email to secretary@apache.</description>
+    </item>
+    
+    <item>
+      <title>Reporting Security Issues</title>
+      <link>/docs/contribution-guidelines/contributor/reporting-security-issues_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/contribution-guidelines/contributor/reporting-security-issues_dev/</guid>
+      <description>The Apache Software Foundation takes a rigorous standpoint in annihilating the security issues in its software projects. Apache Dubbo is highly sensitive and forthcoming to issues pertaining to its features and functionality.
+REPORTING VULNERABILITY If you have apprehensions regarding Dubbo&amp;rsquo;s security or you discover vulnerability or potential threat, don’t hesitate to get in touch with the Apache Dubbo Security Team by dropping a mail at security@dubbo.apache.org. In the mail, specify the description of the issue or potential threat.</description>
+    </item>
+    
+    <item>
+      <title>Extension Guide</title>
+      <link>/docs/contribution-guidelines/contributor/dubbo-extension-guide_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/contribution-guidelines/contributor/dubbo-extension-guide_dev/</guid>
+      <description>Dubbo Use microkernel + plugin design pattern. Microkernel is only responsible for assembling plugins, the functions of Dubbo are implemented by extension points(plugins), which means that all functions of Dubbo can be replaced by user customized extension.
+Dubbo Ecosystem We recommend you to put extension to Dubbo ecosystem. Using this pattern will keep the core repository cleaner and decrease the maintains work. With less code also speed up core repository build process.</description>
+    </item>
+    
+    <item>
+      <title>Test Coverage Guide</title>
+      <link>/docs/contribution-guidelines/contributor/test-coverage-guide_dev/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/contribution-guidelines/contributor/test-coverage-guide_dev/</guid>
+      <description>The benefits of unit testing  Unit test code can help everyone to go into details and understand the function of the code. We can find bugs by test case, and then enhance the robustness of the code. Test case code is also the demo usage of the core code.  Some design principle of unit test case  Steps, fine-grained and combination conditions should be well designed. Attention to boundary condition test Test code should also be designed without writing useless code.</description>
+    </item>
+    
+  </channel>
+</rss>

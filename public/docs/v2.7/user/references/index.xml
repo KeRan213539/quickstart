@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>References on Nacos</title>
+    <link>/docs/v2.7/user/references/</link>
+    <description>Recent content in References on Nacos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/docs/v2.7/user/references/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Metadata Reference</title>
+      <link>/docs/v2.7/user/references/metadata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/metadata/</guid>
+      <description>Background There are close to 30 configurations in dubbo provider. Excluding registry center governance requirements, a large part of configurations are used by the provider itself and do not need to be delivered to the consumer. This part of the data does not need to be written to the registry, but only needs to be persisted as key-value. There are also 20+ configurations in dubbo consumer. In the registry center, only a few configurations such as application, version, group, ip, dubbo version are needed in the list of service consumers.</description>
+    </item>
+    
+    <item>
+      <title>API Reference</title>
+      <link>/docs/v2.7/user/references/api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/api/</guid>
+      <description>Generally speaking, dubbo keeps its functionality no intrusive as much as possible, but for some particular features, there&amp;rsquo;s no other way not only API can achieve. WarningDo not rely on APIs other than what&amp;rsquo;re mentioned here, otherwise your application may face the risk of incompatibility after upgrade dubbo.These APIs are summarized here below:
+Configuration API org.apache.dubbo.config.ServiceConfig org.apache.dubbo.config.ReferenceConfig org.apache.dubbo.config.ProtocolConfig org.apache.dubbo.config.RegistryConfig org.apache.dubbo.config.MonitorConfig org.apache.dubbo.config.ApplicationConfig org.apache.dubbo.config.ModuleConfig org.apache.dubbo.config.ProviderConfig org.apache.dubbo.config.ConsumerConfig org.apache.dubbo.config.MethodConfig org.apache.dubbo.config.ArgumentConfig Pls. refer to API Configuration for further information.</description>
+    </item>
+    
+    <item>
+      <title>Qos Command Usage </title>
+      <link>/docs/v2.7/user/references/qos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/qos/</guid>
+      <description>In dubbo 2.5.8 a new QOS module is introduced, to provide new telnet command support.
+Port the port of new version telnet is different from the port of dubbo protocol. The default port is 22222, which can be changed by modifying configuration file dubbo.properties
+dubbo.application.qos.port=33333 or by modifying the JVM parameter
+-Ddubbo.application.qos.port=33333 Safety By default, dubbo can receive any command sent from the host, which can be changed by modifying the configuration file dubbo.</description>
+    </item>
+    
+    <item>
+      <title>Telnet Command Reference</title>
+      <link>/docs/v2.7/user/references/telnet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/telnet/</guid>
+      <description>Since 2.0.5 dubbo starts supporting to use telnet command to govern services.
+How To Use telnet localhost 20880 Or:
+echo status | nc -i 1 localhost 20880 It is possible to extend command status to check more resources, pls. refer to extension references for more details.
+Supported Commands The built-in telnet commands are listed below. Furthermore, it is possible to extend telnet commands, pls. refer to extend telnet command for more details.</description>
+    </item>
+    
+    <item>
+      <title>Maven Plugin Reference</title>
+      <link>/docs/v2.7/user/references/maven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/docs/v2.7/user/references/maven/</guid>
+      <description>Start a simple registry server Start a simple registry server listening on port 9099:
+InfoDefault port is 9090 if the port is not specifiedmvn dubbo:registry -Dport=9099 Generate a service provider demo application Generate a service provider with the specified interface and version:
+mvn dubbo:create -Dapplication=xxx -Dpackage=com.alibaba.xxx -Dservice=XxxService,YyyService -Dversion=1.0.0 </description>
+    </item>
+    
+  </channel>
+</rss>

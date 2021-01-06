@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>参考手册 on Nacos</title>
+    <link>/zh/docs/v2.7/user/references/</link>
+    <description>Recent content in 参考手册 on Nacos</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/zh/docs/v2.7/user/references/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>元数据参考手册</title>
+      <link>/zh/docs/v2.7/user/references/metadata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/references/metadata/</guid>
+      <description>背景 dubbo provider中的服务配置项有接近30个配置项。 排除注册中心服务治理需要之外，很大一部分配置项是provider自己使用，不需要透传给消费者。这部分数据不需要进入注册中心，而只需要以key-value形式持久化存储。 dubbo consumer中的配置项也有20+个配置项。在注册中心之中，服务消费者列表中只需要关注application，version，group，ip，dubbo版本等少量配置，其他配置也可以以key-value形式持久化存储。 这些数据是以服务为维度注册进入注册中心，导致了数据量的膨胀，进而引发注册中心(如zookeeper)的网络开销增大，性能降低。
+除了上述配置项的存储之外，dubbo服务元数据信息也需要被存储下来。元数据信息包括服务接口，及接口的方法信息。这些信息将被用于服务mock，服务测试。
+目标 需要将注册中心原来的数据信息和元数据信息保存到独立的key-value的存储中，这个key-value可以是DB，redis或者其他持久化存储。核心代码中支持了zookeeper，redis(推荐)的默认支持。
+provider存储内容的格式，参见：org.apache.dubbo.metadata.definition.model.FullServiceDefinition。是该类型gson化之后的存储。 Consumer存储内容，为Map格式。从Consumer端注册到注册中心的URL中的获取参数信息。即通过URL.getParameterMap()获取到的Map，进行gson化之后进行存储。
+详细的内容，可以参考下面的sample输出。
+配置 默认的元数据存储，额外支持以下几个特性：
+ 失败重试 每天定时重刷  失败重试 失败重试可以通过retrytimes （重试次数,默认100），retryperiod（重试周期，默认3000ms）进行设置。
+定时刷新 默认开启，可以通过设置cycleReport=false进行关闭。
+完整的配置项： dubbo.metadata-report.address=zookeeper://127.0.0.1:2181 dubbo.metadata-report.username=xxx ##非必须 dubbo.metadata-report.password=xxx ##非必须 dubbo.metadata-report.retry-times=30 ##非必须,default值100 dubbo.metadata-report.retry-period=5000 ##非必须,default值3000 dubbo.metadata-report.cycle-report=false ##非必须,default值true  如果元数据地址(dubbo.metadata-report.address)也不进行配置，整个元数据的写入不会生效，但是不影响程序运行。
+ 接下来看几个sample的配置。无论哪种配置方式，都需要引入maven依赖：
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;dubbo-metadata-report-zookeeper&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt; 如果需要使用redis，可以引入对应的redis的依赖：
+&amp;lt;dependency&amp;gt; &amp;lt;groupId&amp;gt;org.apache.dubbo&amp;lt;/groupId&amp;gt; &amp;lt;artifactId&amp;gt;dubbo-metadata-report-redis&amp;lt;/artifactId&amp;gt; &amp;lt;/dependency&amp;gt;  完整的sample，查看sample-2.7
+ 方式一：在配置中心配置 参考sample：dubbo-samples-metadata-report/dubbo-samples-metadata-report-configcenter 工程。
+配置中心配置 配置中心的配置，可以参考configcenter的文档。配置的内容如下：
+dubbo.registry.address=zookeeper://127.0.0.1:2181 ### 注意驼峰式风格 dubbo.metadata-report.address=zookeeper://127.0.0.1:2181 ###元数据存储的地址 在sample中，使用了Zookeeper作为配置中心。启动本地zookeeper服务之后，直接运行：org.apache.dubbo.samples.metadatareport.configcenter.ZKTools 就可以完成写入。 如果配置中心使用了nacos，apollo，这些产品本身支持ops配置。
+应用配置 ###dubbo.properties dubbo.config-center.address=zookeeper://127.0.0.1:2181 ... 完成上述两步之后，注册中心地址、元数据地址将从配置中心进行获取。现在可以依次运行Provider类和Consumer类，会在console中得到对应的输出或者直接通过zookeeper的cli查看。</description>
+    </item>
+    
+    <item>
+      <title>API 参考手册</title>
+      <link>/zh/docs/v2.7/user/references/api/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/references/api/</guid>
+      <description>Dubbo 的常规功能，都保持零侵入，但有些功能不得不用 API 侵入才能实现。
+提示Dubbo 中除这里声明以外的接口或类，都是内部接口或扩展接口，普通用户请不要直接依赖，否则升级版本可能出现不兼容。API 汇总如下：
+配置 API org.apache.dubbo.config.ServiceConfig org.apache.dubbo.config.ReferenceConfig org.apache.dubbo.config.ProtocolConfig org.apache.dubbo.config.RegistryConfig org.apache.dubbo.config.MonitorConfig org.apache.dubbo.config.ApplicationConfig org.apache.dubbo.config.ModuleConfig org.apache.dubbo.config.ProviderConfig org.apache.dubbo.config.ConsumerConfig org.apache.dubbo.config.MethodConfig org.apache.dubbo.config.ArgumentConfig 详细参见：API配置
+注解 API org.apache.dubbo.config.annotation.Service org.apache.dubbo.config.annotation.Reference 详细参见：注解配置
+模型 API org.apache.dubbo.common.URL org.apache.dubbo.rpc.RpcException 上下文 API org.apache.dubbo.rpc.RpcContext 详细参见：上下文信息 &amp;amp; 隐式传参 &amp;amp; 异步调用
+服务 API org.apache.dubbo.rpc.service.GenericService org.apache.dubbo.rpc.service.GenericException 详细参见：泛化引用 &amp;amp; 泛化实现
+org.apache.dubbo.rpc.service.EchoService 详细参见：回声测试</description>
+    </item>
+    
+    <item>
+      <title>在线运维命令参考手册</title>
+      <link>/zh/docs/v2.7/user/references/qos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/references/qos/</guid>
+      <description>dubbo 2.5.8 新版本增加了 QOS 模块，提供了新的 telnet 命令支持。
+端口 新版本的 telnet 端口 与 dubbo 协议的端口是不同的端口，默认为 22222，可通过配置文件dubbo.properties 修改:
+dubbo.application.qos.port=33333 或者通过设置 JVM 参数:
+-Ddubbo.application.qos.port=33333 安全 默认情况下，dubbo 接收任何主机发起的命令，可通过配置文件dubbo.properties 修改:
+dubbo.application.qos.accept.foreign.ip=false 或者通过设置 JVM 参数:
+-Ddubbo.application.qos.accept.foreign.ip=false 拒绝远端主机发出的命令，只允许服务本机执行
+telnet 与 http 协议 telnet 模块现在同时支持 http 协议和 telnet 协议，方便各种情况的使用
+示例如下：
+➜ ~ telnet localhost 22222 Trying ::1... telnet: connect to address ::1: Connection refused Trying 127.0.0.1... Connected to localhost. Escape character is &amp;#39;^]&amp;#39;. ████████▄ ███ █▄ ▀█████████▄ ▀█████████▄ ▄██████▄ ███ ▀███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ███ ▄███▄▄▄██▀ ▄███▄▄▄██▀ ███ ███ ███ ███ ███ ███ ▀▀███▀▀▀██▄ ▀▀███▀▀▀██▄ ███ ███ ███ ███ ███ ███ ███ ██▄ ███ ██▄ ███ ███ ███ ▄███ ███ ███ ███ ███ ███ ███ ███ ███ ████████▀ ████████▀ ▄█████████▀ ▄█████████▀ ▀██████▀ dubbo&amp;gt;ls As Provider side: +----------------------------------+---+ | Provider Service Name |PUB| +----------------------------------+---+ |org.</description>
+    </item>
+    
+    <item>
+      <title>Telnet 命令参考手册</title>
+      <link>/zh/docs/v2.7/user/references/telnet/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/references/telnet/</guid>
+      <description>从 2.0.5 版本开始，dubbo 开始支持通过 telnet 命令来进行服务治理。
+使用 telnet localhost 20880 或者：
+echo status | nc -i 1 localhost 20880 status命令所检查的资源也可以扩展，参见：扩展参考手册。
+命令 以下展示了 dubbo 内建的 telnet 命令的说明和用法，此外，telnet 命令还支持用户自行扩展，参见：Telnet 命令扩展。
+ls ls: 显示服务列表 ls -l: 显示服务详细信息列表 ls XxxService: 显示服务的方法列表 ls -l XxxService: 显示服务的方法详细信息列表  ps ps: 显示服务端口列表 ps -l: 显示服务地址列表 ps 20880: 显示端口上的连接信息 ps -l 20880: 显示端口上的连接详细信息  cd cd XxxService: 改变缺省服务，当设置了缺省服务，凡是需要输入服务名作为参数的命令，都可以省略服务参数 cd /: 取消缺省服务  pwd pwd: 显示当前缺省服务
+trace trace XxxService: 跟踪 1 次服务任意方法的调用情况 trace XxxService 10: 跟踪 10 次服务任意方法的调用情况 trace XxxService xxxMethod: 跟踪 1 次服务方法的调用情况 trace XxxService xxxMethod 10: 跟踪 10 次服务方法的调用情况  count count XxxService: 统计 1 次服务任意方法的调用情况 count XxxService 10: 统计 10 次服务任意方法的调用情况 count XxxService xxxMethod: 统计 1 次服务方法的调用情况 count XxxService xxxMethod 10: 统计 10 次服务方法的调用情况  invoke invoke XxxService.</description>
+    </item>
+    
+    <item>
+      <title>Maven 插件参考手册</title>
+      <link>/zh/docs/v2.7/user/references/maven/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/zh/docs/v2.7/user/references/maven/</guid>
+      <description>启动一个简易注册中心 以指定的 9099 端口启动一个简易注册中心 1：
+mvn dubbo:registry -Dport=9099 生成 demo 服务提供者应用 生成指定接口和版本的服务提供者应用：
+mvn dubbo:create -Dapplication=xxx -Dpackage=com.alibaba.xxx -Dservice=XxxService,YyyService -Dversion=1.0.0   如果端口不指定，默认端口为 9090 &amp;#x21a9;&amp;#xfe0e;
+   </description>
+    </item>
+    
+  </channel>
+</rss>

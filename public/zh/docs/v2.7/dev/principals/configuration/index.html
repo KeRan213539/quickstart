@@ -1,0 +1,2512 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+<html lang="zh">
+<head>
+  
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> 配置设计</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    <meta http-equiv="content-language" content="zh-cn" />
+
+  
+
+    
+    
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nacos">
+    <meta property="og:title" content="配置设计">
+    <meta property="og:url" content="/zh/docs/v2.7/dev/principals/configuration/">
+    <meta property="og:image" content="/images/">
+    <meta name="twitter:title" content="Nacos" />
+    <meta name="twitter:url" content="/zh/docs/v2.7/dev/principals/configuration/" />
+    <meta name="twitter:image" content="/images/" />
+    <meta name="twitter:card" content="" />
+    
+    
+    
+    <link rel="canonical" href="/zh/docs/v2.7/dev/principals/configuration/"/>
+
+    
+
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="/css/leaflet.css" />
+
+    
+    <link rel="stylesheet" href="/css/animate.css">
+    
+    <link rel="stylesheet" href="/css/icomoon.css">
+    
+    <link rel="stylesheet" href="/css/simple-line-icons.css">
+    
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+    
+    <link rel="stylesheet" href="/css/style.css">
+
+    
+    
+    <link rel="stylesheet" href="/css/custom1.css">
+    
+    <link rel="stylesheet" href="/css/custom2.css">
+    
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    
+
+    
+    <script src="/js/modernizr-2.6.2.min.js"></script>
+    
+    
+
+  <meta name="referrer" content="no-referrer"/>
+  <link rel="shortcut icon" href="https://img.alicdn.com/tfs/TB1hgJpHAPoK1RjSZKbXXX1IXXa-64-64.png"/>
+  	
+	<script src="/js/jquery.min.js"></script>
+	
+	<script src="/js/jquery.easing.1.3.js"></script>
+	
+	<script src="/js/bootstrap.min.js"></script>
+	
+	<script src="/js/jquery.waypoints.min.js"></script>
+	
+	<script src="/js/jquery.stellar.min.js"></script>
+	
+	<script src="/js/jquery.countTo.js"></script>
+	
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/magnific-popup-options.js"></script>
+	
+
+
+	
+	<script src="/js/main.js"></script>
+
+</head>
+<body>
+
+
+    <header role="banner" id="fh5co-header">
+        <div class="container">
+            
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    
+                    <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+                    <a class="navbar-brand" href="index.html"><img id="nacosLogo" src="/images/nacos.png"></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    
+                    
+                    
+                    <li><a class="external" href="/"><span>首页</span></a></li>
+                    
+                    
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+                        <li class="active"><a class="external" href="/zh/docs"><span>文档</span></a></li>
+                    
+                        <li><a class="external" href="/zh/blog"><span>博客</span></a></li>
+                    
+                    <li>
+                      
+
+<div class="dropdown">
+	<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"
+					aria-haspopup="true" aria-expanded="false" >
+		中文
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu">
+		
+		<li><a class="external" href="/docs/v2.7/dev/principals/configuration/">English</a></li>
+		
+	</ul>
+</div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        
+    </div>
+</header>
+
+<section class="animated">
+  <div class="col-md-2 blogDocSidebar">
+    
+
+
+
+
+<a href="#" id="sidebarConsoleBtn"><i class="fa fa-bars fa-fw"></i></a>
+<div id="sidebarContent">
+  
+  
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/" >文档</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="zhdocs">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/" >Dubbo 2.7</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="zhdocsv27">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/user/" >用户文档</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27user">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/user/preface/" >入门</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27userpreface">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userprefacebackground" href="/zh/docs/v2.7/user/preface/background/">背景</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userprefacerequirements" href="/zh/docs/v2.7/user/preface/requirements/">需求</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userprefacearchitecture" href="/zh/docs/v2.7/user/preface/architecture/">架构</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userprefaceusage" href="/zh/docs/v2.7/user/preface/usage/">用法</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userquick-start" href="/zh/docs/v2.7/user/quick-start/">快速开始</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userdependencies" href="/zh/docs/v2.7/user/dependencies/">依赖</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27usermaturity" href="/zh/docs/v2.7/user/maturity/">成熟度</a>
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/user/configuration/" >配置</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27userconfiguration">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userconfigurationxml" href="/zh/docs/v2.7/user/configuration/xml/">XML 配置</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userconfigurationconfig-center" href="/zh/docs/v2.7/user/configuration/config-center/">动态配置中心</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userconfigurationproperties" href="/zh/docs/v2.7/user/configuration/properties/">属性配置</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userconfigurationenvironment-variables" href="/zh/docs/v2.7/user/configuration/environment-variables/">自动加载环境变量</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userconfigurationapi" href="/zh/docs/v2.7/user/configuration/api/">API 配置</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userconfigurationannotation" href="/zh/docs/v2.7/user/configuration/annotation/">注解配置</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userconfigurationconfiguration-load-process" href="/zh/docs/v2.7/user/configuration/configuration-load-process/">配置加载流程</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/user/examples/" >用法示例</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27userexamples">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplespreflight-check" href="/zh/docs/v2.7/user/examples/preflight-check/">启动时检查</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesfault-tolerent-strategy" href="/zh/docs/v2.7/user/examples/fault-tolerent-strategy/">集群容错</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesloadbalance" href="/zh/docs/v2.7/user/examples/loadbalance/">负载均衡</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesthread-model" href="/zh/docs/v2.7/user/examples/thread-model/">线程模型</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesexplicit-target" href="/zh/docs/v2.7/user/examples/explicit-target/">直连提供者</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplessubscribe-only" href="/zh/docs/v2.7/user/examples/subscribe-only/">只订阅</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesmulti-protocols" href="/zh/docs/v2.7/user/examples/multi-protocols/">多协议</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesmulti-registry" href="/zh/docs/v2.7/user/examples/multi-registry/">多注册中心</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesservice-group" href="/zh/docs/v2.7/user/examples/service-group/">服务分组</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesstatic-service" href="/zh/docs/v2.7/user/examples/static-service/">静态服务</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesmulti-versions" href="/zh/docs/v2.7/user/examples/multi-versions/">多版本</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesgroup-merger" href="/zh/docs/v2.7/user/examples/group-merger/">分组聚合</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesparameter-validation" href="/zh/docs/v2.7/user/examples/parameter-validation/">参数验证</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesresult-cache" href="/zh/docs/v2.7/user/examples/result-cache/">结果缓存</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesgeneric-reference" href="/zh/docs/v2.7/user/examples/generic-reference/">使用泛化调用</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesprotobuf-idl" href="/zh/docs/v2.7/user/examples/protobuf-idl/">Protobuf</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplespb-generic-reference" href="/zh/docs/v2.7/user/examples/pb-generic-reference/">Protobuf 泛化调用</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesgeneric-service" href="/zh/docs/v2.7/user/examples/generic-service/">实现泛化调用</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesecho-service" href="/zh/docs/v2.7/user/examples/echo-service/">回声测试</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplescontext" href="/zh/docs/v2.7/user/examples/context/">上下文信息</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesattachment" href="/zh/docs/v2.7/user/examples/attachment/">隐式参数</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesasync-execute-on-provider" href="/zh/docs/v2.7/user/examples/async-execute-on-provider/">异步执行</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesasync-call" href="/zh/docs/v2.7/user/examples/async-call/">异步调用</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexampleslocal-call" href="/zh/docs/v2.7/user/examples/local-call/">本地调用</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplescallback-parameter" href="/zh/docs/v2.7/user/examples/callback-parameter/">参数回调</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesevents-notify" href="/zh/docs/v2.7/user/examples/events-notify/">事件通知</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexampleslocal-stub" href="/zh/docs/v2.7/user/examples/local-stub/">本地存根</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexampleslocal-mock" href="/zh/docs/v2.7/user/examples/local-mock/">本地伪装</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesdelay-publish" href="/zh/docs/v2.7/user/examples/delay-publish/">延迟暴露</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesconcurrency-control" href="/zh/docs/v2.7/user/examples/concurrency-control/">并发控制</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesconfig-connections" href="/zh/docs/v2.7/user/examples/config-connections/">连接控制</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexampleslazy-connect" href="/zh/docs/v2.7/user/examples/lazy-connect/">延迟连接</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesstickiness" href="/zh/docs/v2.7/user/examples/stickiness/">粘滞连接</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplestls" href="/zh/docs/v2.7/user/examples/tls/">TLS</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplestoken-authorization" href="/zh/docs/v2.7/user/examples/token-authorization/">令牌验证</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesrouting-rule" href="/zh/docs/v2.7/user/examples/routing-rule/">路由规则</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesrouting-rule-deprecated" href="/zh/docs/v2.7/user/examples/routing-rule-deprecated/">旧路由规则</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesconfig-rule" href="/zh/docs/v2.7/user/examples/config-rule/">配置规则</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesconfig-rule-deprecated" href="/zh/docs/v2.7/user/examples/config-rule-deprecated/">旧配置规则</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesservice-downgrade" href="/zh/docs/v2.7/user/examples/service-downgrade/">服务降级</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesconsumer-threadpool" href="/zh/docs/v2.7/user/examples/consumer-threadpool/">消费端线程池模型</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesgraceful-shutdown" href="/zh/docs/v2.7/user/examples/graceful-shutdown/">优雅停机</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexampleshostname-binding" href="/zh/docs/v2.7/user/examples/hostname-binding/">主机绑定</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesset-host" href="/zh/docs/v2.7/user/examples/set-host/">主机配置</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplessimplify-registry-data" href="/zh/docs/v2.7/user/examples/simplify-registry-data/">注册信息简化</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexampleslogger-strategy" href="/zh/docs/v2.7/user/examples/logger-strategy/">日志适配</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesaccesslog" href="/zh/docs/v2.7/user/examples/accesslog/">访问日志</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesservice-container" href="/zh/docs/v2.7/user/examples/service-container/">服务容器</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesreference-config-cache" href="/zh/docs/v2.7/user/examples/reference-config-cache/">ReferenceConfig 缓存</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userexamplesregistry-only" href="/zh/docs/v2.7/user/examples/registry-only/">只注册</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/user/references/" >参考手册</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27userreferences">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/user/references/xml/" >XML 配置</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27userreferencesxml">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-application" href="/zh/docs/v2.7/user/references/xml/dubbo-application/">dubbo:application</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-argument" href="/zh/docs/v2.7/user/references/xml/dubbo-argument/">dubbo:argument</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-config-center" href="/zh/docs/v2.7/user/references/xml/dubbo-config-center/">dubbo:config-center</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-consumer" href="/zh/docs/v2.7/user/references/xml/dubbo-consumer/">dubbo:consumer</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-method" href="/zh/docs/v2.7/user/references/xml/dubbo-method/">dubbo:method</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-module" href="/zh/docs/v2.7/user/references/xml/dubbo-module/">dubbo:module</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-monitor" href="/zh/docs/v2.7/user/references/xml/dubbo-monitor/">dubbo:monitor</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-parameter" href="/zh/docs/v2.7/user/references/xml/dubbo-parameter/">dubbo:parameter</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-protocol" href="/zh/docs/v2.7/user/references/xml/dubbo-protocol/">dubbo:protocol</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-provider" href="/zh/docs/v2.7/user/references/xml/dubbo-provider/">dubbo:provider</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-reference" href="/zh/docs/v2.7/user/references/xml/dubbo-reference/">dubbo:reference</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-registry" href="/zh/docs/v2.7/user/references/xml/dubbo-registry/">dubbo:registry</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesxmldubbo-service" href="/zh/docs/v2.7/user/references/xml/dubbo-service/">dubbo:service</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/user/references/protocol/" >协议参考手册</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27userreferencesprotocol">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesprotocoldubbo" href="/zh/docs/v2.7/user/references/protocol/dubbo/">dubbo://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesprotocolrest" href="/zh/docs/v2.7/user/references/protocol/rest/">rest://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesprotocolhttp" href="/zh/docs/v2.7/user/references/protocol/http/">http://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesprotocolhessian" href="/zh/docs/v2.7/user/references/protocol/hessian/">hessian://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesprotocolredis" href="/zh/docs/v2.7/user/references/protocol/redis/">redis://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesprotocolthrift" href="/zh/docs/v2.7/user/references/protocol/thrift/">thrift://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesprotocolgrpc" href="/zh/docs/v2.7/user/references/protocol/grpc/">grpc://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesprotocolmemcached" href="/zh/docs/v2.7/user/references/protocol/memcached/">memcached://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesprotocolrmi" href="/zh/docs/v2.7/user/references/protocol/rmi/">rmi://</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesprotocolwebservice" href="/zh/docs/v2.7/user/references/protocol/webservice/">webservice://</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/user/references/registry/" >注册中心参考手册</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27userreferencesregistry">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesregistrynacos" href="/zh/docs/v2.7/user/references/registry/nacos/">Nacos</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesregistryzookeeper" href="/zh/docs/v2.7/user/references/registry/zookeeper/">Zookeeper</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesregistrymulticast" href="/zh/docs/v2.7/user/references/registry/multicast/">Multicast</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesregistryredis" href="/zh/docs/v2.7/user/references/registry/redis/">Redis</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesregistrysimple" href="/zh/docs/v2.7/user/references/registry/simple/">Simple</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesmetadata" href="/zh/docs/v2.7/user/references/metadata/">元数据参考手册</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesapi" href="/zh/docs/v2.7/user/references/api/">API 参考手册</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesqos" href="/zh/docs/v2.7/user/references/qos/">QOS 手册</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencestelnet" href="/zh/docs/v2.7/user/references/telnet/">Telnet 手册</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userreferencesmaven" href="/zh/docs/v2.7/user/references/maven/">Maven 插件参考手册</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/user/versions/" >版本升级</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27userversions">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userversionsversion-270" href="/zh/docs/v2.7/user/versions/version-270/">2.7.0</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userbest-practice" href="/zh/docs/v2.7/user/best-practice/">服务化最佳实践</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userrecommend" href="/zh/docs/v2.7/user/recommend/">推荐用法</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27usercapacity-plan" href="/zh/docs/v2.7/user/capacity-plan/">容量规划</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userperf-test" href="/zh/docs/v2.7/user/perf-test/">性能测试报告</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27usercoveragence" href="/zh/docs/v2.7/user/coveragence/">测试覆盖率报告</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userbenchmark-tool" href="/zh/docs/v2.7/user/benchmark-tool/">基准测试</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userrest" href="/zh/docs/v2.7/user/rest/">REST 支持</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27usersimple-monitor" href="/zh/docs/v2.7/user/simple-monitor/">简单监控</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userserialization" href="/zh/docs/v2.7/user/serialization/">Kryo 和 FST 序列化</a>
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/user/languages/" >其他语言支持</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27userlanguages">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/user/languages/erlang/" >Erlang</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27userlanguageserlang">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userlanguageserlangquick-start" href="/zh/docs/v2.7/user/languages/erlang/quick-start/">快速开始</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userlanguageserlangreference" href="/zh/docs/v2.7/user/languages/erlang/reference/">消费者配置</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userlanguageserlangservice" href="/zh/docs/v2.7/user/languages/erlang/service/">提供者配置</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27userlanguageserlangserialization" href="/zh/docs/v2.7/user/languages/erlang/serialization/">序列化配置项</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27usernew-features-in-a-glance" href="/zh/docs/v2.7/user/new-features-in-a-glance/"></a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/dev/" >开发指南</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="zhdocsv27dev">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devbuild" href="/zh/docs/v2.7/dev/build/">源码构建</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devdesign" href="/zh/docs/v2.7/dev/design/">框架设计</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devspi" href="/zh/docs/v2.7/dev/spi/">扩展点加载</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplementation" href="/zh/docs/v2.7/dev/implementation/">实现细节</a>
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/dev/impls/" >SPI 扩展实现</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27devimpls">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsprotocol" href="/zh/docs/v2.7/dev/impls/protocol/">协议扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsfilter" href="/zh/docs/v2.7/dev/impls/filter/">调用拦截扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsinvoker-listener" href="/zh/docs/v2.7/dev/impls/invoker-listener/">引用监听扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsexporter-listener" href="/zh/docs/v2.7/dev/impls/exporter-listener/">暴露监听扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplscluster" href="/zh/docs/v2.7/dev/impls/cluster/">集群扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsrouter" href="/zh/docs/v2.7/dev/impls/router/">路由扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsload-balance" href="/zh/docs/v2.7/dev/impls/load-balance/">负载均衡扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsmerger" href="/zh/docs/v2.7/dev/impls/merger/">合并结果扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsregistry" href="/zh/docs/v2.7/dev/impls/registry/">注册中心扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsmonitor" href="/zh/docs/v2.7/dev/impls/monitor/">监控中心扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsextension-factory" href="/zh/docs/v2.7/dev/impls/extension-factory/">扩展点加载扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsproxy-factory" href="/zh/docs/v2.7/dev/impls/proxy-factory/">动态代理扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplscompiler" href="/zh/docs/v2.7/dev/impls/compiler/">编译器扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsconfig-center" href="/zh/docs/v2.7/dev/impls/config-center/">配置中心扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsdispatcher" href="/zh/docs/v2.7/dev/impls/dispatcher/">消息派发扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsthreadpool" href="/zh/docs/v2.7/dev/impls/threadpool/">线程池扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsserialize" href="/zh/docs/v2.7/dev/impls/serialize/">序列化扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsremoting" href="/zh/docs/v2.7/dev/impls/remoting/">网络传输扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsexchanger" href="/zh/docs/v2.7/dev/impls/exchanger/">信息交换扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsnetworker" href="/zh/docs/v2.7/dev/impls/networker/">组网扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplstelnet-handler" href="/zh/docs/v2.7/dev/impls/telnet-handler/">Telnet 命令扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsstatus-checker" href="/zh/docs/v2.7/dev/impls/status-checker/">状态检查扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplscontainer" href="/zh/docs/v2.7/dev/impls/container/">容器扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplscache" href="/zh/docs/v2.7/dev/impls/cache/">缓存扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplsvalidation" href="/zh/docs/v2.7/dev/impls/validation/">验证扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplslogger-adapter" href="/zh/docs/v2.7/dev/impls/logger-adapter/">日志适配扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devimplspage" href="/zh/docs/v2.7/dev/impls/page/"></a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a class="active" href="/zh/docs/v2.7/dev/principals/" >设计原则</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="zhdocsv27devprincipals">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devprincipalscode-detail" href="/zh/docs/v2.7/dev/principals/code-detail/">魔鬼在细节</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devprincipalsconfiguration" class="active2" href="/zh/docs/v2.7/dev/principals/configuration/">配置设计</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devprincipalsdummy" href="/zh/docs/v2.7/dev/principals/dummy/">防痴呆设计</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devprincipalsexpansibility" href="/zh/docs/v2.7/dev/principals/expansibility/">谈谈扩充式扩展与增量式扩展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devprincipalsextension" href="/zh/docs/v2.7/dev/principals/extension/">扩展点重构</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devprincipalsgeneral-knowledge" href="/zh/docs/v2.7/dev/principals/general-knowledge/">一些设计上的基本常识</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devprincipalsrobustness" href="/zh/docs/v2.7/dev/principals/robustness/">设计实现的健壮性</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devprincipalsintroduction" href="/zh/docs/v2.7/dev/principals/introduction/"></a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devcontract" href="/zh/docs/v2.7/dev/contract/">公共契约</a>
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/dev/source/" >源代码</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27devsource">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devsourcedubbo-spi" href="/zh/docs/v2.7/dev/source/dubbo-spi/">Dubbo SPI</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devsourcerouter" href="/zh/docs/v2.7/dev/source/router/">服务路由</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devsourceadaptive-extension" href="/zh/docs/v2.7/dev/source/adaptive-extension/">SPI 自适应拓展</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devsourceexport-service" href="/zh/docs/v2.7/dev/source/export-service/">服务导出</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devsourcerefer-service" href="/zh/docs/v2.7/dev/source/refer-service/">服务引用</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devsourceservice-invoking-process" href="/zh/docs/v2.7/dev/source/service-invoking-process/">服务调用过程</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devsourcedirectory" href="/zh/docs/v2.7/dev/source/directory/">服务目录</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devsourcecluster" href="/zh/docs/v2.7/dev/source/cluster/">集群</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devsourceloadbalance" href="/zh/docs/v2.7/dev/source/loadbalance/">负载均衡</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devrelease" href="/zh/docs/v2.7/dev/release/">版本管理</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devchecklist" href="/zh/docs/v2.7/dev/checklist/">检查列表</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devcode-smell" href="/zh/docs/v2.7/dev/code-smell/">坏味道</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devcoding" href="/zh/docs/v2.7/dev/coding/">编码约定</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27devtck" href="/zh/docs/v2.7/dev/tck/">TCK</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/admin/" >运维管理指南</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27admin">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/admin/ops/" >Dubbo Admin 运维指南</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27adminops">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27adminopsfunctions" href="/zh/docs/v2.7/admin/ops/functions/">管理控制台运维</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27adminopsintroduction" href="/zh/docs/v2.7/admin/ops/introduction/">Dubbo 管理控制台介绍</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27adminopssearch" href="/zh/docs/v2.7/admin/ops/search/">服务查询和详情展示</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27adminopstest" href="/zh/docs/v2.7/admin/ops/test/">服务测试</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27adminopsapidocs" href="/zh/docs/v2.7/admin/ops/apidocs/">API文档&amp;测试</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27adminopsgovernance" href="/zh/docs/v2.7/admin/ops/governance/">服务治理和配置管理</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27adminopsskywalking" href="/zh/docs/v2.7/admin/ops/skywalking/">使用 Apache Skywalking 做分布式跟踪</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27adminopspinpoint" href="/zh/docs/v2.7/admin/ops/pinpoint/">使用 Pinpoint 做分布式跟踪</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v2.7/admin/install/" >安装手册</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv27admininstall">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27admininstalladmin-console" href="/zh/docs/v2.7/admin/install/admin-console/">管理控制台安装</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27admininstallprovider-demo" href="/zh/docs/v2.7/admin/install/provider-demo/">示例提供者安装</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27admininstallconsumer-demo" href="/zh/docs/v2.7/admin/install/consumer-demo/">示例消费者安装</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27admininstallredis" href="/zh/docs/v2.7/admin/install/redis/">Redis 注册中心安装</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27admininstallzookeeper" href="/zh/docs/v2.7/admin/install/zookeeper/">Zookeeper 注册中心安装</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocsv27admininstallmonitor-center" href="/zh/docs/v2.7/admin/install/monitor-center/">Simple 监控中心安装</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/v3.0/" >Dubbo 3.0</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocsv30">
+      
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/contribution-guidelines/" >贡献指南</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocscontribution-guidelines">
+      
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/contribution-guidelines/contributor/" >Contributor 指南</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocscontribution-guidelinescontributor">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescontributorbecome-a-committer_dev" href="/zh/docs/contribution-guidelines/contributor/become-a-committer_dev/">成为 Committer</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescontributorcla-signing-guide_dev" href="/zh/docs/contribution-guidelines/contributor/cla-signing-guide_dev/">CLA 签署向导</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescontributornew-contributor-guide_dev" href="/zh/docs/contribution-guidelines/contributor/new-contributor-guide_dev/">新手向导</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescontributormailing-list-subscription-guide_dev" href="/zh/docs/contribution-guidelines/contributor/mailing-list-subscription-guide_dev/">邮件组向导</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescontributorreporting-security-issues_dev" href="/zh/docs/contribution-guidelines/contributor/reporting-security-issues_dev/">反馈漏洞</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescontributorsoftware-donation-guide_dev" href="/zh/docs/contribution-guidelines/contributor/software-donation-guide_dev/">捐献向导</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescontributordubbo-extension-guide_dev" href="/zh/docs/contribution-guidelines/contributor/dubbo-extension-guide_dev/">扩展 Dubbo</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescontributortest-coverage-guide_dev" href="/zh/docs/contribution-guidelines/contributor/test-coverage-guide_dev/">测试覆盖率向导</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+      
+        
+          
+
+
+
+
+
+
+<ul>
+  <li>
+    <a href="/zh/docs/contribution-guidelines/committer/" >Committer 指南</a>
+  </li>
+  <ul>
+    <li class="collapse " id="zhdocscontribution-guidelinescommitter">
+      
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescommitternew-committer-guide_dev" href="/zh/docs/contribution-guidelines/committer/new-committer-guide_dev/">注册流程</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescommitterrelease-guide_dev" href="/zh/docs/contribution-guidelines/committer/release-guide_dev/">发版准备</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescommitterwebsite-guide_dev" href="/zh/docs/contribution-guidelines/committer/website-guide_dev/">网站向导</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescommitterlabel-an-issue-guide_dev" href="/zh/docs/contribution-guidelines/committer/label-an-issue-guide_dev/">问题标签</a>
+        
+      
+      
+      
+        
+          
+          
+          <a id="m-zhdocscontribution-guidelinescommitterapache-dubbo-page_dev" href="/zh/docs/contribution-guidelines/committer/apache-dubbo-page_dev/">官方主页</a>
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+        
+      
+      
+    </li>
+  </ul>
+</ul>
+
+</div>
+
+<script>
+  $(function() {
+    $("#sidebarConsoleBtn").click(function () {
+      $("#sidebarContent").toggle();
+    });
+  });
+</script>
+
+
+
+  </div>
+  <div class="col-md-2 blogDocToc">
+    
+
+
+
+
+
+
+<div class="td-page-meta">
+
+
+
+
+
+
+<a href="https://github.com/nacos-group/nacos-group.github.io/issues/new?title=%e9%85%8d%e7%bd%ae%e8%ae%be%e8%ae%a1" target="_blank"><i class="fa fa-github fa-fw"></i> 提交文档问题</a>
+
+
+<a href="https://github.com/alibaba/nacos/issues/new" target="_blank"><i class="fa fa-tasks fa-fw"></i> 提交项目问题</a>
+
+</div>
+
+
+
+
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#配置分类">配置分类</a></li>
+    <li><a href="#配置格式">配置格式</a></li>
+    <li><a href="#配置加载">配置加载</a></li>
+    <li><a href="#可编程配置">可编程配置</a></li>
+    <li><a href="#配置缺省值">配置缺省值</a></li>
+    <li><a href="#配置一致性">配置一致性</a></li>
+    <li><a href="#配置覆盖">配置覆盖</a></li>
+    <li><a href="#配置继承">配置继承</a></li>
+    <li><a href="#配置向后兼容">配置向后兼容</a></li>
+  </ul>
+</nav>
+
+
+
+  </div>
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8 blogDocContent">
+      
+
+
+<div class="row">
+  <div class="col-md-2">
+    <ul>
+      
+    </ul>
+  </div>
+  <div class="col-md-10">
+    
+  </div>
+</div>
+<div class="td-content">
+  <h1>配置设计</h1>
+  
+  <div class="td-byline mb-4">
+    <time datetime="0001-01-01" class="text-muted">0001-01-01</time>
+  </div>
+  
+  <blockquote>
+<p><a href="http://javatar.iteye.com/blog/949527">http://javatar.iteye.com/blog/949527</a></p>
+</blockquote>
+<p>Dubbo 现在的设计是完全无侵入，也就是使用者只依赖于配置契约。经过多个版本的发展，为了满足各种需求场景，配置越来越多。为了保持兼容，配置只增不减，里面潜伏着各种风格，约定，规则。新版本也将配置做了一次调整，将想到的一些记在这，备忘。</p>
+<h2 id="配置分类">配置分类</h2>
+<p>首先，配置的用途是有多种的，大致可以分为：</p>
+<ol start="0">
+<li>环境配置，比如：连接数，超时等配置。</li>
+<li>描述配置，比如：服务接口描述，服务版本等。</li>
+<li>扩展配置，比如：协议扩展，策略扩展等。</li>
+</ol>
+<h2 id="配置格式">配置格式</h2>
+<p>通常环境配置，用 properties 配置会比较方便，因为都是一些离散的简单值，用 key-value 配置可以减少配置的学习成本。</p>
+<p>而描述配置，通常信息比较多，甚至有层次关系，用 xml 配置会比较方便，因为树结构的配置表现力更强。如果非常复杂，也可以考自定义 DSL 做为配置。有时候这类配置也可以用 Annotation 代替， 因为这些配置和业务逻辑相关，放在代码里也是合理的。</p>
+<p>另外扩展配置，可能不尽相同。如果只是策略接口实现类替换，可以考虑 properties 等结构。如果有复杂的生命周期管理，可能需要 XML 等配置。有时候扩展会通过注册接口的方式提供。</p>
+<h2 id="配置加载">配置加载</h2>
+<p>对于环境配置，在 java 世界里，比较常规的做法，是在 classpath 下约定一个以项目为名称的 properties 配置，比如：log4j.properties，velocity.properties等。产品在初始化时，自动从 classpath 下加载该配置。我们平台的很多项目也使用类似策略，如：dubbo.properties，comsat.xml 等。这样有它的优势，就是基于约定，简化了用户对配置加载过程的干预。但同样有它的缺点，当 classpath 存在同样的配置时，可能误加载，以及在 ClassLoader 隔离时，可能找不到配置，并且，当用户希望将配置放到统一的目录时，不太方便。</p>
+<p>而对于描述配置，因为要参与业务逻辑，通常会嵌到应用的生命周期管理中。现在使用 spring 的项目越来越多，直接使用 spring 配置的比较普遍，而且 spring 允许自定义 schema，配置简化后很方便。当然，也有它的缺点，就是强依赖 spring，可以提编程接口做了配套方案。</p>
+<p>在 Dubbo 既存在描述配置也有环境配置。一部分用 spring 的 schema 做配置加载，一部分从 classpath 扫描 properties 做配置加载。在新版本中做了一个优先级约定，统一以 spring 的 schema 驱动配置加载，dubbo.properties作为配置补充。</p>
+<p>同时，在 Spring 的场景下，除了使用 schema 外，还支持完全以 application.properties 的方式配置：</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"># Dubbo Application
+## The default value of dubbo.application.name is ${spring.application.name}
+## dubbo.application.name=${spring.application.name}
+
+# Dubbo Protocol
+dubbo.protocol.name=dubbo
+dubbo.protocol.port=12345
+
+## Dubbo Registry
+dubbo.registry.address=N/A
+</code></pre></div><p>扩展配置，通常对配置的聚合要求比较高。因为产品需要发现第三方实现，将其加入产品内部。在 java 世界里，通常是约定在每个 jar 包下放一个指定文件加载，比如：eclipse 的 plugin.xml，struts2 的 struts-plugin.xml 等，这类配置可以考虑 java 标准的服务发现机制，即在 jar 包的 META-INF/services 下放置接口类全名文件，内容为每行一个实现类类名，就像 jdk 中的加密算法扩展，脚本引擎扩展，新的 JDBC 驱动等，都是采用这种方式。参见：<a href="https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html">ServiceProvider 规范</a>。</p>
+<p>Dubbo 旧版本通过约定在每个 jar 包下，放置名为 dubbo-context.xml 的 spring 配置进行扩展与集成，新版本改成用 jdk 自带的 META-INF/services 方式，去掉过多的 spring 依赖。</p>
+<h2 id="可编程配置">可编程配置</h2>
+<p>配置的可编程性是非常必要的，不管你以何种方式加载配置文件，都应该提供一个编程的配置方式，允许用户不使用配置文件，直接用代码完成配置过程。因为一个产品，尤其是组件类产品，通常需要和其它产品协作使用，当用户集成你的产品时，可能需要适配配置方式。</p>
+<p>Dubbo 新版本提供了与 xml 配置一对一的配置类，如：ServiceConfig 对应 <code>&lt;dubbo:service /&gt;</code>，并且属性也一对一，这样有利于文件配置与编程配置的一致性理解，减少学习成本。</p>
+<h2 id="配置缺省值">配置缺省值</h2>
+<p>配置的缺省值，通常是设置一个常规环境的合理值，这样可以减少用户的配置量。通常建议以线上环境为参考值，开发环境可以通过修改配置适应。缺省值的设置，最好在最外层的配置加载就做处理。程序底层如果发现配置不正确，就应该直接报错，容错在最外层做。如果在程序底层使用时，发现配置值不合理，就填一个缺省值，很容易掩盖表面问题，而引发更深层次的问题。并且配置的中间传递层，很可能并不知道底层使用了一个缺省值，一些中间的检测条件就可能失效。Dubbo 就出现过这样的问题，中间层用“地址”做为缓存 Key， 而底层，给“地址”加了一个缺省端口号，导致不加端口号的“地址”和加了缺省端口的“地址”并没有使用相同的缓存。</p>
+<h2 id="配置一致性">配置一致性</h2>
+<p>配置总会隐含一些风格或潜规则，应尽可能保持其一致性。比如：很多功能都有开关，然后有一个配置值：</p>
+<ol start="0">
+<li>是否使用注册中心，注册中心地址。</li>
+<li>是否允许重试，重试次数。</li>
+</ol>
+<p>你可以约定：</p>
+<ol start="0">
+<li>每个都是先配置一个 boolean 类型的开关，再配置一个值。</li>
+<li>用一个无效值代表关闭，N/A地址，0重试次数等。</li>
+</ol>
+<p>不管选哪种方式，所有配置项，都应保持同一风格，Dubbo 选的是第二种。相似的还有，超时时间，重试时间，定时器间隔时间。如果一个单位是秒，另一个单位是毫秒(C3P0的配置项就是这样)，配置人员会疯掉。</p>
+<h2 id="配置覆盖">配置覆盖</h2>
+<p>提供配置时，要同时考虑开发人员，测试人员，配管人员，系统管理员。测试人员是不能修改代码的，而测试的环境很可能较为复杂，需要为测试人员留一些“后门”，可以在外围修改配置项。就像 spring 的 PropertyPlaceholderConfigurer 配置，支持 <code>SYSTEM_PROPERTIES_MODE_OVERRIDE</code>，可以通过 JVM 的 -D 参数，或者像 hosts 一样约定一个覆盖配置文件，在程序外部，修改部分配置，便于测试。</p>
+<p>Dubbo 支持通过 JVM 参数 <code>-Dcom.xxx.XxxService=dubbo://10.1.1.1:1234 </code> 直接使远程服务调用绕过注册中心，进行点对点测试。还有一种情况，开发人员增加配置时，都会按线上的部署情况做配置，如：<code>&lt;dubbo:registry address=&quot;${dubbo.registry.address}&quot; /&gt;</code> 因为线上只有一个注册中心，这样的配置是没有问题的，而测试环境可能有两个注册中心，测试人员不可能去修改配置，改为： 
+<code>&lt;dubbo:registry address=&quot;${dubbo.registry.address1}&quot; /&gt;</code>， 
+<code>&lt;dubbo:registry address=&quot;${dubbo.registry.address2}&quot; /&gt;</code>，所以这个地方，Dubbo 支持在 ${dubbo.registry.address} 的值中，通过竖号分隔多个注册中心地址，用于表示多注册中心地址。</p>
+<h2 id="配置继承">配置继承</h2>
+<p>配置也存在“重复代码”，也存在“泛化与精化”的问题。比如：Dubbo 的超时时间设置，每个服务，每个方法，都应该可以设置超时时间。但很多服务不关心超时，如果要求每个方法都配置，是不现实的。所以 Dubbo 采用了方法超时继承服务超时，服务超时再继承缺省超时，没配置时，一层层向上查找。</p>
+<p>另外，Dubbo 旧版本所有的超时时间，重试次数，负载均衡策略等都只能在服务消费方配置。但实际使用过程中发现，服务提供方比消费方更清楚，但这些配置项是在消费方执行时才用到的。新版本，就加入了在服务提供方也能配这些参数，通过注册中心传递到消费方， 
+做为参考值，如果消费方没有配置，就以提供方的配置为准，相当于消费方继承了提供方的建议配置值。而注册中心在传递配置时，也可以在中途修改配置，这样就达到了治理的目的，继承关系相当于：服务消费者 &ndash;&gt; 注册中心 &ndash;&gt; 服务提供者</p>
+<p><img src="/imgs/dev/configuration-override.png" alt="configuration-override"></p>
+<h2 id="配置向后兼容">配置向后兼容</h2>
+<p>向前兼容很好办，你只要保证配置只增不减，就基本上能保证向前兼容。但向后兼容，也是要注意的，要为后续加入新的配置项做好准备。如果配置出现一个特殊配置，就应该为这个“特殊”情况约定一个兼容规则，因为这个特殊情况，很有可能在以后还会发生。比如：有一个配置文件是保存“服务=地址”映射关系的，其中有一行特殊，保存的是“注册中心=地址”。现在程序加载时，约定“注册中心”这个Key是特殊的，做特别处理，其它的都是“服务”。然而，新版本发现，要加一项“监控中心=地址”，这时，旧版本的程序会把“监控中心”做为“服务”处理，因为旧代码是不能改的，兼容性就很会很麻烦。如果先前约定“特殊标识+XXX”为特殊处理，后续就会方便很多。</p>
+<p>向后兼容性，可以多向HTML5学习，参见：<a href="http://javatar.iteye.com/blog/949390">HTML5设计原理</a></p>
+
+  
+  
+</div>
+
+
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+  
+</section>
+
+  
+
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <img src="/images/nacos_gray.png"/>
+    <div class="row">
+      <div class="col-md-6"><h3>愿景</h3>
+        <p>Nacos 通过提供简单易用的动态服务发现、服务配置、服务共享与管理等服务基础设施，帮助用户在云原
+            生时代，在私有云、混合云或者公有云等所有云环境中，更好的构建、交付、管理自己的微服务平台，更快的复用和组合业务服务，
+            更快的交付商业创新的价值，从而为用户赢得市场。</p></div>
+      <div class="col-md-3">
+        <dl>
+          <dt>文档</dt>
+          
+          <dd><a href="/en-us/docs/what-is-nacos.html" target="_self">概览</a></dd>
+          
+          <dd><a href="/en-us/docs/quick-start.html" target="_self">快速开始</a></dd>
+          
+          <dd><a href="/en-us/docs/contributing.html" target="_self">开发者指南</a></dd>
+          
+        </dl>
+      </div>
+      <div class="col-md-3">
+        <dl>
+          <dt>资源</dt>
+          
+          <dd><a href="/en-us/community/index.html" target="_self">社区</a></dd>
+          
+          <dd><a href="https://cn.aliyun.com/product/aliware/mse?spm=nacos-website.topbar.0.0.0" target="_self">云服务 MSE</a></dd>
+          
+          <dd><a href="https://www.aliyun.com/product/edas?source_type=nacos_pc_20181219" target="_self">云服务 EDAS</a></dd>
+          
+          <dd><a href="https://www.aliyun.com/product/ahas?source_type=nacos_pc_20190225" target="_self">云服务 AHAS</a></dd>
+          
+        </dl>
+      </div>
+    </div>
+    <div class="col-md-12 text-center copyright">
+      <span>© 2018 The Nacos Authors | An Alibaba Middleware (Aliware) Project</span>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+<script type="text/javascript">
+  ;(function () {
+    $('#fh5co-header').addClass('navbar-fixed-top fh5co-animated slideInDown');
+    $('#nacosLogo').attr("src", "/images/nacos_colorful.png")
+  }());
+</script>
+</html>

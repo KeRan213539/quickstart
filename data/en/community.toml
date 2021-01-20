@@ -51,17 +51,14 @@ barText = "Community"
         img = "/img/mailinglist.png"
         title = "Mailing List"
         content = "<span>Join the <a href='mailto:nacos_dev@linux.alibaba.com'>mailing list </a>and discussion your ideas with us.</span>"
-
     [[contributorGuide.list]]
         img = "/img/issue.png"
         title = "Issue"
         content = "<span>Reporting issues via <a href='https://github.com/alibaba/nacos/issues'>Github issues.</a></span>"
-    
     [[contributorGuide.list]]
         img = "/img/documents.png"
         title = "Documents"
         content = "<span>Improve the <a href='https://nacos.io/en-us/docs/what-is-nacos.html'>documentation.</a></span>"
-    
     [[contributorGuide.list]]
         img = "/img/pullrequest.png"
         title = "Pull Request"

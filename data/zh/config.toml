@@ -14,6 +14,25 @@ languageCode = "zh-cn"
     weight = 10
     type = "blog"
 
+[[menu.postpend]]
+    url = "/zh/community"
+    name = "社区"
+    weight = 10
+    type = "社区"
+
+[[menu.postpend]]
+    url = "https://cn.aliyun.com/product/aliware/mse?spm=nacos-website.topbar.0.0.0"
+    name = "企业版Nacos"
+    weight = 10
+    type = "external"
+    news = true
+
+[[menu.postpend]]
+    url = "http://console.nacos.io/nacos/index.html"
+    name = "控制台样例"
+    weight = 10
+    type = "external"
+
 [params]
     time_format_blog = "2006-01-02"
     time_format_default = "2006-01-02"

@@ -1,0 +1,66 @@
+.events-section {
+    padding-top: 100px;
+}
+
+.events-section .events-body {
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 40px;
+}
+.events-section .events-body .event-card {
+    width: 373px;
+    font-size: 0;
+}
+
+.events-section .events-body .event-card img {
+    width: 373px;
+    height: 209px;
+}
+
+.events-section .events-body .event-card .event-introduction {
+    padding: 20px;
+    background: #F8F8F8;
+}
+
+.events-section .events-body .event-card .event-introduction h4 {
+    font-family: Avenir-Heavy;
+    font-size: 20px;
+    color: #333;
+    margin: 0 0 10px;
+}
+
+.events-section .events-body .event-card .event-introduction p {
+    font-family: Avenir-Medium;
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+.events-section .events-body .event-card .event-introduction a {
+    display: inline-block;
+    width: 100%;
+    font-family: Avenir-Medium;
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+}
+
+.events-section .events-body .event-card .event-introduction a .arrow {
+    width: 8px;
+    height: 13px;
+    float: right;
+}
+
+.slider {
+    overflow: hidden;
+}
+
+.slider .slider-list {
+    overflow: visible;
+}
+
+.slider .slider-list .slider-screen {
+    display: inline-flex;
+    justify-content: space-around;
+    overflow: hidden;
+}

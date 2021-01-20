@@ -64,14 +64,31 @@ style = "solarized-dark"
 guessSyntax = "true"
 
 [sitemap]
-changefreq = "monthly"
-filename = "sitemap.xml"
-priority = 0.5
+    changefreq = "monthly"
+    filename = "sitemap.xml"
+    priority = 0.5
+
+[outputs]
+    home = ["HTML", "RSS", "Algolia"]
+[outputFormats.Algolia]
+    baseName = "algolia"
+    isPlainText = true
+    mediaType = "application/json"
+    notAlternative = true
 
 [params]
 github_repo = "https://github.com/nacos-group/nacos-group.github.io"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
 github_project_repo = "https://github.com/alibaba/nacos"
+# Enable Algolia DocSearch
+algolia_docsearch = true
+# Enable Lunr.js offline search
+offlineSearch = false
+
+[params.algolia]
+    appId = "3CRHI0VEW6"
+    indexName = "nacos_test"
+    searchOnlyKey = "e7b36bd85080f2bcfb9de34adc766043"
 
 [params.ui]
 # Enable to show the side bar menu in its compact state.

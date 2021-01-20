@@ -42,10 +42,18 @@
                     {{ end }}
 
                     {{ range $config.menu.postpend }}
-                        <li{{ if eq $p.Type .type }} class="active"{{ end }}><a class="external" href="{{ .url }}"><span>{{ .name | markdownify }}</span></a></li>
+                        <li{{ if eq $p.Type .type }} class="active"{{ end }}>
+                            <a class="external" href="{{ .url }}"><span>{{ .name | markdownify }}</span></a>
+                            {{ if .news }}
+                            <img class="menu-img" src="https://img.alicdn.com/tfs/TB1esl_m.T1gK0jSZFrXXcNCXXa-200-200.png">
+                            {{ end }}
+                        </li>
                     {{ end }}
                     <li>
                       {{ partial "nav-lang-selector.html" .}}
+                    </li>
+                    <li>
+                      <div class="navbar-nav">{{ partial "search-input.html" . }}</div>
                     </li>
                 </ul>
             </div>

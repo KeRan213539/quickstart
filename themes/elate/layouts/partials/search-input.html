@@ -1,13 +1,35 @@
 {{ if or .Site.Params.gcs_engine_id .Site.Params.algolia_docsearch }}
-<input type="search" class="form-control td-search-input" placeholder="&#xf002 {{ T "ui_search" }}" aria-label="{{ T "ui_search" }}" autocomplete="off">
+{{/* $algoliaStyles := resources.Get "scss/algolia.scss" | toCSS | minify */}}
+{{/* <link href="{{ $algoliaStyles.RelPermalink }}" rel="stylesheet"> */}}
+
+<input type="search" class="form-control nav-search-input" placeholder=" &#xf002 {{ T "ui_search" }}" aria-label="{{ T "ui_search" }}" autocomplete="off">
+<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.3/dist/cdn/docsearch.min.css" rel="stylesheet" />
+<!-- 下面这个docsearch.js仅用于调试搜索结果样式 -->
+<!--<script src="/js/docsearch.js"></script>-->
+<script>
+  docsearch({
+    // Your apiKey and indexName will be given to you once
+    // we create your config
+    appId: {{ .Site.Params.algolia.appId }},
+    apiKey: {{ .Site.Params.algolia.searchOnlyKey }},
+    indexName: {{ .Site.Params.algolia.indexName }},
+    algoliaOptions: {hitsPerPage: 3},
+    // Replace inputSelector with a CSS selector
+    // matching your search input
+    inputSelector: '.nav-search-input',
+    // Set debug to true to inspect the dropdown
+    debug: false
+  });
+</script>
 {{ else if .Site.Params.offlineSearch }}
 {{ $offlineSearchIndex := resources.Get "json/offline-search-index.json" | resources.ExecuteAsTemplate "offline-search-index.json" . }}
 {{/* Use `md5` as finger print hash function to shorten file name to avoid `file name too long` error. */}}
 {{ $offlineSearchIndexFingerprint := $offlineSearchIndex | resources.Fingerprint "md5" }}
 <input
   type="search"
-  class="form-control td-search-input"
-  placeholder="&#xf002; {{ T "ui_search" }}"
+  class="form-control nav-search-input"
+  placeholder=" &#xf002; {{ T "ui_search" }}"
   aria-label="{{ T "ui_search" }}"
   autocomplete="off"
   {{/*
